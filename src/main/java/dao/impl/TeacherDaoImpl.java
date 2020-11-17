@@ -14,6 +14,24 @@ public class TeacherDaoImpl implements TeacherDao {
     private JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
 
     @Override
+    public void addTeacher(Teacher teacher) {
+        String sql = "insert into teacher values(?, ?, ?, ?)";
+        jdbcTemplate.update(sql, teacher.getJobId(), teacher.getName(), teacher.getPassword(), teacher.isAdmin());
+    }
+
+    @Override
+    public void delTeacher(String jobId) {
+        String sql = "delete from teacher where jobId = ?";
+        jdbcTemplate.update(sql, jobId);
+    }
+
+    @Override
+    public void updateTeacher(Teacher teacher) {
+        String sql = "update teacher set jobId = ?, name = ?, password = ?, isAdmin = ?";
+        jdbcTemplate.update(sql, teacher.getJobId(), teacher.getName(), teacher.getPassword(), teacher.isAdmin());
+    }
+
+    @Override
     public Teacher findTeacher(String jobId, String password) {
         String sql = "select * from teacher where sno = ? and password = ?";
         try {
@@ -35,24 +53,5 @@ public class TeacherDaoImpl implements TeacherDao {
         } catch (DataAccessException e) {
             return null;
         }
-    }
-
-    @Override
-    public int addTeacher(String jobId, String name, String password) {
-        String sql = "insert into teacher values(?, ?, ?, ?)";
-        int count = jdbcTemplate.update(sql, jobId, name, password);
-        return count;
-    }
-
-    @Override
-    public int delTeacher(String jobId) {
-        String sql = "delete from teacher where jobId = ?";
-        int count = jdbcTemplate.update(sql, jobId);
-        return count;
-    }
-
-    @Override
-    public int updateTeacher(String jobId, String name, String password) {
-        return 0;
     }
 }

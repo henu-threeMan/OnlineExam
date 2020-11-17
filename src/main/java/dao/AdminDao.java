@@ -2,14 +2,16 @@ package dao;
 
 import domain.Admin;
 
+import java.util.List;
+
 public interface AdminDao {
+    void addAdmin(String username, String password);
+
+    void delAdmin(String username);
+
+    void updateAdmin(Admin admin);
+
     Admin findAdmin(String username, String password);
 
-    int addAdmin(String username, String password);
-
-    int delAdmin(String username);
-
-    int updateAdmin(String username);
-
-    int delDefaultAdmin();
+    List<Admin> getAdmins();
 }

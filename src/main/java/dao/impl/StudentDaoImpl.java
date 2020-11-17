@@ -13,6 +13,24 @@ public class StudentDaoImpl implements StudentDao {
     private JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
 
     @Override
+    public void addStudent(Student student) {
+        String sql = "insert into student values(?, ?, ?)";
+        jdbcTemplate.update(sql, student.getSon(), student.getName(), student.getPassword());
+    }
+
+    @Override
+    public void delStudent(String sno) {
+        String sql = "delete from student where sno = ?";
+        jdbcTemplate.update(sql, sno);
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+        String sql = "update student set sno = ?, name = ?, password = ?";
+        jdbcTemplate.update(sql, student.getSon(), student.getName(), student.getPassword());
+    }
+
+    @Override
     public Student findStudent(String sno, String password) {
         String sql = "select * from student where sno = ? and password = ?";
         try {
@@ -34,24 +52,5 @@ public class StudentDaoImpl implements StudentDao {
         } catch (DataAccessException e) {
             return null;
         }
-    }
-
-    @Override
-    public int addStudent(String sno, String name, String password) {
-        String sql = "insert into student values(?, ?, ?)";
-        int count = jdbcTemplate.update(sql, sno, name, password);
-        return count;
-    }
-
-    @Override
-    public int delStudent(String sno) {
-        String sql = "delete from student where sno = ?";
-        int count = jdbcTemplate.update(sql, sno);
-        return count;
-    }
-
-    @Override
-    public int updateStudent(String sno, String name, String password) {
-        return 0;
     }
 }

@@ -7,8 +7,28 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import util.JdbcUtils;
 
+import java.util.List;
+
 public class AdminDaoImpl implements AdminDao {
     private JdbcTemplate jdbcTemplate = new JdbcTemplate(JdbcUtils.getDataSource());
+
+    @Override
+    public void addAdmin(String username, String password) {
+        String sql = "insert into admins values username = ? and password = ?";
+        jdbcTemplate.update(sql, username, password);
+    }
+
+    @Override
+    public void delAdmin(String username) {
+        String sql = "delete from admins where username = ?";
+        jdbcTemplate.update(sql, username);
+    }
+
+    @Override
+    public void updateAdmin(Admin admin) {
+        String sql = "update admins set username = ?, password = ?";
+        jdbcTemplate.update(sql, admin.getUsername(), admin.getPassword());
+    }
 
     @Override
     public Admin findAdmin(String username, String password) {
@@ -23,26 +43,14 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public int addAdmin(String username, String password) {
-        String sql = "insert into admins values username = ? and password = ?";
-        int count = jdbcTemplate.update(sql, username, password);
-        return count;
-    }
-
-    @Override
-    public int delAdmin(String username) {
-        String sql = "delete from admins where username = ?";
-        int count = jdbcTemplate.update(sql, username);
-        return count;
-    }
-
-    @Override
-    public int updateAdmin(String username) {
-        return 0;
-    }
-
-    @Override
-    public int delDefaultAdmin() {
-        return this.delAdmin("admin");
+    public List<Admin> getAdmins() {
+        String sql = "select * from admins";
+        try {
+            List<Admin> admins = jdbcTemplate.query(sql,
+                    new BeanPropertyRowMapper<Admin>(Admin.class));
+            return admins;
+        } catch (DataAccessException e) {
+            return null;
+        }
     }
 }
