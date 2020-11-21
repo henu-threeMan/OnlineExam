@@ -13,5 +13,5 @@ public interface StudentDao {
 
     Student findStudent(String sno, String password);
 
-    List<Student> getStudents();
+    List<Student> findStudents();
 }

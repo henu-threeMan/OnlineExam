@@ -1,8 +1,8 @@
 package domain;
 
 public class Teacher {
-    private String jobId;
-    private String name;
+    private String username;
+    private String teacherName;
     private String password;
     private boolean isAdmin;
 
@@ -14,20 +14,20 @@ public class Teacher {
         isAdmin = admin;
     }
 
-    public String getJobId() {
-        return jobId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public String getPassword() {
@@ -36,5 +36,15 @@ public class Teacher {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "username='" + username + '\'' +
+                ", teacherName='" + teacherName + '\'' +
+                ", password='" + password + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
     }
 }

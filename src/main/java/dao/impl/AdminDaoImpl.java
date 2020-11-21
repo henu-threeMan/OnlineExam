@@ -43,7 +43,7 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public List<Admin> getAdmins() {
+    public List<Admin> findAdmins() {
         String sql = "select * from admins";
         try {
             List<Admin> admins = jdbcTemplate.query(sql,

@@ -13,6 +13,6 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Teacher teacherLogin(Teacher teacher) {
-        return teacherDao.findTeacher(teacher.getJobId(), teacher.getPassword());
+        return teacherDao.findTeacher(teacher.getUsername(), teacher.getPassword());
     }
 }

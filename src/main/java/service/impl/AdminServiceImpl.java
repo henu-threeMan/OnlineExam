@@ -1,13 +1,22 @@
 package service.impl;
 
 import dao.AdminDao;
+import dao.ExamDao;
+import dao.TeacherDao;
 import dao.impl.AdminDaoImpl;
+import dao.impl.ExamDaoImpl;
+import dao.impl.TeacherDaoImpl;
 import domain.Admin;
+import domain.Exam;
 import domain.Teacher;
 import service.AdminService;
 
+import java.util.List;
+
 public class AdminServiceImpl implements AdminService {
     AdminDao adminDao = new AdminDaoImpl();
+    TeacherDao teacherDao = new TeacherDaoImpl();
+    ExamDao examDao = new ExamDaoImpl();
 
     @Override
     public Admin adminLogin(Admin admin) {
@@ -15,27 +24,32 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public int addTeacher(Teacher teacher) {
-        return 0;
+    public void addTeacher(Teacher teacher) {
+        teacherDao.addTeacher(teacher);
     }
 
     @Override
-    public int delTeacher(Teacher teacher) {
-        return 0;
+    public void delTeacher(String username) {
+        teacherDao.delTeacher(username);
     }
 
     @Override
-    public int updateTeacher(Teacher teacher) {
-        return 0;
+    public void updateTeacher(Teacher teacher) {
+        teacherDao.updateTeacher(teacher);
     }
 
     @Override
-    public Teacher findTeacher(Teacher teacher) {
-        return null;
+    public List<Teacher> findTeachers() {
+        return teacherDao.findTeachers();
     }
 
     @Override
-    public boolean setTeacherAsAdmin(Teacher teacher) {
-        return false;
+    public List<Exam> findExams() {
+        return examDao.findExams();
+    }
+
+    @Override
+    public void delExam(int id) {
+        examDao.delExam(id);
     }
 }

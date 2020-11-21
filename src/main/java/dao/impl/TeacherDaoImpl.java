@@ -15,28 +15,28 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void addTeacher(Teacher teacher) {
-        String sql = "insert into teacher values(?, ?, ?, ?)";
-        jdbcTemplate.update(sql, teacher.getJobId(), teacher.getName(), teacher.getPassword(), teacher.isAdmin());
+        String sql = "insert into teachers values(?, ?, ?, ?)";
+        jdbcTemplate.update(sql, teacher.getUsername(), teacher.getTeacherName(), teacher.getPassword(), teacher.isAdmin());
     }
 
     @Override
-    public void delTeacher(String jobId) {
-        String sql = "delete from teacher where jobId = ?";
-        jdbcTemplate.update(sql, jobId);
+    public void delTeacher(String username) {
+        String sql = "delete from teachers where username = ?";
+        jdbcTemplate.update(sql, username);
     }
 
     @Override
     public void updateTeacher(Teacher teacher) {
-        String sql = "update teacher set jobId = ?, name = ?, password = ?, isAdmin = ?";
-        jdbcTemplate.update(sql, teacher.getJobId(), teacher.getName(), teacher.getPassword(), teacher.isAdmin());
+        String sql = "update teachers set username = ?, teacherName = ?, password = ?, isAdmin = ?";
+        jdbcTemplate.update(sql, teacher.getUsername(), teacher.getTeacherName(), teacher.getPassword(), teacher.isAdmin());
     }
 
     @Override
-    public Teacher findTeacher(String jobId, String password) {
-        String sql = "select * from teacher where sno = ? and password = ?";
+    public Teacher findTeacher(String username, String password) {
+        String sql = "select * from teachers where username = ? and password = ?";
         try {
             Teacher teacher = jdbcTemplate.queryForObject(sql,
-                    new BeanPropertyRowMapper<Teacher>(Teacher.class), jobId, password);
+                    new BeanPropertyRowMapper<Teacher>(Teacher.class), username, password);
             return teacher;
         } catch (DataAccessException e) {
             return null;
@@ -44,8 +44,8 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
-    public List<Teacher> getTeachers() {
-        String sql = "select * from teacher";
+    public List<Teacher> findTeachers() {
+        String sql = "select * from teachers";
         try {
             List<Teacher> teachers = jdbcTemplate.query(sql,
                     new BeanPropertyRowMapper<Teacher>(Teacher.class));

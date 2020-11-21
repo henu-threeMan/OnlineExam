@@ -14,25 +14,27 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void addStudent(Student student) {
-        String sql = "insert into student values(?, ?, ?)";
-        jdbcTemplate.update(sql, student.getSon(), student.getName(), student.getPassword());
+        String sql = "insert into students values(?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, student.getSon(), student.getStudentName(), student.getPassword(),
+                student.getClassName(), null);
     }
 
     @Override
     public void delStudent(String sno) {
-        String sql = "delete from student where sno = ?";
+        String sql = "delete from students where sno = ?";
         jdbcTemplate.update(sql, sno);
     }
 
     @Override
     public void updateStudent(Student student) {
-        String sql = "update student set sno = ?, name = ?, password = ?";
-        jdbcTemplate.update(sql, student.getSon(), student.getName(), student.getPassword());
+        String sql = "update students set sno = ?, studentName = ?, password = ?, className = ?, ip = ?";
+        jdbcTemplate.update(sql, student.getSon(), student.getStudentName(), student.getPassword(),
+                student.getClassName(), student.getIp());
     }
 
     @Override
     public Student findStudent(String sno, String password) {
-        String sql = "select * from student where sno = ? and password = ?";
+        String sql = "select * from students where sno = ? and password = ?";
         try {
             Student student = jdbcTemplate.queryForObject(sql,
                     new BeanPropertyRowMapper<Student>(Student.class), sno, password);
@@ -43,8 +45,8 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public List<Student> getStudents() {
-        String sql = "select * from student";
+    public List<Student> findStudents() {
+        String sql = "select * from students";
         try {
             List<Student> students = jdbcTemplate.query(sql,
                     new BeanPropertyRowMapper<Student>(Student.class));

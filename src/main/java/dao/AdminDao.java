@@ -13,5 +13,5 @@ public interface AdminDao {
 
     Admin findAdmin(String username, String password);
 
-    List<Admin> getAdmins();
+    List<Admin> findAdmins();
 }

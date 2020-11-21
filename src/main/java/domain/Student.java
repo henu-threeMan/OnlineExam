@@ -2,8 +2,26 @@ package domain;
 
 public class Student {
     private String son;
-    private String name;
+    private String studentName;
     private String password;
+    private String className;
+    private String ip;
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
     public String getSon() {
         return son;
@@ -13,12 +31,12 @@ public class Student {
         this.son = son;
     }
 
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public String getPassword() {
