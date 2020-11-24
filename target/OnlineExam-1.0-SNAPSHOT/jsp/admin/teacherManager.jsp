@@ -36,6 +36,9 @@
             color:white;
             font-size: 170%;
         }
+        .container2 form{
+            color:white;
+        }
         .container2 li{
             margin-bottom: 12%;
         }
@@ -87,7 +90,7 @@
                     </ul>
                     <!--向右对齐-->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>欢迎,${username}</a></li>
+                        <li><a>欢迎,${admin.username}</a></li>
                         <li><a>修改信息</a></li>
                         <li><a href="${pageContext.request.contextPath}/logoutServlet">退出</a></li>
                     </ul>
@@ -105,7 +108,7 @@
         <button class="btn btn-default" type="submit">批量导入</button>
     </div>
     <%--用户信息表--%>
-    <form>
+    <form style="color: white;">
         <table class="table table-bordered table-hover">
             <tr class="tableHead">
                 <td><input type="checkbox"></td>
@@ -118,7 +121,7 @@
                     <td>${s.count}</td>
                     <td>${str.username}</td>
                     <td>${str.password}</td>
-                    <td>${str.trueName}</td>
+                    <td>${str.teacherName}</td>
                     <td><button>修改</button><button>删除</button></td>
                 </tr>
             </c:forEach>
