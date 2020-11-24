@@ -15,7 +15,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public void addStudent(Student student) {
         String sql = "insert into students values(?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, student.getSon(), student.getStudentName(), student.getPassword(),
+        jdbcTemplate.update(sql, student.getSno(), student.getStudentName(), student.getPassword(),
                 student.getClassName(), null);
     }
 
@@ -29,7 +29,7 @@ public class StudentDaoImpl implements StudentDao {
     public void updateStudent(Student student) {
         String sql = "update students set studentName = ?, password = ?, className = ?, ip = ? where sno = ?";
         jdbcTemplate.update(sql, student.getStudentName(), student.getPassword(), student.getClassName(),
-                student.getIp(), student.getSon());
+                student.getIp(), student.getSno());
     }
 
     @Override

@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
             if (teacherLogin != null) {
                 session.setAttribute("teacher", teacherLogin);;
                 session.setAttribute("user", teacherLogin);
-                response.sendRedirect(request.getContextPath() + "/jsp/admin/home.jsp");
+                response.sendRedirect(request.getContextPath() + "/jsp/teacher/home.jsp");
 //                request.getRequestDispatcher("/jsp/admin/home.jsp").forward(request, response);
             } else {
                 request.setAttribute("login_msg", "用户名或密码错误！");
@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
             if (studentLogin != null) {
                 session.setAttribute("student", studentLogin);
                 session.setAttribute("user", studentLogin);
-                response.sendRedirect(request.getContextPath() + "/jsp/admin/home.jsp");
+                response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");
 //                request.getRequestDispatcher("/jsp/admin/home.jsp").forward(request, response);
             } else {
                 request.setAttribute("login_msg", "用户名或密码错误！");

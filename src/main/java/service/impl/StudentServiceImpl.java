@@ -10,6 +10,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student studentLogin(Student student) {
-        return studentDao.findStudent(student.getSon(), student.getPassword());
+        return studentDao.findStudent(student.getSno(), student.getPassword());
     }
 }

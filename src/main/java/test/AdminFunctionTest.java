@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AdminFunctionTest {
 
-    @Test
+    //@Test
     public void adminLogin() {
         AdminService adminService = new AdminServiceImpl();
 
@@ -22,7 +22,7 @@ public class AdminFunctionTest {
         assert (loginAdmin != null);
     }
 
-    @Test
+    //@Test
     public void addTeacher() {
         AdminService adminService = new AdminServiceImpl();
 
@@ -40,7 +40,7 @@ public class AdminFunctionTest {
         }
     }
 
-    @Test
+    //@Test
     public void updateTeacher() {
         AdminService adminService = new AdminServiceImpl();
 
@@ -63,7 +63,7 @@ public class AdminFunctionTest {
         }
     }
 
-    @Test
+    //@Test
     public void delTeacher() {
         AdminService adminService = new AdminServiceImpl();
         adminService.delTeacher("zhangsan");
