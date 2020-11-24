@@ -11,7 +11,7 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
 
         String uri = request.getRequestURI();
-        System.out.println(uri);
+//        System.out.println(uri);
         if (uri.contains("/login.jsp") || uri.contains("/loginServlet") || uri.contains("/js/")
                 || uri.contains("/css/") || uri.contains("/fonts/") || uri.contains("/img/")) {
             chain.doFilter(req, resp);
