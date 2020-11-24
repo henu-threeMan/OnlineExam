@@ -4,9 +4,7 @@ import domain.Admin;
 import domain.Teacher;
 import org.junit.Test;
 import service.AdminService;
-import service.TeacherService;
 import service.impl.AdminServiceImpl;
-import service.impl.TeacherServiceImpl;
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class AdminFunctionTest {
         admin.setPassword("admin");
 
         Admin loginAdmin = adminService.adminLogin(admin);
-        assert (admin != null);
+        assert (loginAdmin != null);
     }
 
     @Test
@@ -32,7 +30,7 @@ public class AdminFunctionTest {
         teacher.setUsername("zhangsan");
         teacher.setTeacherName("张三");
         teacher.setPassword("123456");
-        teacher.setAdmin(false);
+        teacher.setIsAdmin(0);
 
         adminService.addTeacher(teacher);
 
@@ -55,7 +53,7 @@ public class AdminFunctionTest {
         teacher.setUsername("zhangsan");
         teacher.setTeacherName("张三");
         teacher.setPassword("12798147");
-        teacher.setAdmin(true);
+        teacher.setIsAdmin(1);
 
         adminService.updateTeacher(teacher);
 

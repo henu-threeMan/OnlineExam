@@ -1,17 +1,18 @@
 package domain;
 
 public class Teacher {
+    private int id;
     private String username;
     private String teacherName;
     private String password;
-    private boolean isAdmin;
+    private int isAdmin;
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public int getId() {
+        return id;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -36,6 +37,14 @@ public class Teacher {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     @Override

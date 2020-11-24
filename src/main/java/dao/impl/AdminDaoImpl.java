@@ -14,8 +14,8 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public void addAdmin(String username, String password) {
-        String sql = "insert into admins values username = ? and password = ?";
-        jdbcTemplate.update(sql, username, password);
+        String sql = "insert into admins values id = ?, username = ? and password = ?";
+        jdbcTemplate.update(sql, null, username, password);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public void updateAdmin(Admin admin) {
-        String sql = "update admins set username = ?, password = ?";
-        jdbcTemplate.update(sql, admin.getUsername(), admin.getPassword());
+        String sql = "update admins set username = ?, password = ? where id = ?";
+        jdbcTemplate.update(sql, admin.getUsername(), admin.getPassword(), admin.getId());
     }
 
     @Override

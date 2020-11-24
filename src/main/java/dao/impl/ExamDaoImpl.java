@@ -15,8 +15,8 @@ public class ExamDaoImpl implements ExamDao {
     @Override
     public void addExam(Exam exam) {
         String sql = "insert into exam values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, null, exam.getExamName(), exam.getStartTime(), exam.getOwner(), exam.isPageExist(),
-                exam.isAutoStart(), exam.isStarting(), exam.isFinished(), exam.isFiled(), exam.isCleaned());
+        jdbcTemplate.update(sql, null, exam.getExamName(), exam.getStartTime(), exam.getOwner(), exam.getIsPageExist(),
+                exam.getIsAutoStart(), exam.getIsStarting(), exam.getIsFinished(), exam.getIsFiled(), exam.getIsCleaned());
     }
 
     @Override
@@ -28,9 +28,10 @@ public class ExamDaoImpl implements ExamDao {
     @Override
     public void update(Exam exam) {
         String sql = "update exam set examName=?, startTime=?, owner=?, isPageExist=?, isAutoStart=?, " +
-                "isStarting=?, isFinished=?, isFiled=?, isCleaned=?";
-        jdbcTemplate.update(sql, null, exam.getExamName(), exam.getStartTime(), exam.getOwner(), exam.isPageExist(),
-                exam.isAutoStart(), exam.isStarting(), exam.isFinished(), exam.isFiled(), exam.isCleaned());
+                "isStarting=?, isFinished=?, isFiled=?, isCleaned=? where id = ?";
+        jdbcTemplate.update(sql, null, exam.getExamName(), exam.getStartTime(), exam.getOwner(), exam.getExamName(),
+                exam.getStartTime(), exam.getOwner(), exam.getIsPageExist(), exam.getIsAutoStart(), exam.getIsStarting(),
+                exam.getIsFinished(), exam.getIsFiled(), exam.getIsCleaned(), exam.getId());
     }
 
     @Override

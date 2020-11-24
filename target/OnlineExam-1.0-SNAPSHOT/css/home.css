@@ -1,0 +1,43 @@
+body{
+    background:url("img/background.jpg") no-repeat;
+    background-size: 100%;
+}
+div{
+    border:1px black solid;
+}
+.nav1{
+    float:right;
+    width: 75%;
+    height:10%;
+}
+
+.nav1 > li{
+    font-family: SimHei;
+    font-size: 18px;
+    float:left;
+}
+.nav1 > li > a{
+    border-radius: 4px;
+}
+.nav2{
+    float:left;
+}
+.nav2 a{
+    color:white;
+}
+.nav2 a:hover,
+.nav2 a:active{
+    background-color:lightskyblue;
+}
+.nav3{
+    float:right;
+}
+.logo{
+    float:left;
+    width: 25%;
+    height:10%;
+}
+.logo > img{
+    width: 50%;
+    height:100%;
+}

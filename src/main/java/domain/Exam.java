@@ -5,12 +5,12 @@ public class Exam {
     private String examName;
     private String startTime;
     private String owner;
-    private boolean isPageExist;
-    private boolean isAutoStart;
-    private boolean isStarting;
-    private boolean isFinished;
-    private boolean isFiled;
-    private boolean isCleaned;
+    private int isPageExist;
+    private int isAutoStart;
+    private int isStarting;
+    private int isFinished;
+    private int isFiled;
+    private int isCleaned;
 
     public int getId() {
         return id;
@@ -44,51 +44,51 @@ public class Exam {
         this.owner = owner;
     }
 
-    public boolean isPageExist() {
+    public int getIsPageExist() {
         return isPageExist;
     }
 
-    public void setPageExist(boolean pageExist) {
-        isPageExist = pageExist;
+    public void setIsPageExist(int isPageExist) {
+        this.isPageExist = isPageExist;
     }
 
-    public boolean isAutoStart() {
+    public int getIsAutoStart() {
         return isAutoStart;
     }
 
-    public void setAutoStart(boolean autoStart) {
-        isAutoStart = autoStart;
+    public void setIsAutoStart(int isAutoStart) {
+        this.isAutoStart = isAutoStart;
     }
 
-    public boolean isStarting() {
+    public int getIsStarting() {
         return isStarting;
     }
 
-    public void setStarting(boolean starting) {
-        isStarting = starting;
+    public void setIsStarting(int isStarting) {
+        this.isStarting = isStarting;
     }
 
-    public boolean isFinished() {
+    public int getIsFinished() {
         return isFinished;
     }
 
-    public void setFinished(boolean finished) {
-        isFinished = finished;
+    public void setIsFinished(int isFinished) {
+        this.isFinished = isFinished;
     }
 
-    public boolean isFiled() {
+    public int getIsFiled() {
         return isFiled;
     }
 
-    public void setFiled(boolean filed) {
-        isFiled = filed;
+    public void setIsFiled(int isFiled) {
+        this.isFiled = isFiled;
     }
 
-    public boolean isCleaned() {
+    public int getIsCleaned() {
         return isCleaned;
     }
 
-    public void setCleaned(boolean cleaned) {
-        isCleaned = cleaned;
+    public void setIsCleaned(int isCleaned) {
+        this.isCleaned = isCleaned;
     }
 }

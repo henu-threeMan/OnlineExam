@@ -15,8 +15,9 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void addTeacher(Teacher teacher) {
-        String sql = "insert into teachers values(?, ?, ?, ?)";
-        jdbcTemplate.update(sql, teacher.getUsername(), teacher.getTeacherName(), teacher.getPassword(), teacher.isAdmin());
+        String sql = "insert into teachers values(?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, null, teacher.getUsername(), teacher.getTeacherName(),
+                teacher.getPassword(), teacher.getIsAdmin());
     }
 
     @Override
@@ -27,8 +28,9 @@ public class TeacherDaoImpl implements TeacherDao {
 
     @Override
     public void updateTeacher(Teacher teacher) {
-        String sql = "update teachers set username = ?, teacherName = ?, password = ?, isAdmin = ?";
-        jdbcTemplate.update(sql, teacher.getUsername(), teacher.getTeacherName(), teacher.getPassword(), teacher.isAdmin());
+        String sql = "update teachers set teacherName = ?, password = ?, isAdmin = ? where username = ?";
+        jdbcTemplate.update(sql, teacher.getTeacherName(), teacher.getPassword(), teacher.getIsAdmin(),
+                teacher.getUsername());
     }
 
     @Override

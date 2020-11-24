@@ -27,9 +27,9 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void updateStudent(Student student) {
-        String sql = "update students set sno = ?, studentName = ?, password = ?, className = ?, ip = ?";
-        jdbcTemplate.update(sql, student.getSon(), student.getStudentName(), student.getPassword(),
-                student.getClassName(), student.getIp());
+        String sql = "update students set studentName = ?, password = ?, className = ?, ip = ? where sno = ?";
+        jdbcTemplate.update(sql, student.getStudentName(), student.getPassword(), student.getClassName(),
+                student.getIp(), student.getSon());
     }
 
     @Override
