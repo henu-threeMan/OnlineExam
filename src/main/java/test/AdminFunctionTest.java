@@ -1,6 +1,7 @@
 package test;
 
 import domain.Admin;
+import domain.PageBean;
 import domain.Teacher;
 import org.junit.Test;
 import service.AdminService;
@@ -22,12 +23,12 @@ public class AdminFunctionTest {
         assert (loginAdmin != null);
     }
 
-    //@Test
+    @Test
     public void addTeacher() {
         AdminService adminService = new AdminServiceImpl();
 
         Teacher teacher = new Teacher();
-        teacher.setUsername("zhangsan");
+        teacher.setUsername("lisi");
         teacher.setTeacherName("张三");
         teacher.setPassword("123456");
         teacher.setIsAdmin(0);
@@ -69,5 +70,15 @@ public class AdminFunctionTest {
         adminService.delTeacher("zhangsan");
         List<Teacher> teachers = adminService.findTeachers();
         assert (teachers.size() == 0);
+    }
+
+    //@Test
+    public void findTeachersByPage() {
+        AdminService adminService = new AdminServiceImpl();
+        PageBean<Teacher> pb = adminService.findTeacherByPage("1", "5");
+        List<Teacher> teachers = pb.getList();
+        for (Teacher teacher : teachers) {
+            System.out.println(teacher);
+        }
     }
 }

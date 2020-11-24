@@ -9,17 +9,17 @@
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.jpg"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.jpg"/>
+    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
+    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.jpg"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.jpg"/>
+    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
+    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 <div class="container1">
     <div class="logo">
-        <img src="${pageContext.request.contextPath}/img/systemIcon.jpg" class="img-circle">
+        <img src="${pageContext.request.contextPath}/img/systemIcon.png" class="img-circle">
         <p>上机考试系统</p>
     </div>
     <div class="nav1">
@@ -29,7 +29,7 @@
                     <!--向左对齐-->
                     <ul class="nav navbar-nav navbar-left">
                         <li role="presentation" ><a href="#" data-toggle="tab" >首页</a></li>
-                        <li role="presentation" ><a href="${pageContext.request.contextPath}/teacherManagerServlet" >教师管理</a></li>
+                        <li role="presentation" ><a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=1&rows=5" >教师管理</a></li>
                         <li role="presentation" ><a href="${pageContext.request.contextPath}/clearExamServlet">考试清理</a></li>
                         <li role="presentation" ><a href="${pageContext.request.contextPath}/configServlet">系统配置</a></li>
                     </ul>

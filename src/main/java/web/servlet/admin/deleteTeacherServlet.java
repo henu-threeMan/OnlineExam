@@ -1,5 +1,8 @@
 package web.servlet.admin;
 
+import service.AdminService;
+import service.impl.AdminServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -7,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/addServlet")
-public class addServlet extends HttpServlet {
+@WebServlet("/deleteTeacherServlet")
+public class deleteTeacherServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        AdminService adminService = new AdminServiceImpl();
+        adminService.delTeacher(id);
 
+        response.sendRedirect(request.getContextPath() + "/teacherManagerServlet?currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

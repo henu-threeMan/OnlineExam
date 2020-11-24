@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 
         Map<String, String[]> maps = request.getParameterMap();
         String role = request.getParameter("role");
+        session.setAttribute("role", role);
         if ("admin".equals(role)) {
             Admin admin = new Admin();
             try {
@@ -41,7 +42,6 @@ public class LoginServlet extends HttpServlet {
             Admin adminLogin = adminService.adminLogin(admin);
             if (adminLogin != null) {
                 session.setAttribute("admin", adminLogin);
-                session.setAttribute("user", adminLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/admin/home.jsp");
 //                request.getRequestDispatcher("/jsp/admin/home.jsp").forward(request, response);
             } else {
@@ -61,7 +61,6 @@ public class LoginServlet extends HttpServlet {
             Teacher teacherLogin = teacherService.teacherLogin(teacher);
             if (teacherLogin != null) {
                 session.setAttribute("teacher", teacherLogin);;
-                session.setAttribute("user", teacherLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/teacher/home.jsp");
 //                request.getRequestDispatcher("/jsp/admin/home.jsp").forward(request, response);
             } else {
@@ -81,7 +80,6 @@ public class LoginServlet extends HttpServlet {
             Student studentLogin = studentService.studentLogin(student);
             if (studentLogin != null) {
                 session.setAttribute("student", studentLogin);
-                session.setAttribute("user", studentLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");
 //                request.getRequestDispatcher("/jsp/admin/home.jsp").forward(request, response);
             } else {
