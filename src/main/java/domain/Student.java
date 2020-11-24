@@ -1,7 +1,7 @@
 package domain;
 
 public class Student {
-    private String son;
+    private String sno;
     private String studentName;
     private String password;
     private String className;
@@ -23,12 +23,12 @@ public class Student {
         this.ip = ip;
     }
 
-    public String getSon() {
-        return son;
+    public String getSno() {
+        return sno;
     }
 
-    public void setSon(String son) {
-        this.son = son;
+    public void setSno(String sno) {
+        this.sno = sno;
     }
 
     public String getStudentName() {
@@ -45,5 +45,16 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sno='" + sno + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", password='" + password + '\'' +
+                ", className='" + className + '\'' +
+                ", ip='" + ip + '\'' +
+                '}';
     }
 }
