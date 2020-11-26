@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>添加教师</title>
+    <title>添加教师信息</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
 
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
-<div class="container" style="width: 400px;">
+<div class="alert_container">
     <h3 style="text-align: center;">修改教师信息</h3>
     <form action="${pageContext.request.contextPath}/addTeacherServlet" method="post">
 

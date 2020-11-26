@@ -2,10 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>教室管理</title>
+    <title>教师管理</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/head.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/teacherManager.css">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -19,51 +20,49 @@
                 location.href = "${pageContext.request.contextPath}/deleteTeacherServlet?id=" + id;
             }
         }
+
+        window.onload = function () {
+            document.getElementById("delSelect").onclick = function () {
+                if (confirm("是否确定删除选中？")) {
+                    var flag = false;
+                    var checkboxes = document.getElementsByName("tid");
+                    for (let i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (flag) {
+                        document.getElementById("form").submit();
+                    }
+                }
+            }
+
+            document.getElementById("firstCheckbox").onclick = function () {
+                var checkboxes = document.getElementsByName("tid");
+                for (var i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].checked = this.checked;
+                }
+            }
+        }
     </script>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
-<div class="container1">
-    <div class="logo">
-        <img src="${pageContext.request.contextPath}/img/systemIcon.png" class="img-circle">
-        <p>上机考试系统</p>
-    </div>
-    <div class="nav1">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div>
-                    <!--向左对齐-->
-                    <ul class="nav navbar-nav navbar-left">
-                        <li role="presentation" ><a href="${pageContext.request.contextPath}/returnHomeServlet" >首页</a></li>
-                        <li role="presentation" ><a href="${pageContext.request.contextPath}/teacherManagerServlet" >教师管理</a></li>
-                        <li role="presentation" ><a href="${pageContext.request.contextPath}/clearExamServlet" >考试清理</a></li>
-                        <li role="presentation" ><a href="${pageContext.request.contextPath}/configServlet" >系统配置</a></li>
-                    </ul>
-                    <!--向右对齐-->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a>欢迎,${admin.username}</a></li>
-                        <li><a>修改信息</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logoutServlet">退出</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
+
+<jsp:include page="head.jsp" />
 
 <div class="container2">
     <%--添加联系人、删除选中--%>
     <div style="float:right; margin-bottom: 10px">
-        <a href="${pageContext.request.contextPath}/jsp/admin/addTeacher.jsp">
-            <button class="btn btn-default" type="submit">添加教师</button>
-        </a>
-        <button class="btn btn-default" type="submit">删除选中</button>
+        <a class="btn btn-default" href="${pageContext.request.contextPath}/jsp/admin/addTeacher.jsp">添加教师</a>
+        <a class="btn btn-default" href="javascript:void(0);" id="delSelect">删除选中</a>
         <button class="btn btn-default" type="submit">批量导入</button>
     </div>
     <%--用户信息表--%>
-    <form>
-        <table class="table table-bordered table-hover">
+    <form id="form" action="${pageContext.request.contextPath}/delSelectedTeacherServlet" method="post">
+        <table class="table table-bordered table-hover" style="color: white">
             <tr class="tableHead">
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="firstCheckbox"></td>
                 <td>编号</td>
                 <td>用户名</td>
                 <td>密码</td>
@@ -74,7 +73,7 @@
 
             <c:forEach items="${pb.list}" var="teacher" varStatus="s">
                 <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="tid" value="${teacher.id}"></td>
                     <td>${s.count}</td>
                     <td>${teacher.username}</td>
                     <td>${teacher.password}</td>
@@ -95,19 +94,33 @@
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li>
-                    <a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
+                    <c:if test="${pb.currentPage == 1}">
+                        <a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=1&rows=5" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </c:if>
+                    <c:if test="${pb.currentPage != 1}">
+                        <a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </c:if>
                 </li>
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
                     <li><a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=${i}&rows=5">${i}</a></li>
                 </c:forEach>
                 <li>
-                    <a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
+                    <c:if test="${pb.currentPage == pb.totalPage}">
+                        <a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=${pb.currentPage}&rows=5" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </c:if>
+                    <c:if test="${pb.currentPage != pb.totalPage}">
+                        <a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </c:if>
                 </li>
-                <span style="font-size: 20px; margin-left: 8px;">
+                <span style="font-size: 30px; margin-left: 8px;">
                     共${pb.totalCount}条记录，共${pb.totalPage}页
                 </span>
             </ul>

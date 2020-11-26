@@ -16,7 +16,7 @@
 
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
-<div class="container" style="width: 400px;">
+<div class="alert_container">
     <h3 style="text-align: center;">修改教师信息</h3>
     <form action="${pageContext.request.contextPath}/updateTeacherServlet" method="post">
         <input type="hidden" name="id" value="${teacher.id}">

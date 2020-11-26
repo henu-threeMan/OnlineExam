@@ -23,7 +23,7 @@ public class AdminFunctionTest {
         assert (loginAdmin != null);
     }
 
-    @Test
+    //@Test
     public void addTeacher() {
         AdminService adminService = new AdminServiceImpl();
 

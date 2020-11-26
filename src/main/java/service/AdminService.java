@@ -14,9 +14,11 @@ public interface AdminService {
     // 教师管理
     void addTeacher(Teacher teacher);
 
+    void updateTeacher(Teacher teacher);
+
     void delTeacher(String username);
 
-    void updateTeacher(Teacher teacher);
+    void delSelectedTeachers(String[] tids);
 
     Teacher findTeacherById(String id);
 

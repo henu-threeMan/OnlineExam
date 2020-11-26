@@ -19,6 +19,8 @@ public interface TeacherDao {
 
     Teacher findTeacherById(String id);
 
+    Teacher findTeacherByUsername(String username);
+
     int findTotalCount();
 
     List<Teacher> findByPage(int start, int rows);

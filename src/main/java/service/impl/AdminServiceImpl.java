@@ -26,6 +26,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void addTeacher(Teacher teacher) {
+        teacherDao.findTeacherByUsername(teacher.getUsername());
         teacherDao.addTeacher(teacher);
         if (teacher.getIsAdmin() == 1) {
             adminDao.addAdmin(teacher.getUsername(), teacher.getPassword());
@@ -35,6 +36,13 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void delTeacher(String id) {
         teacherDao.delTeacher(id);
+    }
+
+    @Override
+    public void delSelectedTeachers(String[] tids) {
+        for (String tid : tids) {
+            teacherDao.delTeacher(tid);
+        }
     }
 
     @Override

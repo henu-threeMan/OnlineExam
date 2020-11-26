@@ -69,6 +69,17 @@ public class TeacherDaoImpl implements TeacherDao {
     }
 
     @Override
+    public Teacher findTeacherByUsername(String username) {
+        String sql = "select * from teachers where username = ?";
+        try {
+            Teacher teacher = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Teacher>(Teacher.class), username);
+            return teacher;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
     public int findTotalCount() {
         String sql = "select count(*) from teachers";
         int count = jdbcTemplate.queryForObject(sql, Integer.class);
