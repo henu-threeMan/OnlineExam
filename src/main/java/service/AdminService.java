@@ -22,6 +22,8 @@ public interface AdminService {
 
     Teacher findTeacherById(String id);
 
+    void updateAdmin(Admin admin);
+
     List<Teacher> findTeachers();
 
     // 教师表 分页查询

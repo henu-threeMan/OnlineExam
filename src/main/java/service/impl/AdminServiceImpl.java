@@ -94,4 +94,9 @@ public class AdminServiceImpl implements AdminService {
     public void delExam(int id) {
         examDao.delExam(id);
     }
+
+    @Override
+    public void updateAdmin(Admin admin) {
+        adminDao.updateAdmin(admin);
+    }
 }
