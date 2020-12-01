@@ -3,7 +3,7 @@ package service;
 import domain.Student;
 
 public interface StudentService {
-    // 学生登录
+    // 学生操作
     Student studentLogin(Student student);
 
     // 试卷下载

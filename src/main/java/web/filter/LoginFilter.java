@@ -16,7 +16,8 @@ public class LoginFilter implements Filter {
                 || uri.contains("/css/") || uri.contains("/fonts/") || uri.contains("/img/")) {
             chain.doFilter(req, resp);
         } else {
-            Object user = request.getSession().getAttribute("user");
+            String role = (String) request.getSession().getAttribute("role");
+            Object user = request.getSession().getAttribute(role);
             if (user != null) {
                 chain.doFilter(req, resp);
             } else {

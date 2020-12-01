@@ -1,5 +1,6 @@
 package web.servlet.admin;
 
+import domain.PageBean;
 import domain.Teacher;
 import service.AdminService;
 import service.impl.AdminServiceImpl;
@@ -15,11 +16,17 @@ import java.util.List;
 @WebServlet("/teacherManagerServlet")
 public class teacherManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AdminService adminService = new AdminServiceImpl();
-        List<Teacher> teachers = adminService.findTeachers();
+        String currentPage = request.getParameter("currentPage");
+        String rows = request.getParameter("rows");
 
-        request.setAttribute("teacherList", teachers);
-        request.getRequestDispatcher("jsp/admin/teacherManager.jsp").forward(request,response);
+        AdminService adminService = new AdminServiceImpl();
+        PageBean<Teacher> pb = adminService.findTeacherByPage(currentPage, rows);
+        for (Teacher teacher : pb.getList()) {
+            System.out.println(teacher);
+        }
+
+        request.setAttribute("pb", pb);
+        request.getRequestDispatcher("/jsp/admin/teacherManager.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
