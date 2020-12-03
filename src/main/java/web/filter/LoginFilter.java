@@ -13,7 +13,7 @@ public class LoginFilter implements Filter {
         String uri = request.getRequestURI();
 //        System.out.println(uri);
         if (uri.contains("/login.jsp") || uri.contains("/loginServlet") || uri.contains("/js/")
-                || uri.contains("/css/") || uri.contains("/fonts/") || uri.contains("/img/")) {
+                || uri.contains("/css/") || uri.contains("/fonts/") || uri.contains("/img/") || uri.equals("/exam/")) {
             chain.doFilter(req, resp);
         } else {
             String role = (String) request.getSession().getAttribute("role");

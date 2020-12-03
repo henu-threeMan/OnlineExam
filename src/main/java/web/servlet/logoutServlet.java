@@ -1,4 +1,4 @@
-package web.servlet.admin;
+package web.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -10,6 +10,7 @@ div{
     font-size: 170%;
 }
 .container2 > div{
+    float: left;
     width:30%;
 }
 
@@ -18,8 +19,12 @@ div{
     margin-right: 5%;
 }
 
-.container2 li{
+.container2 > div > ul > li{
     margin-bottom: 12%;
     font-size: 18px;
 }
 
+.container2 > div > ul > ul > li{
+    margin-bottom: 5%;
+    font-size: 18px;
+}

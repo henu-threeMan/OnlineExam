@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -54,10 +55,12 @@
                     </div>
                 </div>
             </form>
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>${login_msg}</strong>
-            </div>
+            <c:if test="${login_msg != null}">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>${login_msg}</strong>
+                </div>
+            </c:if>
         </div>
         <div id="teacher" class="tab-pane fade ">
             <form method="post" action="${pageContext.request.contextPath}/loginServlet" class="form-horizontal">
@@ -89,10 +92,12 @@
                     </div>
                 </div>
             </form>
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>${login_msg}</strong>
-            </div>
+            <c:if test="${login_msg != null}">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>${login_msg}</strong>
+                </div>
+            </c:if>
         </div>
         <div id="student" class="tab-pane fade ">
             <form method="post" action="${pageContext.request.contextPath}/loginServlet" class="form-horizontal">
@@ -124,10 +129,12 @@
                     </div>
                 </div>
             </form>
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong>${login_msg}</strong>
-            </div>
+            <c:if test="${login_msg != null}">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>${login_msg}</strong>
+                </div>
+            </c:if>
 
         </div>
     </div>

@@ -59,6 +59,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Teacher findTeacherByUsername(String username) {
+        return teacherDao.findTeacherByUsername(username);
+    }
+
+    @Override
     public List<Teacher> findTeachers() {
         return teacherDao.findTeachers();
     }
@@ -83,11 +88,6 @@ public class AdminServiceImpl implements AdminService {
         pb.setTotalPage(totalPage);
 
         return pb;
-    }
-
-    @Override
-    public List<Exam> findExams() {
-        return examDao.findExams();
     }
 
     @Override
