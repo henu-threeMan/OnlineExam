@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>管理员首页</title>
+    <title>admin_home</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="${pageContext.request.contextPath}/css/admin/head.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/admin/home.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/admin/head.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -19,11 +19,9 @@
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
-
-<jsp:include page="head.jsp" />
-
+<jsp:include page="head.jsp"/>
 <div class="container2">
-    <div style="float: left">
+    <div>
         <strong>教师管理</strong>
         <br/>
         <br/>
@@ -33,7 +31,7 @@
             <li>如果没有任何一个教师具有管理员身份，则默认管理员登录信息有效</li>
         </ul>
     </div>
-    <div class = "container2_center" style="float: left">
+    <div class="container2_center">
         <strong>考试清理</strong>
         <br/>
         <br/>
@@ -43,7 +41,7 @@
             <li>清理后的考试可以删除</li>
         </ul>
     </div>
-    <div style="float: left">
+    <div>
         <strong>系统配置</strong>
         <br/>
         <br/>

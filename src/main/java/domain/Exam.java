@@ -1,9 +1,11 @@
 package domain;
 
+import java.util.Date;
+
 public class Exam {
     private int id;
     private String examName;
-    private String startTime;
+    private Date startTime;
     private String owner;
     private int isPageExist;
     private int isAutoStart;
@@ -28,11 +30,11 @@ public class Exam {
         this.examName = examName;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
@@ -90,5 +92,21 @@ public class Exam {
 
     public void setIsCleaned(int isCleaned) {
         this.isCleaned = isCleaned;
+    }
+
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "id=" + id +
+                ", examName='" + examName + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", owner='" + owner + '\'' +
+                ", isPageExist=" + isPageExist +
+                ", isAutoStart=" + isAutoStart +
+                ", isStarting=" + isStarting +
+                ", isFinished=" + isFinished +
+                ", isFiled=" + isFiled +
+                ", isCleaned=" + isCleaned +
+                '}';
     }
 }

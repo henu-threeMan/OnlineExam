@@ -21,9 +21,6 @@ public class teacherManagerServlet extends HttpServlet {
 
         AdminService adminService = new AdminServiceImpl();
         PageBean<Teacher> pb = adminService.findTeacherByPage(currentPage, rows);
-        for (Teacher teacher : pb.getList()) {
-            System.out.println(teacher);
-        }
 
         request.setAttribute("pb", pb);
         request.getRequestDispatcher("/jsp/admin/teacherManager.jsp").forward(request, response);

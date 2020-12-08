@@ -1,0 +1,49 @@
+div {
+    border:0px black solid;
+}
+
+.container2 {
+    background-color: rgba(112,128,144,0.5);
+    border-radius: 10px;
+    width: 50%;
+    margin-top: 7%;
+    margin-left: 25%;
+    color:white;
+    font-size: 170%;
+}
+
+.updateExam {
+    border-radius: 10px;
+    text-align: center;
+}
+
+.updateExam div {
+    font-size: 80%;
+}
+
+.checkboxDiv {
+    text-align: left;
+    margin-left: 19%;
+    font-size: 90%;
+}
+
+.buttonDiv {
+    margin-left: auto;
+}
+
+.uploadPage {
+    text-align: center;
+}
+
+.addStudents {
+    text-align: center;
+}
+
+.option {
+    text-align: center;
+}
+
+.textLabel {
+    width: 40%;
+    font-size: 75%;
+}

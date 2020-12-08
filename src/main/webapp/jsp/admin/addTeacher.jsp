@@ -14,10 +14,26 @@
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
+    <script>
+        $(function () {
+            $("#username").blur(function () {
+               var username = $(this).val();
+               $.get("${pageContext.request.contextPath}/findTeacherServlet", {username: username}, function (data) {
+                   var span = $("#s_username");
+                    if (data.teacherExist) {
+                        span.html(data.msg);
+                    } else {
+                        span.html(data.msg);
+                    }
+               }, "json");
+            });
+        });
+    </script>
+
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 <div class="alert_container">
-    <h3 style="text-align: center;">修改教师信息</h3>
+    <h3 style="text-align: center;">添加教师信息</h3>
     <form action="${pageContext.request.contextPath}/addTeacherServlet" method="post">
 
         <div class="form-group">
@@ -25,20 +41,32 @@
             <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
         </div>
 
+        <div class="form-group" >
+            <span id="s_username"></span>
+        </div>
+
         <div class="form-group">
             <label>密码：</label>
             <input type="password" class="form-control" id="password"  name="password" placeholder="请输入密码" />
         </div>
 
+        <div class="form-group" >
+            <span id="s_password"></span>
+        </div>
+
         <div class="form-group">
             <label>真实姓名：</label>
-            <input type="text" class="form-control" name="teacherName" placeholder="请输入教师真实姓名"/>
+            <input type="text" class="form-control" id="teacherName" name="teacherName" placeholder="请输入教师真实姓名"/>
+        </div>
+
+        <div class="form-group" >
+            <span id="s_teacherName"></span>
         </div>
 
         <div class="form-group">
             <label>是否设置管理员：</label>
-            <input type="radio" name="isAdmin" value="是" checked />是
-            <input type="radio" name="isAdmin" value="否" />否
+            <input type="radio" name="isAdmin" value="是" />是
+            <input type="radio" name="isAdmin" value="否" checked />否
         </div>
 
         <div class="form-group" style="text-align: center">

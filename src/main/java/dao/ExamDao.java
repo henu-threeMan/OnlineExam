@@ -9,7 +9,9 @@ public interface ExamDao {
 
     void delExam(int id);
 
-    void update(Exam exam);
+    void updateExam(Exam exam);
 
-    List<Exam> findExams();
+    List<Exam> findByPage(int start, int rows);
+
+    int findTotalCount();
 }

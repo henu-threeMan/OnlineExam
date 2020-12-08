@@ -2,6 +2,7 @@ package dao.impl;
 
 import dao.ExamDao;
 import domain.Exam;
+import domain.Teacher;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,7 +27,7 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
-    public void update(Exam exam) {
+    public void updateExam(Exam exam) {
         String sql = "update exam set examName=?, startTime=?, owner=?, isPageExist=?, isAutoStart=?, " +
                 "isStarting=?, isFinished=?, isFiled=?, isCleaned=? where id = ?";
         jdbcTemplate.update(sql, null, exam.getExamName(), exam.getStartTime(), exam.getOwner(), exam.getExamName(),
@@ -35,13 +36,20 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
-    public List<Exam> findExams() {
-        String sql = "select * from exam";
+    public List<Exam> findByPage(int start, int rows) {
+        String sql = "select * from exam limit ?, ?";
         try {
-            List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class));
+            List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), start, rows);
             return exams;
         } catch (DataAccessException e) {
             return null;
         }
+    }
+
+    @Override
+    public int findTotalCount() {
+        String sql = "select count(*) from exam";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
     }
 }

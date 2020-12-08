@@ -22,13 +22,16 @@ public interface AdminService {
 
     Teacher findTeacherById(String id);
 
+    void updateAdmin(Admin admin);
+
+    Teacher findTeacherByUsername(String username);
+
     List<Teacher> findTeachers();
 
     // 教师表 分页查询
     PageBean<Teacher> findTeacherByPage(String _currentPage, String _rows);
 
     // 考试清理
-    List<Exam> findExams();
 
     void delExam(int id);
 
