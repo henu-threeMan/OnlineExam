@@ -1,0 +1,17 @@
+div{
+    border:0px black solid;
+}
+.container2{
+    width: 90%;
+    margin-top: 7%;
+    margin-left: 5%;
+    color:white;
+    font-size: 170%;
+}
+.alert_container{
+    width: 24%;
+    margin-top: 7%;
+    margin-left: 38%;
+    color: white;
+    font-size: 120%;
+}
