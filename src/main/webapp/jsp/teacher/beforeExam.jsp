@@ -31,6 +31,7 @@
 
 <div class="container2">
     <form class="form-inline" action="${pageContext.request.contextPath}/teacherAddExamServlet" method="post">
+<%--        <input type="hidden" name="owner" value="教师名称">--%>
         <div class="form-group">
             <label for="examName">考试名称:</label>
             <input type="text" class="form-control" id="examName" name="examName" placeholder="请输入考试名称">
