@@ -15,7 +15,7 @@
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%">
 <div class="container" style="width: 40%;margin-top: 15%;background-color: rgba(112,128,144,0.5);padding-left: 5%">
-    <h1 style="color:white;margin-left: 25%">欢迎登录</h1>
+    <h1 style="color:#ffffff;margin-left: 25%">欢迎登录</h1>
     <div id="user_option" style="margin:5% 20% 3% 0%">
         <ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="#admin" data-toggle="tab">管理员</a></li>
@@ -135,7 +135,6 @@
                     <strong>${login_msg}</strong>
                 </div>
             </c:if>
-
         </div>
     </div>
 </div>
