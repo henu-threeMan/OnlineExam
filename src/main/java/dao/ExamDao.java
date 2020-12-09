@@ -13,5 +13,7 @@ public interface ExamDao {
 
     List<Exam> findByPage(int start, int rows);
 
+    Exam findById(int id);
+
     int findTotalCount();
 }

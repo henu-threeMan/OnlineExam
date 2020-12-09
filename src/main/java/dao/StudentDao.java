@@ -3,6 +3,7 @@ package dao;
 import domain.Student;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentDao {
     void addStudent(Student student);
@@ -14,4 +15,6 @@ public interface StudentDao {
     Student findStudent(String sno, String password);
 
     List<Student> findStudents();
+
+    Student findStudentByCondition(Map<String, String[]> condition);
 }

@@ -2,24 +2,34 @@ package service.impl;
 
 import dao.AdminDao;
 import dao.ExamDao;
+import dao.StudentDao;
 import dao.TeacherDao;
 import dao.impl.AdminDaoImpl;
 import dao.impl.ExamDaoImpl;
+import dao.impl.StudentDaoImpl;
 import dao.impl.TeacherDaoImpl;
 import domain.Exam;
 import domain.PageBean;
+import domain.Student;
 import domain.Teacher;
 import service.TeacherService;
 
 import java.util.List;
+import java.util.Map;
 
 public class TeacherServiceImpl implements TeacherService {
     TeacherDao teacherDao = new TeacherDaoImpl();
+    StudentDao studentDao = new StudentDaoImpl();
     ExamDao examDao = new ExamDaoImpl();
 
     @Override
     public Teacher teacherLogin(Teacher teacher) {
         return teacherDao.findTeacher(teacher.getUsername(), teacher.getPassword());
+    }
+
+    @Override
+    public Teacher findTeacherByUsername(String username) {
+        return teacherDao.findTeacherByUsername(username);
     }
 
     @Override
@@ -45,6 +55,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public Exam findExamById(String id) {
+        return examDao.findById(Integer.parseInt(id));
+    }
+
+    @Override
     public void addExam(Exam exam) {
         examDao.addExam(exam);
     }
@@ -60,9 +75,12 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void delSelectedTeachers(String[] eids) {
-        for (String eid : eids) {
-            examDao.delExam(Integer.parseInt(eid));
-        }
+    public void addStudent(Student student) {
+        studentDao.addStudent(student);
+    }
+
+    @Override
+    public Student findStudentByCondition(Map<String, String[]> condition) {
+        return studentDao.findStudentByCondition(condition);
     }
 }

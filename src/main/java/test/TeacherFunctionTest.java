@@ -1,10 +1,15 @@
 package test;
 
+import dao.ExamDao;
 import dao.StudentDao;
+import dao.impl.ExamDaoImpl;
 import dao.impl.StudentDaoImpl;
+import domain.Exam;
 import domain.Student;
+import domain.Teacher;
 import org.junit.Test;
 import service.StudentService;
+import service.TeacherService;
 
 import java.util.List;
 
@@ -16,5 +21,12 @@ public class TeacherFunctionTest {
         for (Student student : students) {
             System.out.println(student);
         }
+    }
+
+    @Test
+    public void updateExam() {
+        ExamDao examDao = new ExamDaoImpl();
+        Exam exam = examDao.findById(2);
+        System.out.println(exam);
     }
 }

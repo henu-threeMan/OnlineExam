@@ -28,11 +28,8 @@ public class ExamDaoImpl implements ExamDao {
 
     @Override
     public void updateExam(Exam exam) {
-        String sql = "update exam set examName=?, startTime=?, owner=?, isPageExist=?, isAutoStart=?, " +
-                "isStarting=?, isFinished=?, isFiled=?, isCleaned=? where id = ?";
-        jdbcTemplate.update(sql, null, exam.getExamName(), exam.getStartTime(), exam.getOwner(), exam.getExamName(),
-                exam.getStartTime(), exam.getOwner(), exam.getIsPageExist(), exam.getIsAutoStart(), exam.getIsStarting(),
-                exam.getIsFinished(), exam.getIsFiled(), exam.getIsCleaned(), exam.getId());
+        String sql = "update exam set examName=?, startTime=? where id = ?";
+        jdbcTemplate.update(sql, exam.getExamName(), exam.getStartTime(), exam.getId());
     }
 
     @Override
@@ -41,6 +38,17 @@ public class ExamDaoImpl implements ExamDao {
         try {
             List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), start, rows);
             return exams;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Exam findById(int id) {
+        String sql = "select * from exam where id = ?";
+        try {
+            Exam exam = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Exam>(Exam.class), id);
+            return exam;
         } catch (DataAccessException e) {
             return null;
         }
