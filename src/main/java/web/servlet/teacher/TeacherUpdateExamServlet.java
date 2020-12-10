@@ -18,13 +18,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-@WebServlet("/teacherAddExamServlet")
-public class TeacherAddExamServlet extends HttpServlet {
+@WebServlet("/teacherUpdateExamServlet")
+public class TeacherUpdateExamServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
 
-        Map<String, String[]> maps = request.getParameterMap();
         Exam exam = new Exam();
+        Map<String, String[]> maps = request.getParameterMap();
         try {
             BeanUtils.populate(exam, maps);
         } catch (IllegalAccessException e) {
@@ -34,21 +34,20 @@ public class TeacherAddExamServlet extends HttpServlet {
         }
 
         String examStartTime = request.getParameter("examStartTime");
-        System.out.println(examStartTime);
         SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd'T'HH:mm");
         try {
             Date startTime = sdf.parse(examStartTime);
             exam.setStartTime(startTime);
         } catch (ParseException e) {
-            response.sendRedirect(request.getContextPath() + "/teacherExamManagerServlet?currentPage=1&rows=5");
-        }
-        String username = request.getParameter("username");
-        TeacherService teacherService = new TeacherServiceImpl();
-        Teacher teacher = teacherService.findTeacherByUsername(username);
-        exam.setOwner(teacher.getTeacherName());
-        teacherService.addExam(exam);
 
-        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
+        }
+
+        String username = request.getParameter("username");
+
+        TeacherService teacherService = new TeacherServiceImpl();
+        teacherService.updateExam(exam);
+
+        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username="+ username + "&currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

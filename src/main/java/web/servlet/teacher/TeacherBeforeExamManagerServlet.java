@@ -15,16 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/teacherExamManagerServlet")
-public class TeacherExamManagerServlet extends HttpServlet {
+@WebServlet("/teacherBeforeExamManagerServlet")
+public class TeacherBeforeExamManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String currentPage = request.getParameter("currentPage");
         String rows = request.getParameter("rows");
+        String currentPage = request.getParameter("currentPage");
+        String username = request.getParameter("username");
 
         TeacherService teacherService = new TeacherServiceImpl();
         PageBean<Exam> pb = teacherService.findTeacherByPage(currentPage, rows);
+        Teacher teacher = teacherService.findTeacherByUsername(username);
 
         request.setAttribute("pb", pb);
+        request.setAttribute("teacher", teacher);
         request.getRequestDispatcher("/jsp/teacher/beforeExam.jsp").forward(request, response);
     }
 

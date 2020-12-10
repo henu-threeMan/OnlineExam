@@ -20,7 +20,7 @@
     <script>
         function deleteExam(id) {
             if (confirm("是否确定删除？")) {
-                location.href = "${pageContext.request.contextPath}/teacherDeleteExamServlet?id=" + id;
+                location.href = "${pageContext.request.contextPath}/teacherDeleteExamServlet?username=${teacher.username}id=" + id;
             }
         }
     </script>
@@ -31,7 +31,7 @@
 
 <div class="container2">
     <form class="form-inline" action="${pageContext.request.contextPath}/teacherAddExamServlet" method="post">
-<%--        <input type="hidden" name="owner" value="教师名称">--%>
+        <input type="hidden" name="username" value="${teacher.username}">
         <div class="form-group">
             <label for="examName">考试名称:</label>
             <input type="text" class="form-control" id="examName" name="examName" placeholder="请输入考试名称">
@@ -39,7 +39,7 @@
         &ensp;
         <div class="form-group">
             <label for="examStartTime">考试时间:</label>
-            <input type="datetime-local" class="form-control" id="examStartTime" name="examStartTime" placeholder="格式：2000-12-12T00:00">
+            <input type="datetime-local" class="form-control" id="examStartTime" name="examStartTime" placeholder="格式:2000-12-12T00:00">
         </div>
         &ensp;
         <div class="checkbox">
@@ -97,7 +97,7 @@
                     <c:if test="${exam.isCleaned == 0}">否</c:if>
                 </td>
                 <td>
-                    <a class="btn btn-default btn-sm" href="#">编辑</a>
+                    <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherGetExamServlet?username=${teacher.username}&id=${exam.id}">编辑</a>
                     <c:if test="${exam.isCleaned == 1}">
                         <a class="btn btn-default btn-sm" href="javascript:deleteExam(${exam.id})">删除</a>
                     </c:if>
@@ -112,27 +112,27 @@
             <ul class="pagination">
                 <li>
                     <c:if test="${pb.currentPage == 1}">
-                        <a href="${pageContext.request.contextPath}/teacherExamManagerServlet?currentPage=1&rows=5" aria-label="Previous">
+                        <a href="${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${teacher.username}&currentPage=1&rows=5" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </c:if>
                     <c:if test="${pb.currentPage != 1}">
-                        <a href="${pageContext.request.contextPath}/teacherExamManagerServlet?currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
+                        <a href="${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${teacher.username}&currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </c:if>
                 </li>
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/teacherExamManagerServlet?currentPage=${i}&rows=5">${i}</a></li>
+                    <li><a href="${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${teacher.username}&currentPage=${i}&rows=5">${i}</a></li>
                 </c:forEach>
                 <li>
                     <c:if test="${pb.currentPage == pb.totalPage}">
-                        <a href="${pageContext.request.contextPath}/teacherExamManagerServlet?currentPage=${pb.currentPage}&rows=5" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${teacher.username}&currentPage=${pb.currentPage}&rows=5" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </c:if>
                     <c:if test="${pb.currentPage != pb.totalPage}">
-                        <a href="${pageContext.request.contextPath}/teacherExamManagerServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${teacher.username}&currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </c:if>
