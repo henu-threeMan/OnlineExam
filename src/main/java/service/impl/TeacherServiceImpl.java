@@ -1,10 +1,8 @@
 package service.impl;
 
-import dao.AdminDao;
 import dao.ExamDao;
 import dao.StudentDao;
 import dao.TeacherDao;
-import dao.impl.AdminDaoImpl;
 import dao.impl.ExamDaoImpl;
 import dao.impl.StudentDaoImpl;
 import dao.impl.TeacherDaoImpl;
@@ -70,6 +68,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public void stopExam(String id) {
+        examDao.setExamFinished(Integer.parseInt(id));
+    }
+
+    @Override
     public void delExam(String id) {
         examDao.delExam(Integer.parseInt(id));
     }
@@ -82,5 +85,18 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Student findStudentByCondition(Map<String, String[]> condition) {
         return studentDao.findStudentByCondition(condition);
+    }
+
+    @Override
+    public Student findStudentByIp(String ip) {
+        return studentDao.findStudentByIp(ip);
+    }
+
+    @Override
+    public Student unlockStudent(String sno) {
+        Student student = studentDao.findStudentBySno(sno);
+        student.setIp(null);
+        studentDao.updateStudent(student);
+        return student;
     }
 }

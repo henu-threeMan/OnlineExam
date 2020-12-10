@@ -33,6 +33,13 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
+    public void setExamFinished(int id) {
+        String sql = "update exam set isFinished = 1 where id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+
+    @Override
     public List<Exam> findByPage(int start, int rows) {
         String sql = "select * from exam limit ?, ?";
         try {

@@ -47,7 +47,7 @@ public class TeacherUpdateExamServlet extends HttpServlet {
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.updateExam(exam);
 
-        response.sendRedirect(request.getContextPath() + "/teacherExamManagerServlet?username="+ username + "&currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username="+ username + "&currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

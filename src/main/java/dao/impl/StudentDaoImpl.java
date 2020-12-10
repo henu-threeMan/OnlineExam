@@ -78,4 +78,26 @@ public class StudentDaoImpl implements StudentDao {
             return null;
         }
     }
+
+    @Override
+    public Student findStudentByIp(String ip) {
+        String sql = "select * from students where ip = ?";
+        try {
+            Student aStudent = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Student>(Student.class), ip);
+            return aStudent;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Student findStudentBySno(String sno) {
+        String sql = "select * from students where sno = ?";
+        try {
+            Student aStudent = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Student>(Student.class), sno);
+            return aStudent;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
 }

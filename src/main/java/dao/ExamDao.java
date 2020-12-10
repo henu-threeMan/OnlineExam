@@ -11,6 +11,8 @@ public interface ExamDao {
 
     void updateExam(Exam exam);
 
+    void setExamFinished(int id);
+
     List<Exam> findByPage(int start, int rows);
 
     Exam findById(int id);

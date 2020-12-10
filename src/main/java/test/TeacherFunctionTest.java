@@ -23,10 +23,15 @@ public class TeacherFunctionTest {
         }
     }
 
-    @Test
+//    @Test
     public void updateExam() {
         ExamDao examDao = new ExamDaoImpl();
         Exam exam = examDao.findById(2);
         System.out.println(exam);
+        exam.setIsFinished(1);
+        System.out.println(exam);
+        examDao.setExamFinished(exam.getId());
+        Exam newExam = examDao.findById(2);
+        System.out.println(newExam);
     }
 }

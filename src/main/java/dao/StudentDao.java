@@ -17,4 +17,8 @@ public interface StudentDao {
     List<Student> findStudents();
 
     Student findStudentByCondition(Map<String, String[]> condition);
+
+    Student findStudentByIp(String ip);
+
+    Student findStudentBySno(String sno);
 }

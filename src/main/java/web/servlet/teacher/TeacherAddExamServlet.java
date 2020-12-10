@@ -48,7 +48,7 @@ public class TeacherAddExamServlet extends HttpServlet {
         exam.setOwner(teacher.getTeacherName());
         teacherService.addExam(exam);
 
-        response.sendRedirect(request.getContextPath() + "/teacherExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
