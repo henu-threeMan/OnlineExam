@@ -7,7 +7,6 @@ import dao.impl.AdminDaoImpl;
 import dao.impl.ExamDaoImpl;
 import dao.impl.TeacherDaoImpl;
 import domain.Admin;
-import domain.Exam;
 import domain.PageBean;
 import domain.Teacher;
 import service.AdminService;
@@ -26,9 +25,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void addTeacher(Teacher teacher) {
-        teacherDao.findTeacherByUsername(teacher.getUsername());
-        teacherDao.addTeacher(teacher);
-        if (teacher.getIsAdmin() == 1) {
+        if(teacherDao.findTeacherByUsername(teacher.getUsername()) == null){
+            teacherDao.addTeacher(teacher);
+        }else{
+            return;
+        }
+        if (teacher.getIsAdmin() == 1 && adminDao.findAdminByUsername(teacher.getUsername()) != null) {
             adminDao.addAdmin(teacher.getUsername(), teacher.getPassword());
         }
     }

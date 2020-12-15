@@ -14,7 +14,7 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public void addAdmin(String username, String password) {
-        String sql = "insert into admins values id = ?, username = ? and password = ?";
+        String sql = "insert into admins values(?,?,?)";
         jdbcTemplate.update(sql, null, username, password);
     }
 
@@ -49,6 +49,15 @@ public class AdminDaoImpl implements AdminDao {
             List<Admin> admins = jdbcTemplate.query(sql,
                     new BeanPropertyRowMapper<Admin>(Admin.class));
             return admins;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+    public Admin findAdminByUsername(String username) {
+        String sql = "select * from admin where username = ?";
+        try {
+            Admin admin = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Admin>(Admin.class), username);
+            return admin;
         } catch (DataAccessException e) {
             return null;
         }
