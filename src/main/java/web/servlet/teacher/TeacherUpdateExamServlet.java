@@ -34,7 +34,7 @@ public class TeacherUpdateExamServlet extends HttpServlet {
         }
 
         String examStartTime = request.getParameter("examStartTime");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:ii");
         try {
             Date startTime = sdf.parse(examStartTime);
             exam.setStartTime(startTime);

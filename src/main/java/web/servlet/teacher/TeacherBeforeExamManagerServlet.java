@@ -23,7 +23,7 @@ public class TeacherBeforeExamManagerServlet extends HttpServlet {
         String username = request.getParameter("username");
 
         TeacherService teacherService = new TeacherServiceImpl();
-        PageBean<Exam> pb = teacherService.findTeacherByPage(currentPage, rows);
+        PageBean<Exam> pb = teacherService.findExamByPage(currentPage, rows, username);
         Teacher teacher = teacherService.findTeacherByUsername(username);
 
         request.setAttribute("pb", pb);

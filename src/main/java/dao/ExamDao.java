@@ -13,9 +13,11 @@ public interface ExamDao {
 
     void setExamFinished(int id);
 
-    List<Exam> findByPage(int start, int rows);
+    List<Exam> findByPage(int start, int rows, String owner);
 
     Exam findById(int id);
 
-    int findTotalCount();
+    int findTotalCount(String owner);
+
+    void setExamStarting(String id);
 }

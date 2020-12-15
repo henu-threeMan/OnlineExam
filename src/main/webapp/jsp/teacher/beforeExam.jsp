@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${pageContext.request.contextPath}/css/teacher/head.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/teacher/beforeExam.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
@@ -78,7 +77,7 @@
             <tr>
                 <td>${exam.examName}</td>
                 <td>${exam.startTime}</td>
-                <td>${exam.owner}</td>
+                <td>${teacher.teacherName}</td>
                 <td>
                     <c:if test="${exam.isPageExist == 1}">是</c:if>
                     <c:if test="${exam.isPageExist == 0}">否</c:if>
@@ -157,13 +156,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
-        format: "yyyy-MM-dd hh:mm",
+        format: "yyyy-MM-dd hh:ii",
         autoclose: true,
         todayBtn: true,
         minuteStep: 10,
         minView:0,
         pickerPosition:'bottom-left',
-        language:'zh-CN'
+        language:'zh-CN',
+        startDate: new Date()
     });
 </script>
 

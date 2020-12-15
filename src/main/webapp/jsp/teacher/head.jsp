@@ -25,7 +25,7 @@
                                 <li><a href="#">通知管理</a></li>
                             </ul>
                         </li>
-                        <li role="presentation"><a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?currentPage=1&rows=5">考后管理</a></li>
+                        <li role="presentation"><a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?username=${teacher.username}&currentPage=1&rows=5">考后管理</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a>欢迎,${teacher.username}</a></li>

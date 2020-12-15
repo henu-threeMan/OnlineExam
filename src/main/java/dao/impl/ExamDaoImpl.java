@@ -34,16 +34,16 @@ public class ExamDaoImpl implements ExamDao {
 
     @Override
     public void setExamFinished(int id) {
-        String sql = "update exam set isFinished = 1 where id = ?";
+        String sql = "update exam set isStarting = 0, isFinished = 1 where id = ?";
         jdbcTemplate.update(sql, id);
     }
 
 
     @Override
-    public List<Exam> findByPage(int start, int rows) {
-        String sql = "select * from exam limit ?, ?";
+    public List<Exam> findByPage(int start, int rows, String owner) {
+        String sql = "select * from exam where owner = ? limit ?, ?";
         try {
-            List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), start, rows);
+            List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), owner, start, rows);
             return exams;
         } catch (DataAccessException e) {
             return null;
@@ -62,9 +62,15 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
-    public int findTotalCount() {
-        String sql = "select count(*) from exam";
-        int count = jdbcTemplate.queryForObject(sql, Integer.class);
+    public int findTotalCount(String owner) {
+        String sql = "select count(*) from exam where owner = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, owner);
         return count;
+    }
+
+    @Override
+    public void setExamStarting(String id) {
+        String sql = "update exam set isStarting = 1 where id = ?";
+        jdbcTemplate.update(sql, id);
     }
 }

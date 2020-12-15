@@ -31,7 +31,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public PageBean<Exam> findTeacherByPage(String _currentPage, String _rows) {
+    public PageBean<Exam> findExamByPage(String _currentPage, String _rows, String owner) {
         int currentPage = Integer.parseInt(_currentPage);
         int rows = Integer.parseInt(_rows);
 
@@ -39,11 +39,11 @@ public class TeacherServiceImpl implements TeacherService {
         pb.setCurrentPage(currentPage);
         pb.setRows(rows);
 
-        int totalCount = examDao.findTotalCount();
+        int totalCount = examDao.findTotalCount(owner);
         pb.setTotalCount(totalCount);
 
         int start = (currentPage - 1) * rows;
-        List<Exam> exams = examDao.findByPage(start, rows);
+        List<Exam> exams = examDao.findByPage(start, rows, owner);
         pb.setList(exams);
 
         int totalPage = (totalCount % rows) == 0 ? (totalCount / rows) : (totalCount / rows) + 1;
@@ -65,6 +65,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void updateExam(Exam exam) {
         examDao.updateExam(exam);
+    }
+
+    @Override
+    public void startExam(String id) {
+        examDao.setExamStarting(id);
     }
 
     @Override

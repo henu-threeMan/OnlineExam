@@ -21,11 +21,13 @@ public interface TeacherService {
     void addExam(Exam exam);
         // 编辑考试
     void updateExam(Exam exam);
+        // 开启考试
+    void startExam(String id);
         // 结束考试
     void stopExam(String id);
         // 查看考试情况
         // 考试表分页查询
-    PageBean<Exam> findTeacherByPage(String _currentPage, String _rows);
+    PageBean<Exam> findExamByPage(String _currentPage, String _rows, String owner);
         // 考试清理和删除
     void delExam(String id);
 
@@ -43,6 +45,7 @@ public interface TeacherService {
 
     // 解除学生登录锁定
     Student unlockStudent(String sno);
+
 
     // 通知管理 发通知
 
