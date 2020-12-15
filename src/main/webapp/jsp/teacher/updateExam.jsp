@@ -9,8 +9,6 @@
     <link href="${pageContext.request.contextPath}/css/teacher/head.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/teacher/updateExam.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
@@ -35,9 +33,12 @@
 
                 <div class="form-group">
                     <label for="examStartTime" class="col-sm-2 control-label">考试时间:</label>
-                    <div class="col-sm-10">
-                        <input type="datetime-local" class="form-control" id="examStartTime" name="examStartTime" value="${exam.startTime}">
+                    <div class="input-group date form_datetime col-sm-10" data-link-field="examStartTime">
+                        <input class="form-control" size="50" type="text" value="" style="font-size: 16px" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
+                    <input type="hidden" id="examStartTime" name="examStartTime" value="${exam.startTime}" />
                 </div>
 
                 <div class="form-group">
@@ -74,7 +75,7 @@
             <div class="firstLine"><h3>添加学生名单</h3></div>
             <div>
                 <label class="textLabel2">目前设定参加考试的人数是？？人</label> <br>
-                <input class="btn btn-default" type="button" value="继续导入">
+                <a class="btn btn-default" type="button" href="${pageContext.request.contextPath}/studentManagerServlet?username=${teacher.username}&currentPage=1&rows=5">继续导入</a>
             </div>
         </div>
         <hr>
@@ -87,5 +88,21 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        format: "yyyy-MM-dd hh:mm",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 10,
+        minView:0,
+        pickerPosition:'bottom-left',
+        language:'zh-CN'
+    });
+</script>
+
 </body>
 </html>

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -32,12 +33,16 @@ public class AddStudentServlet extends HttpServlet {
             e.printStackTrace();
         }
         student.setPassword(student.getStudentName());
-        System.out.println(student);
 
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.addStudent(student);
-
-        request.getRequestDispatcher("jsp/teacher/studentManager.jsp").forward(request, response);
+        String header = request.getHeader("referer");
+        if (header.contains("studentManager.jsp")) {
+            response.sendRedirect("jsp/teacher/studentManager.jsp");
+        } else if (header.contains("studentManagerServlet")) {
+            String username = request.getParameter("username");
+            response.sendRedirect(request.getContextPath() + "/studentManagerServlet?username=" + username + "&currentPage=1&rows=5");
+        }
     }
 
     @Override

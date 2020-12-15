@@ -34,14 +34,14 @@ public class TeacherAddExamServlet extends HttpServlet {
         }
 
         String examStartTime = request.getParameter("examStartTime");
-        System.out.println(examStartTime);
-        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd'T'HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         try {
             Date startTime = sdf.parse(examStartTime);
             exam.setStartTime(startTime);
         } catch (ParseException e) {
-            response.sendRedirect(request.getContextPath() + "/teacherExamManagerServlet?currentPage=1&rows=5");
+            e.printStackTrace();
         }
+
         String username = request.getParameter("username");
         TeacherService teacherService = new TeacherServiceImpl();
         Teacher teacher = teacherService.findTeacherByUsername(username);

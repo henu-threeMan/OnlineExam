@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.StudentDao;
+import domain.Exam;
 import domain.Student;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -96,6 +97,24 @@ public class StudentDaoImpl implements StudentDao {
         try {
             Student aStudent = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Student>(Student.class), sno);
             return aStudent;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public int findTotalCount() {
+        String sql = "select count(*) from students";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+
+    @Override
+    public List<Student> findByPage(int start, int rows) {
+        String sql = "select * from students limit ?, ?";
+        try {
+            List<Student> students = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Student>(Student.class), start, rows);
+            return students;
         } catch (DataAccessException e) {
             return null;
         }

@@ -9,8 +9,10 @@
     <link href="${pageContext.request.contextPath}/css/teacher/head.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/teacher/beforeExam.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
@@ -38,17 +40,22 @@
         </div>
         &ensp;
         <div class="form-group">
-            <label for="examStartTime">考试时间:</label>
-            <input type="datetime-local" class="form-control" id="examStartTime" name="examStartTime" placeholder="格式:2000-12-12T00:00">
+            <label for="examStartTime" >考试时间:</label>
+            <div class="input-group date form_datetime col-md-5" data-link-field="examStartTime">
+                <input class="form-control" size="50" type="text" value="" style="font-size: 16px" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            </div>
+            <input type="hidden" id="examStartTime" name="examStartTime" value="" />
+            &ensp;&ensp;
+            <div class="checkbox" >
+                <label>
+                    <input type="checkbox" name="isAutoStart"> 是否自动开始
+                </label>
+            </div>
+            &ensp;&ensp;
+            <button type="submit" class="btn btn-default">创建</button>
         </div>
-        &ensp;
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="isAutoStart"> 是否自动开始
-            </label>
-        </div>
-        &ensp;
-        <button type="submit" class="btn btn-default">创建</button>
     </form>
 
     <hr>
@@ -144,6 +151,21 @@
         </nav>
     </div>
 </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        format: "yyyy-MM-dd hh:mm",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 10,
+        minView:0,
+        pickerPosition:'bottom-left',
+        language:'zh-CN'
+    });
+</script>
 
 </body>
 </html>

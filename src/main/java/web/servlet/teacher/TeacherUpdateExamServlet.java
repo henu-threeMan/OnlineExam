@@ -34,12 +34,12 @@ public class TeacherUpdateExamServlet extends HttpServlet {
         }
 
         String examStartTime = request.getParameter("examStartTime");
-        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd'T'HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         try {
             Date startTime = sdf.parse(examStartTime);
             exam.setStartTime(startTime);
         } catch (ParseException e) {
-
+            e.printStackTrace();
         }
 
         String username = request.getParameter("username");

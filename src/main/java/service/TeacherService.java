@@ -33,9 +33,13 @@ public interface TeacherService {
         // 增、删、改、查
     void addStudent(Student student);
 
+    void delStudent(String sno);
+
     Student findStudentByCondition(Map<String, String[]> condition);
 
     Student findStudentByIp(String ip);
+
+    PageBean<Student> findStudentByPage(String _currentPage, String _rows);
 
     // 解除学生登录锁定
     Student unlockStudent(String sno);

@@ -21,4 +21,8 @@ public interface StudentDao {
     Student findStudentByIp(String ip);
 
     Student findStudentBySno(String sno);
+
+    int findTotalCount();
+
+    List<Student> findByPage(int start, int rows);
 }

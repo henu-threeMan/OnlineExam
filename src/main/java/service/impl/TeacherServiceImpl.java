@@ -83,6 +83,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public void delStudent(String sno) {
+        studentDao.delStudent(sno);
+    }
+
+    @Override
     public Student findStudentByCondition(Map<String, String[]> condition) {
         return studentDao.findStudentByCondition(condition);
     }
@@ -90,6 +95,28 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Student findStudentByIp(String ip) {
         return studentDao.findStudentByIp(ip);
+    }
+
+    @Override
+    public PageBean<Student> findStudentByPage(String _currentPage, String _rows) {
+        int currentPage = Integer.parseInt(_currentPage);
+        int rows = Integer.parseInt(_rows);
+
+        PageBean<Student> pb = new PageBean<Student>();
+        pb.setCurrentPage(currentPage);
+        pb.setRows(rows);
+
+        int totalCount = studentDao.findTotalCount();
+        pb.setTotalCount(totalCount);
+
+        int start = (currentPage - 1) * rows;
+        List<Student> students = studentDao.findByPage(start, rows);
+        pb.setList(students);
+
+        int totalPage = (totalCount % rows) == 0 ? (totalCount / rows) : (totalCount / rows) + 1;
+        pb.setTotalPage(totalPage);
+
+        return pb;
     }
 
     @Override
