@@ -17,8 +17,17 @@
     <style>
         #div2{
             margin-top: 30px;
-            margin-left: 100px;
-            margin-right: 100px;
+            width: 1000px;
+            text-align: center;
+            margin-left: 18%;
+        }
+        #div3{
+            margin-top: 30px;
+            width: 1000px;
+            margin-left: 18%;
+        }
+        .th1{
+            width: 120px;
         }
     </style>
 </head>
@@ -28,21 +37,30 @@
     <div class="panel-body">
         <h3>新增通知消息</h3>
         <form role="form">
-            <div class="form-group">
+            <div class="form-group" style="padding-left:15%;width: 850px;">
                 <textarea class="form-control" rows="1"></textarea>
-                <button type="submit" class="btn btn-default">添加</button>
             </div>
+            <button type="submit" class="btn btn-default">添加</button>
         </form>
     </div>
 </div>
-<div>
-    <h3>已有通知</h3>
-    <table>
+<div id = "div3" class="panel panel-default">
+    <h3 style="margin-left: 15px">已有通知</h3>
+    <table class="table table-bordered" style="width: 970px;margin-left: 15px;margin-right:10px;border:1px solid #5e5e5e;margin-bottom: 20px;">
+        <thead>
         <tr>
-           <th>已有通知消息</th>
-            <th>备注</th>
+            <th>通知内容</th>
+            <th class="th1">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>hello</td>
+            <td>删除</td>
         </tr>
         <tr>
+            <td>Mumbai</td>
+            <td>删除</td>
         </tr>
     </table>
 

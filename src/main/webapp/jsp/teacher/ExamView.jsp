@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <style>
         #div1{
-            margin-top:50px;
+            margin-top:60px;
             margin-left: 100px;
             margin-right:150px;
 
