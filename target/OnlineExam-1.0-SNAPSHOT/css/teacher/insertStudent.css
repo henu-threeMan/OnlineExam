@@ -1,0 +1,57 @@
+.container2{
+    width: 90%;
+    margin-top: 7%;
+    margin-left: 5%;
+    overflow: hidden;
+    color:white;
+    font-size: 170%;
+}
+
+.display_addStudent {
+    background-color: rgba(112,128,144,0.5);
+    border-radius: 10px;
+    height: 18%;
+    overflow: hidden;
+}
+
+.display_studentList {
+    background-color: rgba(112,128,144,0.5);
+    border-radius: 10px;
+    height: 55%;
+    margin-top: 5%;
+    overflow: hidden;
+}
+
+.display_uploadStudent {
+    background-color: rgba(112,128,144,0.5);
+    border-radius: 10px;
+    height: 18%;
+    margin-top: 5%;
+    overflow: hidden;
+}
+
+.div_addStudent {
+    height: 150px;
+    width: 50%;
+    margin: 2% 25%;
+}
+
+.div_studentList {
+    height: 500px;
+    width: 50%;
+    margin: 2% 25%;
+}
+
+.div_uploadStudent {
+    height: 150px;
+    width: 50%;
+    margin: 2% 25%;
+}
+
+.div_uploadStudent div {
+    font-size: 70%;
+}
+
+.other {
+    font-size: 100%;
+}
