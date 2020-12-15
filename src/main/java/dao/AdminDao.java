@@ -11,6 +11,8 @@ public interface AdminDao {
 
     void updateAdmin(Admin admin);
 
+    Admin findAdminByUsername(String username);
+
     Admin findAdmin(String username, String password);
 
     List<Admin> findAdmins();

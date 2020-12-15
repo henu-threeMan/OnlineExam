@@ -3,7 +3,7 @@ package domain;
 import java.util.Date;
 
 public class Exam {
-    private int id;
+    private Integer id;
     private String examName;
     private Date startTime;
     private String owner;

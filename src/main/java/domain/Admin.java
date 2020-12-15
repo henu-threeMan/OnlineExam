@@ -1,7 +1,7 @@
 package domain;
 
 public class Admin {
-    private int id;
+    private Integer id;
     private String username;
     private String password;
 

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/head.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/teacherManager.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/teacherManage.css">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -56,7 +56,6 @@
     <div style="float:right; margin-bottom: 10px">
         <a class="btn btn-default" href="${pageContext.request.contextPath}/jsp/admin/addTeacher.jsp">添加教师</a>
         <a class="btn btn-default" href="javascript:void(0);" id="delSelect">删除选中</a>
-        <button class="btn btn-default" type="submit">批量导入</button>
     </div>
     <%--用户信息表--%>
     <form id="form" action="${pageContext.request.contextPath}/delSelectedTeacherServlet" method="post">
@@ -88,9 +87,15 @@
             </c:forEach>
         </table>
     </form>
-        <%--分页工具条    --%>
-<%--    <div style="margin-left: 33%;">--%>
+    <%--分页工具条    --%>
+    <%--    <div style="margin-left: 33%;">--%>
     <div>
+        <div class="bottom">
+            <form  action="${pageContext.request.contextPath}/UploadServlet" enctype="multipart/form-data" method="post">
+                <input class="ipt" name="choseFile" type="file"/>
+                <input class="ipt" name="submit" type="submit" value="批量导入"/>
+            </form>
+        </div>
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li>
@@ -132,3 +137,4 @@
 </div>
 </body>
 </html>
+

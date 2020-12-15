@@ -15,3 +15,15 @@ div{
     color: white;
     font-size: 120%;
 }
+.ipt{
+    margin-left: 30%;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color:black;
+}
+.bottom{
+    float:right;
+    margin-bottom: 10px;
+    text-align: right
+}

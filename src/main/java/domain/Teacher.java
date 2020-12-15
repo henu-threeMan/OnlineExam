@@ -1,17 +1,17 @@
 package domain;
 
 public class Teacher {
-    private int id;
+    private Integer id;
     private String username;
     private String teacherName;
     private String password;
     private int isAdmin;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
