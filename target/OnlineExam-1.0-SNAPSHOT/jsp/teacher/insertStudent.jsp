@@ -26,7 +26,9 @@
         }
     </script>
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background0.jpg') no-repeat;background-size: 100% 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
+
+<jsp:include page="head.jsp" />
 
 <div class="container2">
     <div class="display_addStudent">

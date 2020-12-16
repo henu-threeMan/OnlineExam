@@ -17,6 +17,7 @@ import java.io.IOException;
 public class StudentManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+        String exam = request.getParameter("exam");
         String rows = request.getParameter("rows");
         String currentPage = request.getParameter("currentPage");
 
@@ -24,6 +25,7 @@ public class StudentManagerServlet extends HttpServlet {
         PageBean<Student> pb = teacherService.findStudentByPage(currentPage, rows);
 
         request.setAttribute("username", username);
+        request.setAttribute("exam", exam);
         request.setAttribute("pb", pb);
         request.getRequestDispatcher("/jsp/teacher/insertStudent.jsp").forward(request, response);
     }

@@ -22,9 +22,8 @@ public class TeacherAfterExamManagerServlet extends HttpServlet {
 
         TeacherService teacherService = new TeacherServiceImpl();
         PageBean<Exam> pb = teacherService.findExamByPage(currentPage, rows, username);
-        Teacher teacher = teacherService.findTeacherByUsername(username);
 
-        request.setAttribute("teacher", teacher);
+        request.setAttribute("username", username);
         request.setAttribute("pb", pb);
         request.getRequestDispatcher("/jsp/teacher/afterExam.jsp").forward(request, response);
     }

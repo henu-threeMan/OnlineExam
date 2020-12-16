@@ -28,10 +28,12 @@ public class TeacherStartExamServlet extends HttpServlet {
         TeacherService teacherService = new TeacherServiceImpl();
         Exam exam = teacherService.findExamById(id);
 
-        if (exam.getStartTime().getTime() - (new Date()).getTime() >= 15 * 60 * 1000) {
+        long time = exam.getStartTime().getTime() - (new Date()).getTime();
+        if (time > 0 && time < 15 * 60 * 1000) {
+            teacherService.startExam(id);
             response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
         } else {
-            teacherService.startExam(id);
+            session.setAttribute("startExam_msg", "考试前15分钟才能开启考试！");
             response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?username=" + username + "&id=" + id);
         }
     }
