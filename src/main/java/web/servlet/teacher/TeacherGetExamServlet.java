@@ -17,14 +17,12 @@ public class TeacherGetExamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = request.getParameter("startExam_msg");
-        String username = request.getParameter("username");
         String id = request.getParameter("id");
         TeacherService teacherService = new TeacherServiceImpl();
         Exam exam = teacherService.findExamById(id);
 
         request.setAttribute("startExam_msg", msg);
-        request.setAttribute("username", username);
-        request.setAttribute("exam", exam);
+        request.getSession().setAttribute("exam", exam);
         request.getRequestDispatcher("jsp/teacher/updateExam.jsp").forward(request, response);
     }
 

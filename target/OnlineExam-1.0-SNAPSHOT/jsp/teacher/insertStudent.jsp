@@ -16,15 +16,6 @@
 
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <script>
-        function deleteStudent(sno, username) {
-            alert("this is deleteStudent!")
-            if (confirm("是否确定删除？")) {
-                location.href = "${pageContext.request.contextPath}/deleteStudentServlet?username=" + username + "&sno=" + sno;
-            }
-        }
-    </script>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
 
@@ -35,7 +26,6 @@
         <div class="div_addStudent">
             <label>添加单个学生</label>
             <form class="form-inline" action="${pageContext.request.contextPath}/addStudentServlet" method="post">
-                <input type="hidden" name="username" value="${username}">
                 <div class="form-group">
                     <label class="sr-only" for="sno">学号</label>
                     <input type="text" class="form-control" id="sno" name="sno" placeholder="学号">
@@ -68,7 +58,7 @@
                         <td>${student.sno}</td>
                         <td>${student.studentName}</td>
                         <td>${student.className}</td>
-                        <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/deleteStudentServlet?username=${username}&sno=${student.sno}">删除</a></td>
+                        <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/deleteStudentServlet?sno=${student.sno}">删除</a></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -77,27 +67,27 @@
                     <ul class="pagination">
                         <li>
                             <c:if test="${pb.currentPage == 1}">
-                                <a href="${pageContext.request.contextPath}/studentManagerServlet?username=${username}&currentPage=1&rows=5" aria-label="Previous">
+                                <a href="${pageContext.request.contextPath}/studentManagerServlet?currentPage=1&rows=5" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </c:if>
                             <c:if test="${pb.currentPage != 1}">
-                                <a href="${pageContext.request.contextPath}/studentManagerServlet?username=${username}&currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
+                                <a href="${pageContext.request.contextPath}/studentManagerServlet?currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </c:if>
                         </li>
                         <c:forEach begin="1" end="${pb.totalPage}" var="i">
-                            <li><a href="${pageContext.request.contextPath}/studentManagerServlet?username=${username}&currentPage=${i}&rows=5">${i}</a></li>
+                            <li><a href="${pageContext.request.contextPath}/studentManagerServlet?currentPage=${i}&rows=5">${i}</a></li>
                         </c:forEach>
                         <li>
                             <c:if test="${pb.currentPage == pb.totalPage}">
-                                <a href="${pageContext.request.contextPath}/studentManagerServlet?username=${username}&currentPage=${pb.currentPage}&rows=5" aria-label="Next">
+                                <a href="${pageContext.request.contextPath}/studentManagerServlet?currentPage=${pb.currentPage}&rows=5" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </c:if>
                             <c:if test="${pb.currentPage != pb.totalPage}">
-                                <a href="${pageContext.request.contextPath}/studentManagerServlet?username=${username}&currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
+                                <a href="${pageContext.request.contextPath}/studentManagerServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </c:if>

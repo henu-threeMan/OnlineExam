@@ -29,7 +29,6 @@
         <div class="updateExam">
             <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherUpdateExamServlet" method="post">
                 <div class="firstLine"><h3>编辑考试信息</h3></div>
-                <input type="hidden" name="username" value="${username}">
                 <input type="hidden" name="id" value="${exam.id}">
 
                 <div class="form-group">
@@ -82,14 +81,14 @@
             <div class="firstLine"><h3>添加学生名单</h3></div>
             <div>
                 <label class="textLabel2">目前设定参加考试的人数是？？人</label> <br>
-                <a class="btn btn-default" type="button" href="${pageContext.request.contextPath}/studentManagerServlet?username=${username}&exam=${exam.id}&currentPage=1&rows=5">继续导入</a>
+                <a class="btn btn-default" type="button" href="${pageContext.request.contextPath}/studentManagerServlet?exam=${exam.id}&currentPage=1&rows=5">继续导入</a>
             </div>
         </div>
         <hr>
 
         <div class="option">
             <div class="btn-group" role="group" aria-label="...">
-                <a href="${pageContext.request.contextPath}/teacherStartExamServlet?username=${username}&id=${exam.id}" class="btn btn-default btn-lg">开始考试</a>
+                <a href="${pageContext.request.contextPath}/teacherStartExamServlet?id=${exam.id}" class="btn btn-default btn-lg">开始考试</a>
                 <button type="button" class="btn btn-default btn-lg btn_back">返回</button>
             </div>
         </div>
@@ -120,7 +119,7 @@
 
     $('.btn_back').on("click", function () {
         ${startExam_msg = null}
-        window.location.href = "${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${username}&currentPage=1&rows=5";
+        window.location.href = "${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?currentPage=1&rows=5";
     });
 
 </script>

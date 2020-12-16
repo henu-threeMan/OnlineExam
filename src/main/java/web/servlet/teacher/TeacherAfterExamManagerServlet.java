@@ -18,12 +18,13 @@ public class TeacherAfterExamManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String currentPage = request.getParameter("currentPage");
         String rows = request.getParameter("rows");
-        String username = request.getParameter("username");
+
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        String username = teacher.getUsername();
 
         TeacherService teacherService = new TeacherServiceImpl();
         PageBean<Exam> pb = teacherService.findExamByPage(currentPage, rows, username);
 
-        request.setAttribute("username", username);
         request.setAttribute("pb", pb);
         request.getRequestDispatcher("/jsp/teacher/afterExam.jsp").forward(request, response);
     }

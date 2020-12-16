@@ -20,14 +20,14 @@ public class TeacherBeforeExamManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rows = request.getParameter("rows");
         String currentPage = request.getParameter("currentPage");
-        String username = request.getParameter("username");
+
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        String username = teacher.getUsername();
 
         TeacherService teacherService = new TeacherServiceImpl();
         PageBean<Exam> pb = teacherService.findExamByPage(currentPage, rows, username);
-        Teacher teacher = teacherService.findTeacherByUsername(username);
 
         request.setAttribute("pb", pb);
-        request.setAttribute("teacher", teacher);
         request.getRequestDispatcher("/jsp/teacher/beforeExam.jsp").forward(request, response);
     }
 

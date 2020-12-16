@@ -68,7 +68,7 @@
                 <td>
                     <c:if test="${exam.isStarting == 1}">
                         <c:if test="${exam.isFinished == 0}">
-                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/stopExamServlet?username=${username}&id=${exam.id}">结束考试</a>
+                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/stopExamServlet?&id=${exam.id}">结束考试</a>
                         </c:if>
                     </c:if>
                     <c:if test="${exam.isFinished == 1}">
@@ -86,27 +86,27 @@
             <ul class="pagination">
                 <li>
                     <c:if test="${pb.currentPage == 1}">
-                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?username=${username}&currentPage=1&rows=5" aria-label="Previous">
+                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?currentPage=1&rows=5" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </c:if>
                     <c:if test="${pb.currentPage != 1}">
-                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?username=${username}&currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
+                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?currentPage=${pb.currentPage - 1}&rows=5" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </c:if>
                 </li>
                 <c:forEach begin="1" end="${pb.totalPage}" var="i">
-                    <li><a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?username=${username}&currentPage=${i}&rows=5">${i}</a></li>
+                    <li><a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?currentPage=${i}&rows=5">${i}</a></li>
                 </c:forEach>
                 <li>
                     <c:if test="${pb.currentPage == pb.totalPage}">
-                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?username=${username}&currentPage=${pb.currentPage}&rows=5" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?currentPage=${pb.currentPage}&rows=5" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </c:if>
                     <c:if test="${pb.currentPage != pb.totalPage}">
-                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?username=${username}&currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
+                        <a href="${pageContext.request.contextPath}/teacherAfterExamManagerServlet?currentPage=${pb.currentPage + 1}&rows=5" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </c:if>

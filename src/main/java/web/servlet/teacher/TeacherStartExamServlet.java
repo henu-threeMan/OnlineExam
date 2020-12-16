@@ -24,17 +24,16 @@ public class TeacherStartExamServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         String id = request.getParameter("id");
-        String username = request.getParameter("username");
         TeacherService teacherService = new TeacherServiceImpl();
         Exam exam = teacherService.findExamById(id);
 
         long time = exam.getStartTime().getTime() - (new Date()).getTime();
         if (time > 0 && time < 15 * 60 * 1000) {
             teacherService.startExam(id);
-            response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
+            response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1&rows=5");
         } else {
             session.setAttribute("startExam_msg", "考试前15分钟才能开启考试！");
-            response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?username=" + username + "&id=" + id);
+            response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?id=" + id);
         }
     }
 

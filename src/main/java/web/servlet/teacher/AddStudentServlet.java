@@ -40,8 +40,7 @@ public class AddStudentServlet extends HttpServlet {
         if (header.contains("studentManager.jsp")) {
             response.sendRedirect("jsp/teacher/studentManager.jsp");
         } else if (header.contains("studentManagerServlet")) {
-            String username = request.getParameter("username");
-            response.sendRedirect(request.getContextPath() + "/studentManagerServlet?username=" + username + "&currentPage=1&rows=5");
+            response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1&rows=5");
         }
     }
 

@@ -42,13 +42,12 @@ public class TeacherAddExamServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String username = request.getParameter("username");
         TeacherService teacherService = new TeacherServiceImpl();
-        Teacher teacher = teacherService.findTeacherByUsername(username);
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         exam.setOwner(teacher.getTeacherName());
         teacherService.addExam(exam);
 
-        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

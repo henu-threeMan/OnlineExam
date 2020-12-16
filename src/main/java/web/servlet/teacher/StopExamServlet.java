@@ -16,12 +16,11 @@ import java.io.IOException;
 public class StopExamServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        String username = request.getParameter("username");
 
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.stopExam(id);
 
-        response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?username=" + username + "&currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
