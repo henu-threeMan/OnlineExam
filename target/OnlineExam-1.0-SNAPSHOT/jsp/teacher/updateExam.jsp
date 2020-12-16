@@ -116,7 +116,7 @@
         language:'zh-CN',
         startDate: new Date()
     });
-    
+
     $('.btn_back').on("click", function () {
         ${startExam_msg = null}
         window.location.href = "${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${username}&currentPage=1&rows=5";

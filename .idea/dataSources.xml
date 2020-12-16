@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="onlineExam@fishingblog.cn" uuid="8e92cf24-f691-4be0-a9b3-e61f9083f3b5">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://fishingblog.cn:3306/onlineExam</jdbc-url>
+    </data-source>
+  </component>
+</project>

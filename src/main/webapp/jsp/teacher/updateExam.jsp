@@ -12,6 +12,8 @@
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacher/updateExam1.css">
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
@@ -68,12 +70,11 @@
         <hr>
 
         <div class="uploadPage">
-            <div class="firstLine"><h3>上传试卷</h3></div>
-            <div>
-                <input class="btn btn-default" type="button" value="选择文件">
-                <label class="textLabel1">未上传文件</label>
-                <input class="btn btn-default" type="button" value="上传">
-            </div>
+            <div class="firstLine" ><h3>上传试卷</h3></div>
+            <form action="${pageContext.request.contextPath}/TestUploadServlet" enctype="multipart/form-data" method="post">
+                <input id="uploadBtn" class="btn btn-default" name="button"  type="button" value="点击上传"><span id="upload_msg">请选择文件</span>
+                <input id="fileSelection" name="choseFile"  type="file">
+            </form>
         </div>
         <hr>
 
@@ -116,7 +117,7 @@
         language:'zh-CN',
         startDate: new Date()
     });
-    
+
     $('.btn_back').on("click", function () {
         ${startExam_msg = null}
         window.location.href = "${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?username=${username}&currentPage=1&rows=5";
@@ -125,4 +126,12 @@
 </script>
 
 </body>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script>
+    $("#fileSelection").change(function () {
+        $("#upload_msg").html("上传成功！");
+        $("#upload_msg").css("color","green")
+    })
+</script>
 </html>

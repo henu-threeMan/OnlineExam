@@ -91,9 +91,9 @@
     <%--    <div style="margin-left: 33%;">--%>
     <div>
         <div class="bottom">
-            <form  action="${pageContext.request.contextPath}/UploadServlet" enctype="multipart/form-data" method="post">
-                <input class="ipt" name="choseFile" type="file"/>
-                <input class="ipt" name="submit" type="submit" value="批量导入"/>
+            <form  action="${pageContext.request.contextPath}/TeacherlistUploadServlet" enctype="multipart/form-data" method="post">
+                <input class="btn btn-default" name="choseFile" type="file"/>
+                <input class="btn btn-default" name="submit" type="submit" value="批量导入"/>
             </form>
         </div>
         <nav aria-label="Page navigation">
