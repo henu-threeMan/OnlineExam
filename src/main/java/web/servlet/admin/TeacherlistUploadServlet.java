@@ -15,8 +15,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
 
-@WebServlet("/UploadServlet")
-public class UploadServlet extends HttpServlet {
+@WebServlet("/TeacherlistUploadServlet")
+public class TeacherlistUploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();

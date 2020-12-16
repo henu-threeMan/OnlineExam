@@ -22,8 +22,7 @@ public class TeacherGetExamServlet extends HttpServlet {
         Exam exam = teacherService.findExamById(id);
         Teacher teacher = teacherService.findTeacherByUsername(username);
 
-        request.setAttribute("teacher", teacher);
-        request.setAttribute("exam", exam);
+        request.getSession().setAttribute("exam", exam);
         request.getRequestDispatcher("jsp/teacher/updateExam.jsp").forward(request, response);
     }
 
