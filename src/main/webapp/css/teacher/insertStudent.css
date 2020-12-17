@@ -66,8 +66,8 @@
 #uploadBtn{
     margin-left: 9%;
 }
-#upload_msg{
-    color:green;
+#upload_msg,#upload_msg1{
+    color:lightgreen;
     font-size: 50%;
 }
 #uploadBtn{
@@ -75,4 +75,7 @@
 }
 .back{
     margin-left: 20%;
+}
+#upload_msg1{
+    margin-left: 10%;
 }

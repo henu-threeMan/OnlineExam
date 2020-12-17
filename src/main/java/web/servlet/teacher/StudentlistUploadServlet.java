@@ -51,7 +51,7 @@ public class StudentlistUploadServlet extends HttpServlet {
                     rename = UUID.randomUUID() + houzhui;
                     request.getSession().setAttribute("StudentListUpload_filename", rename);
                     fileItem.write(new File(path, rename));
-                    request.getSession().setAttribute("StudentListUpload_msg", "上传成功！");
+                    request.getSession().setAttribute("StudentListUpload_msg", "导入成功！");
                 }
             }
         } catch (Exception e) {

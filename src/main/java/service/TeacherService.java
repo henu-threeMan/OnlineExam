@@ -37,6 +37,8 @@ public interface TeacherService {
 
     void delStudent(String sno);
 
+    int getStudentNum(int exmaId);
+
     Student findStudentByCondition(Map<String, String[]> condition);
 
     Student findStudentByIp(String ip);

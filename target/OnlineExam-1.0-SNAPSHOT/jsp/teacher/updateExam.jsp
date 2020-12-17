@@ -81,7 +81,7 @@
         <div class="addStudents">
             <div class="firstLine"><h3>添加学生名单</h3></div>
             <div>
-                <label class="textLabel2">目前设定参加考试的人数是？？人</label> <br>
+                <label class="textLabel2">目前设定参加考试的人数是${studentNum}人</label> <br>
                 <a class="btn btn-default" type="button" href="${pageContext.request.contextPath}/studentManagerServlet?exam=${exam.id}&currentPage=1&rows=5">继续导入</a>
             </div>
         </div>

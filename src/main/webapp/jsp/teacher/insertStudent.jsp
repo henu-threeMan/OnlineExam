@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${pageContext.request.contextPath}/css/teacher/head.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/teacher/insertStudent1.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/teacher/insertStudent.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -110,8 +110,8 @@
                     <input id="fileSelection" name="choseFile1"  type="file">
                 </div>
                 <input class="btn btn-default" type="submit" value="导入">
-                <input class="btn btn-default back" type="button" value="返回" href="${pageContext.request.contextPath}/TestUploadServlet?username=${sessionScope.teacher.username}&id=${sessionScope.exam.id}">
-                <p id="upload_msg1">${TestUpload_msg}<%session.removeAttribute("StudentListUpload_msg");%></p>
+                <a class="btn btn-default back" type="button"  href="${pageContext.request.contextPath}/teacherGetExamServlet?id=${sessionScope.exam.id}">返回</a>
+                <p id="upload_msg1">${StudentListUpload_msg}<%session.removeAttribute("StudentListUpload_msg");%></p>
             </form>
         </div>
     </div>

@@ -94,6 +94,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public int getStudentNum(int exmaId) {
+        return studentDao.findTotalCountByExamId(exmaId);
+    }
+
+    @Override
     public Student findStudentByCondition(Map<String, String[]> condition) {
         return studentDao.findStudentByCondition(condition);
     }
@@ -151,7 +156,6 @@ public class TeacherServiceImpl implements TeacherService {
         return pb;
     }
 
-    @Override
     public Student unlockStudent(String sno) {
         Student student = studentDao.findStudentBySno(sno);
         student.setIp(null);
