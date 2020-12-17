@@ -6,6 +6,43 @@ public class Student {
     private String password;
     private String className;
     private String ip;
+    private int examId;
+
+    public int getExamId() {
+        return examId;
+    }
+
+    public void setExamId(int examId) {
+        this.examId = examId;
+    }
+
+    public int getIsExamStarting() {
+        return isExamStarting;
+    }
+
+    public void setIsExamStarting(int isExamStarting) {
+        this.isExamStarting = isExamStarting;
+    }
+
+    public int getIsLogin() {
+        return isLogin;
+    }
+
+    public void setIsLogin(int isLogin) {
+        this.isLogin = isLogin;
+    }
+
+    public int getIsCommit() {
+        return isCommit;
+    }
+
+    public void setIsCommit(int isCommit) {
+        this.isCommit = isCommit;
+    }
+
+    private int isExamStarting;
+    private int isLogin;
+    private int isCommit;
 
     public String getClassName() {
         return className;
@@ -55,6 +92,10 @@ public class Student {
                 ", password='" + password + '\'' +
                 ", className='" + className + '\'' +
                 ", ip='" + ip + '\'' +
+                ", examId=" + examId +
+                ", isExamStarting=" + isExamStarting +
+                ", isLogin=" + isLogin +
+                ", isCommit=" + isCommit +
                 '}';
     }
 }

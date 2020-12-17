@@ -17,9 +17,10 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void addStudent(Student student) {
-        String sql = "insert into students values(?, ?, ?, ?, ?)";
+        String sql = "insert into students values(?, ?, ?, ?, ? ,? ,? ,? ,?)";
         jdbcTemplate.update(sql, student.getSno(), student.getStudentName(), student.getPassword(),
-                student.getClassName(), null);
+                student.getClassName(), null ,student.getExamId() ,
+                student.getIsExamStarting() ,student.getIsLogin() ,student.getIsCommit());
     }
 
     @Override
@@ -102,10 +103,16 @@ public class StudentDaoImpl implements StudentDao {
         }
     }
 
+
     @Override
     public int findTotalCount() {
         String sql = "select count(*) from students";
         int count = jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+    public int findTotalCountByExamId(int examId){
+        String sql = "select count(examid) from students where examid = ?";
+        int count = jdbcTemplate.queryForObject(sql , Integer.class , examId);
         return count;
     }
 
@@ -114,6 +121,17 @@ public class StudentDaoImpl implements StudentDao {
         String sql = "select * from students limit ?, ?";
         try {
             List<Student> students = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Student>(Student.class), start, rows);
+            return students;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Student> findByPage_and_ExamId(int start, int rows, int examId) {
+        String sql = "select * from students where examid = ? limit ?, ?";
+        try {
+            List<Student> students = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Student>(Student.class), examId, start, rows);
             return students;
         } catch (DataAccessException e) {
             return null;

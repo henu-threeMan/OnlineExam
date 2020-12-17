@@ -21,8 +21,8 @@ public class StudentManagerServlet extends HttpServlet {
         String currentPage = request.getParameter("currentPage");
 
         TeacherService teacherService = new TeacherServiceImpl();
-        PageBean<Student> pb = teacherService.findStudentByPage(currentPage, rows);
-
+        int examId = ((Exam)request.getSession().getAttribute("exam")).getId();
+        PageBean<Student> pb = teacherService.findStudentByPage_and_ExamId(currentPage, rows, examId);
         request.setAttribute("exam", exam);
         request.setAttribute("pb", pb);
         request.getRequestDispatcher("/jsp/teacher/insertStudent.jsp").forward(request, response);

@@ -24,5 +24,11 @@ public interface StudentDao {
 
     int findTotalCount();
 
+    int findTotalCountByExamId(int examId);
+
     List<Student> findByPage(int start, int rows);
+
+    List<Student> findByPage_and_ExamId(int start, int rows , int examId);
+
+
 }

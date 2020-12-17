@@ -10,6 +10,7 @@ import domain.Exam;
 import domain.PageBean;
 import domain.Student;
 import domain.Teacher;
+import org.apache.commons.collections4.queue.PredicatedQueue;
 import service.TeacherService;
 
 import java.util.List;
@@ -116,6 +117,32 @@ public class TeacherServiceImpl implements TeacherService {
 
         int start = (currentPage - 1) * rows;
         List<Student> students = studentDao.findByPage(start, rows);
+        pb.setList(students);
+
+        int totalPage = (totalCount % rows) == 0 ? (totalCount / rows) : (totalCount / rows) + 1;
+        pb.setTotalPage(totalPage);
+
+        return pb;
+    }
+
+    @Override
+    public PageBean<Student> findStudentByPage_and_ExamId(String _currentPage, String _rows, int examId) {
+        int currentPage = Integer.parseInt(_currentPage);
+        int rows = Integer.parseInt(_rows);
+
+        PageBean<Student> pb = new PageBean<Student>();
+        pb.setCurrentPage(currentPage);
+        pb.setRows(rows);
+
+        int totalCount = studentDao.findTotalCountByExamId(examId);
+        pb.setTotalCount(totalCount);
+        System.out.println("teacherServiceImpl------totalcount-------------"+totalCount);
+
+        int start = (currentPage - 1) * rows;
+        System.out.println("teacherServiceImpl------start-------------"+start);
+        List<Student> students = studentDao.findByPage_and_ExamId(start, rows,examId);
+        System.out.println("teacherServiceImpl------studentList-------------");
+        System.out.println(students);
         pb.setList(students);
 
         int totalPage = (totalCount % rows) == 0 ? (totalCount / rows) : (totalCount / rows) + 1;

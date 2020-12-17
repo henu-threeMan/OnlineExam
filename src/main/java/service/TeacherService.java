@@ -43,6 +43,8 @@ public interface TeacherService {
 
     PageBean<Student> findStudentByPage(String _currentPage, String _rows);
 
+    PageBean<Student> findStudentByPage_and_ExamId(String _currentPage, String _rows , int examId);
+
     // 解除学生登录锁定
     Student unlockStudent(String sno);
 

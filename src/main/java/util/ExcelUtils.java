@@ -49,7 +49,6 @@ public class ExcelUtils {
                 String key = titleRow.getCell(j).getStringCellValue();
                 Cell cell = row.getCell(j);
                 cell.setCellType(CellType.STRING);
-
                 map.put(key, cell.getStringCellValue());
             }
             list.add(map);

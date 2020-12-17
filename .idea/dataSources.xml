@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://fishingblog.cn:3306/onlineExam</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="onlineExam@fishingblog.cn [2]" uuid="33473b51-1621-4a9e-a5df-76bc73a2bb6b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://fishingblog.cn:3306/onlineExam</jdbc-url>
+    </data-source>
   </component>
 </project>

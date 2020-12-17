@@ -55,3 +55,24 @@
 .other {
     font-size: 100%;
 }
+#fileSelection{
+    z-index:999;
+    opacity: 0%;
+    position: absolute;
+    width:100%;
+    left: 10%;
+    bottom:12%;
+}
+#uploadBtn{
+    margin-left: 9%;
+}
+#upload_msg{
+    color:green;
+    font-size: 50%;
+}
+#uploadBtn{
+    margin-right: 5px;
+}
+.back{
+    margin-left: 20%;
+}
