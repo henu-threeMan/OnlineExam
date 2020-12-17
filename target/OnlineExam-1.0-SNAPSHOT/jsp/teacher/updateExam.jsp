@@ -22,8 +22,6 @@
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
-<jsp:include page="head.jsp" />
-
 <div class="container2">
     <div class="display">
         <div class="updateExam">
@@ -71,8 +69,11 @@
         <div class="uploadPage">
             <div class="firstLine" ><h3>上传试卷</h3></div>
             <form action="${pageContext.request.contextPath}/TestUploadServlet" enctype="multipart/form-data" method="post">
-                <input id="uploadBtn" class="btn btn-default" name="button"  type="button" value="点击上传"><span id="upload_msg">请选择文件</span>
-                <input id="fileSelection" name="choseFile"  type="file">
+                <div class="btn-group">
+                    <input id="uploadBtn" class="btn btn-default" name="button1"  type="button" value="选择文件">
+                    <input id="fileSelection" name="choseFile1"  type="file">
+                </div>
+                <input class="btn btn-default" type="submit" value="上传"><p id="upload_msg">${TestUpload_msg}<%session.removeAttribute("TestUpload_msg");%></p>
             </form>
         </div>
         <hr>
@@ -125,12 +126,4 @@
 </script>
 
 </body>
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script>
-    $("#fileSelection").change(function () {
-        $("#upload_msg").html("上传成功！");
-        $("#upload_msg").css("color","green")
-    })
-</script>
 </html>

@@ -53,16 +53,17 @@ div {
     font-size: 55%;
 }
 #fileSelection{
-    opacity: 0%;
+    opacity: 50%;
     position: absolute;
-    left:44%;
-    top:55%;
+    width:90%;
+    left: 10%;
+    bottom:3%;
 }
 #uploadBtn{
     margin-left: 9%;
 }
 #upload_msg{
-    color:red;
+    color:green;
     font-size: 50%;
 }
 #uploadBtn{
