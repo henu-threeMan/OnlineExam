@@ -53,17 +53,17 @@
         <div class="col-sm-6">
             <h3>试卷下载</h3><br>
             <div>
-                <button type="button" class="btn btn-primary btn-lg">下载试卷</button>
+                <a class="btn btn-default" type="button" href="${pageContext.request.contextPath}/downloadTestServlet">下载试卷</a>
             </div>
 
             <div style="margin-top: 100px;">
-                <form  class="form-inline" action="#" role="form">
+                <form  class="form-inline" action="${pageContext.request.contextPath}/answerUploadServlet" enctype="multipart/form-data" method="post">
                     <h3>答案上传</h3><br>
                     <p >请按照考试要求将答案打包，再次进行上传。同名文件多次上传将会覆盖。</p>
                     <div class="form-group">
-                        <input type="file" id="inputfile">
+                        <input name="chosefile" type="file" id="inputfile">
                     </div>
-                    <button type="submit" class="btn btn-default">提交</button>
+                    <input name="submit" type="submit" class="btn btn-default"></input>
                 </form>
             </div>
         </div>

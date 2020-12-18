@@ -75,7 +75,6 @@ public class LoginServlet extends HttpServlet {
             student.setPassword(maps.get("password")[0]);
             StudentService studentService = new StudentServiceImpl();
             Student studentLogin = studentService.studentLogin(student);
-            System.out.println("studentLogin:"+studentLogin);
             if (studentLogin != null) {
                 session.setAttribute("student", studentLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");

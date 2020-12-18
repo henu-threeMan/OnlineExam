@@ -1,6 +1,7 @@
-package web.servlet.teacher;
+package web.servlet.student;
 
 import domain.Exam;
+import domain.Student;
 import domain.Teacher;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -17,18 +18,25 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.UUID;
 
-@WebServlet("/TestUploadServlet")
-public class TestUploadServlet extends HttpServlet {
+@WebServlet("/answerUploadServlet")
+public class answerUploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
-        Exam exam = (Exam) request.getSession().getAttribute("exam");
-        Integer examId = exam.getId();
+        Student student = (Student) request.getSession().getAttribute("student");
+        Integer examId = student.getExamId();
+        String sno = student.getSno();
+        System.out.println("examId---------"+examId);
+
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
-        String path = request.getRealPath("/incoming/teacher/testPaper/"+"exam"+examId);//得到上传文件的存放目录
+        String path = request.getRealPath("/incoming/student/"+"exam"+examId+"/"+sno);//得到上传文件的存放目录
         System.out.println(path);
-        sf.setRepository(new File(path));//设置文件存放目录
+        File file = new File(path);
+        if(!file.exists()){
+            file.mkdir();
+        }
+        sf.setRepository(file);//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中
         String rename = "";//文件新生成的文件名
         String fileName = "";//文件原名称
@@ -47,23 +55,20 @@ public class TestUploadServlet extends HttpServlet {
                     //获得文件名称
                     fileName = fileItem.getName();
                     if (fileName == null || fileName == "") {
-                        request.getSession().setAttribute("TestUpload_msg", "请选择文件！");
+                        request.getSession().setAttribute("AnswerUpload_msg", "请选择文件！");
                     }
                     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
                     String houzhui = fileName.substring(fileName.lastIndexOf("."));
-                    rename = UUID.randomUUID() + houzhui;
-                    request.getSession().setAttribute("TestUpload_filename", rename);
-                    fileItem.write(new File(path, rename));
-                    request.getSession().setAttribute("TestUpload_msg", "上传成功！");
+                    request.getSession().setAttribute("AnswerUpload_filename", fileName);
+                    fileItem.write(new File(path, fileName));
+                    request.getSession().setAttribute("AnswerUpload_msg", "提交成功！");
                 }
             }
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-        String teacherUsername = teacher.getUsername();
-        response.sendRedirect(request.getContextPath()+"/teacherGetExamServlet?username="+teacherUsername+"&id="+examId);
+        response.sendRedirect(request.getContextPath()+"/jsp/student/home.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
