@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
@@ -44,7 +45,7 @@ public class TeacherAddExamServlet extends HttpServlet {
 
         TeacherService teacherService = new TeacherServiceImpl();
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-        exam.setOwner(teacher.getTeacherName());
+        exam.setOwner(teacher.getUsername());
         teacherService.addExam(exam);
 
         response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1&rows=5");

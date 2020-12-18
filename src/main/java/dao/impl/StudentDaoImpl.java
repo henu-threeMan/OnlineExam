@@ -42,6 +42,8 @@ public class StudentDaoImpl implements StudentDao {
         try {
             Student student = jdbcTemplate.queryForObject(sql,
                     new BeanPropertyRowMapper<Student>(Student.class), sno, password);
+            System.out.println("dao_student--------"+student+"-----isStart?"+student.getIsExamStarting());
+            if(student != null && student.getIsExamStarting() == 0)return null;
             return student;
         } catch (DataAccessException e) {
             return null;

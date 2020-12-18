@@ -22,9 +22,11 @@ public class TestUploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
+        Integer examId = exam.getId();
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
-        String path = request.getRealPath("/incoming/teacher/testPaper");//得到上传文件的存放目录
+        String path = request.getRealPath("/incoming/teacher/testPaper/"+"exam"+examId);//得到上传文件的存放目录
         sf.setRepository(new File(path));//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中
         String rename = "";//文件新生成的文件名
@@ -59,9 +61,7 @@ public class TestUploadServlet extends HttpServlet {
             e.printStackTrace();
         }
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-        Exam exam = (Exam) request.getSession().getAttribute("exam");
         String teacherUsername = teacher.getUsername();
-        Integer examId = exam.getId();
         System.out.println(teacherUsername);
         System.out.println(examId);
         response.sendRedirect(request.getContextPath()+"/teacherGetExamServlet?username="+teacherUsername+"&id="+examId);

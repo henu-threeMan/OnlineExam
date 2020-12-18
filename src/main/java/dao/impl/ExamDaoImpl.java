@@ -71,6 +71,8 @@ public class ExamDaoImpl implements ExamDao {
     @Override
     public void setExamStarting(String id) {
         String sql = "update exam set isStarting = 1 where id = ?";
+        String sql1 = "update students set isExamStarting =1 where examid=?";
         jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(sql1, id);
     }
 }

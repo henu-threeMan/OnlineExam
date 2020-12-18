@@ -69,15 +69,13 @@ public class LoginServlet extends HttpServlet {
             }
         } else if ("student".equals(role)) {
             Student student = new Student();
-            try {
-                BeanUtils.populate(student, maps);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
+            System.out.println("sno:"+maps.get("sno")[0]);
+            System.out.println("password:"+maps.get("password")[0]);
+            student.setSno(maps.get("sno")[0]);
+            student.setPassword(maps.get("password")[0]);
             StudentService studentService = new StudentServiceImpl();
             Student studentLogin = studentService.studentLogin(student);
+            System.out.println("studentLogin:"+studentLogin);
             if (studentLogin != null) {
                 session.setAttribute("student", studentLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");
