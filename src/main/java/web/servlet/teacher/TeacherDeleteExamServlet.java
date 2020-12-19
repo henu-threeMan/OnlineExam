@@ -19,6 +19,7 @@ public class TeacherDeleteExamServlet extends HttpServlet {
         String id = request.getParameter("id");
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.delExam(id);
+        request.getSession().removeAttribute("startingExam");
 
         response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1&rows=5");
     }

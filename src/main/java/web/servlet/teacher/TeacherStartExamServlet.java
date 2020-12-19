@@ -30,6 +30,7 @@ public class TeacherStartExamServlet extends HttpServlet {
         long time = exam.getStartTime().getTime() - (new Date()).getTime();
         if (time > 0 && time < 15 * 60 * 1000) {
             teacherService.startExam(id);
+            request.getSession().setAttribute("startingExam", id);
             response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1&rows=5");
         } else {
             session.setAttribute("startExam_msg", "考试前15分钟才能开启考试！");

@@ -22,13 +22,14 @@
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
+<jsp:include page="head.jsp" />
+
 <div class="container2">
     <div class="display">
         <div class="updateExam">
             <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherUpdateExamServlet" method="post">
                 <div class="firstLine"><h3>编辑考试信息</h3></div>
                 <input type="hidden" name="id" value="${exam.id}">
-
                 <div class="form-group">
                     <label for="examName" class="col-sm-2 control-label">考试名称:</label>
                     <div class="col-sm-10">

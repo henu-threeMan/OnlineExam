@@ -140,4 +140,18 @@ public class StudentDaoImpl implements StudentDao {
             return null;
         }
     }
+
+    @Override
+    public int findLoginCountByExamId(int id) {
+        String sql = "select count(*) from students where examid = ? and isLogin = 1";
+        int count = jdbcTemplate.queryForObject(sql , Integer.class , id);
+        return count;
+    }
+
+    @Override
+    public int findCommitCountByExamId(int id) {
+        String sql = "select count(*) from students where examid = ? and isCommit = 1";
+        int count = jdbcTemplate.queryForObject(sql , Integer.class , id);
+        return count;
+    }
 }

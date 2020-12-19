@@ -31,4 +31,7 @@ public interface StudentDao {
     List<Student> findByPage_and_ExamId(int start, int rows , int examId);
 
 
+    int findLoginCountByExamId(int id);
+
+    int findCommitCountByExamId(int id);
 }

@@ -12,23 +12,24 @@ public interface TeacherService {
     // 教师登录
     Teacher teacherLogin(Teacher teacher);
 
+    // 获取教师信息
     Teacher findTeacherByUsername(String username);
 
     // 考试管理
 
+    // 获取考试信息
     Exam findExamById(String id);
-        // 新建考试
+    // 新建考试
     void addExam(Exam exam);
-        // 编辑考试
+    // 编辑考试
     void updateExam(Exam exam);
-        // 开启考试
+    // 开启考试
     void startExam(String id);
-        // 结束考试
+    // 结束考试
     void stopExam(String id);
-        // 查看考试情况
-        // 考试表分页查询
+    // 考试表分页查询
     PageBean<Exam> findExamByPage(String _currentPage, String _rows, String owner);
-        // 考试清理和删除
+    // 考试清理和删除
     void delExam(String id);
 
     // 学生信息管理
@@ -43,15 +44,15 @@ public interface TeacherService {
 
     Student findStudentByIp(String ip);
 
-    PageBean<Student> findStudentByPage(String _currentPage, String _rows);
-
     PageBean<Student> findStudentByPage_and_ExamId(String _currentPage, String _rows , int examId);
 
+    int findTotalStudentsByExam(String examId);
+
+    int findLoginStudentsByExam(String examId);
+
+    int findCommitStudentsByExam(String examId);
     // 解除学生登录锁定
     Student unlockStudent(String sno);
-
-
-    // 通知管理 发通知
 
     // 答卷下载
 

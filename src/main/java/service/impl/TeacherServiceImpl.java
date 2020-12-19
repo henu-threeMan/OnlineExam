@@ -10,7 +10,6 @@ import domain.Exam;
 import domain.PageBean;
 import domain.Student;
 import domain.Teacher;
-import org.apache.commons.collections4.queue.PredicatedQueue;
 import service.TeacherService;
 
 import java.util.List;
@@ -109,28 +108,6 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public PageBean<Student> findStudentByPage(String _currentPage, String _rows) {
-        int currentPage = Integer.parseInt(_currentPage);
-        int rows = Integer.parseInt(_rows);
-
-        PageBean<Student> pb = new PageBean<Student>();
-        pb.setCurrentPage(currentPage);
-        pb.setRows(rows);
-
-        int totalCount = studentDao.findTotalCount();
-        pb.setTotalCount(totalCount);
-
-        int start = (currentPage - 1) * rows;
-        List<Student> students = studentDao.findByPage(start, rows);
-        pb.setList(students);
-
-        int totalPage = (totalCount % rows) == 0 ? (totalCount / rows) : (totalCount / rows) + 1;
-        pb.setTotalPage(totalPage);
-
-        return pb;
-    }
-
-    @Override
     public PageBean<Student> findStudentByPage_and_ExamId(String _currentPage, String _rows, int examId) {
         int currentPage = Integer.parseInt(_currentPage);
         int rows = Integer.parseInt(_rows);
@@ -154,6 +131,21 @@ public class TeacherServiceImpl implements TeacherService {
         pb.setTotalPage(totalPage);
 
         return pb;
+    }
+
+    @Override
+    public int findTotalStudentsByExam(String examId) {
+        return studentDao.findTotalCountByExamId(Integer.parseInt(examId));
+    }
+
+    @Override
+    public int findLoginStudentsByExam(String examId) {
+        return studentDao.findLoginCountByExamId(Integer.parseInt(examId));
+    }
+
+    @Override
+    public int findCommitStudentsByExam(String examId) {
+        return studentDao.findCommitCountByExamId(Integer.parseInt(examId));
     }
 
     public Student unlockStudent(String sno) {
