@@ -53,6 +53,15 @@
 
 <div class="container2">
     <%--添加联系人、删除选中--%>
+        <div style="float:left; margin-bottom: 10px;">
+            <form action="${pageContext.request.contextPath}/TeacherlistUploadServlet" enctype="multipart/form-data" method="post">
+                <div class="form-group" style="float: left;">
+                    <input class="btn btn-default" name="choseFile" type="file">
+                </div> &ensp;
+                <input class="btn btn-default" name="submit" type="submit" value="批量导入">
+            </form>
+        </div>
+
     <div style="float:right; margin-bottom: 10px">
         <a class="btn btn-default" href="${pageContext.request.contextPath}/jsp/admin/addTeacher.jsp">添加教师</a>
         <a class="btn btn-default" href="javascript:void(0);" id="delSelect">删除选中</a>
@@ -78,11 +87,12 @@
                     <td>${teacher.password}</td>
                     <td>${teacher.teacherName}</td>
                     <td>
-                        <c:if test="${teacher.isAdmin == 1}">是</c:if>
-                        <c:if test="${teacher.isAdmin == 0}">否</c:if>
+                        <c:if test="${teacher.isAdmin == 1}">
+                            <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                        </c:if>
                     </td>
                     <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/getTeacherServlet?id=${teacher.id}">修改</a>&nbsp;
-                        <a class="btn btn-default btn-sm" href="javascript:deleteTeacher(${teacher.id})">删除</a></td>
+                        <a class="btn btn-danger btn-sm" href="javascript:deleteTeacher(${teacher.id})">删除</a></td>
                 </tr>
             </c:forEach>
         </table>
@@ -90,12 +100,6 @@
     <%--分页工具条    --%>
     <%--    <div style="margin-left: 33%;">--%>
     <div>
-        <div class="bottom">
-            <form  action="${pageContext.request.contextPath}/TeacherlistUploadServlet" enctype="multipart/form-data" method="post">
-                <input class="btn btn-default" name="choseFile" type="file"/>
-                <input class="btn btn-default" name="submit" type="submit" value="批量导入"/>
-            </form>
-        </div>
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <li>

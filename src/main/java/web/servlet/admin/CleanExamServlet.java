@@ -1,10 +1,9 @@
-package web.servlet.teacher;
+package web.servlet.admin;
 
-import domain.Teacher;
+import domain.Exam;
+import domain.PageBean;
 import service.AdminService;
-import service.TeacherService;
 import service.impl.AdminServiceImpl;
-import service.impl.TeacherServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,13 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/teacherDeleteExamServlet")
-public class TeacherDeleteExamServlet extends HttpServlet {
+@WebServlet("/cleanExamServlet")
+public class CleanExamServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        TeacherService teacherService = new TeacherServiceImpl();
-        teacherService.delExam(id);
-        response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1&rows=5");
+        AdminService adminService = new AdminServiceImpl();
+        adminService.cleanExam(id);
+        response.sendRedirect(request.getContextPath() + "/examManagerServlet?currentPage=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

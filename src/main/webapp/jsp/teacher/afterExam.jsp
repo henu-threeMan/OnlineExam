@@ -13,9 +13,6 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
@@ -42,28 +39,34 @@
                 <td>${exam.startTime}</td>
                 <td>${exam.owner}</td>
                 <td>
-                    <c:if test="${exam.isPageExist == 1}">是</c:if>
-                    <c:if test="${exam.isPageExist == 0}">否</c:if>
+                    <c:if test="${exam.isPageExist == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isAutoStart == 1}">是</c:if>
-                    <c:if test="${exam.isAutoStart == 0}">否</c:if>
+                    <c:if test="${exam.isAutoStart == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isStarting == 1}">是</c:if>
-                    <c:if test="${exam.isStarting == 0}">否</c:if>
+                    <c:if test="${exam.isStarting == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isFinished == 1}">是</c:if>
-                    <c:if test="${exam.isFinished == 0}">否</c:if>
+                    <c:if test="${exam.isFinished == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isFiled == 1}">是</c:if>
-                    <c:if test="${exam.isFiled == 0}">否</c:if>
+                    <c:if test="${exam.isFiled == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isCleaned == 1}">是</c:if>
-                    <c:if test="${exam.isCleaned == 0}">否</c:if>
+                    <c:if test="${exam.isCleaned == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
                     <c:if test="${exam.isStarting == 1}">
@@ -72,8 +75,13 @@
                         </c:if>
                     </c:if>
                     <c:if test="${exam.isFinished == 1}">
-                        <a class="btn btn-default btn-sm" href="#">导出</a>
-                        <a class="btn btn-default btn-sm" href="#">清除</a>
+                        <c:if test="${exam.isCleaned == 0}">
+                            <a class="btn btn-default btn-sm" href="#">导出</a>
+                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherCleanExamServlet?id=${exam.id}">清除</a>
+                        </c:if>
+                        <c:if test="${exam.isCleaned == 1}">
+                            <a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/teacherDeleteExamServlet?id=${exam.id}">删除</a>
+                        </c:if>
                     </c:if>
                 </td>
             </tr>

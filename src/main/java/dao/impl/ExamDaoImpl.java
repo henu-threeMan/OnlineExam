@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import util.JdbcUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExamDaoImpl implements ExamDao {
@@ -23,7 +24,9 @@ public class ExamDaoImpl implements ExamDao {
     @Override
     public void delExam(int id) {
         String sql = "delete from exam where id = ?";
+        String sql1 = "delete from students where examid = ?";
         jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(sql1, id);
     }
 
     @Override
@@ -33,17 +36,17 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
-    public void setExamFinished(int id) {
-        String sql = "update exam set isStarting = 0, isFinished = 1 where id = ?";
-        jdbcTemplate.update(sql, id);
-    }
-
-
-    @Override
     public List<Exam> findByPage(int start, int rows, String owner) {
-        String sql = "select * from exam where owner = ? limit ?, ?";
+        String sql = null;
+        List<Exam> exams = new ArrayList<Exam>();
         try {
-            List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), owner, start, rows);
+            if (owner == null) {
+                sql = "select * from exam limit ?, ?";
+                exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), start, rows);
+            } else {
+                sql = "select * from exam where owner = ? limit ?, ?";
+                exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class), owner, start, rows);
+            }
             return exams;
         } catch (DataAccessException e) {
             return null;
@@ -63,16 +66,35 @@ public class ExamDaoImpl implements ExamDao {
 
     @Override
     public int findTotalCount(String owner) {
-        String sql = "select count(*) from exam where owner = ?";
-        int count = jdbcTemplate.queryForObject(sql, Integer.class, owner);
+        String sql = null;
+        int count = 0;
+        if (owner == null) {
+            sql = "select count(*) from exam";
+            count = jdbcTemplate.queryForObject(sql, Integer.class);
+        } else {
+            sql = "select count(*) from exam where owner = ?";
+            count = jdbcTemplate.queryForObject(sql, Integer.class, owner);
+        }
         return count;
     }
 
     @Override
-    public void setExamStarting(String id) {
+    public void setExamStarting(int id) {
         String sql = "update exam set isStarting = 1 where id = ?";
-        String sql1 = "update students set isExamStarting =1 where examid=?";
+        String sql1 = "update students set isExamStarting = 1 where examid=?";
         jdbcTemplate.update(sql, id);
         jdbcTemplate.update(sql1, id);
+    }
+
+    @Override
+    public void setExamFinished(int id) {
+        String sql = "update exam set isStarting = 0, isFinished = 1 where id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+    @Override
+    public void setExamCleaned(int id) {
+        String sql = "update exam set isCleaned = 1 where id = ?";
+        jdbcTemplate.update(sql, id);
     }
 }

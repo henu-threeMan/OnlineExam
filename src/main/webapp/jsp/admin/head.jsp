@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav navbar-left">
                         <li role="presentation" ><a href="${pageContext.request.contextPath}/jsp/admin/home.jsp">首页</a></li>
                         <li role="presentation" ><a href="${pageContext.request.contextPath}/teacherManagerServlet?currentPage=1&rows=5" >教师管理</a></li>
-                        <li role="presentation" ><a href="${pageContext.request.contextPath}/clearExamServlet">考试清理</a></li>
+                        <li role="presentation" ><a href="${pageContext.request.contextPath}/examManagerServlet?currentPage=1&rows=5">考试清理</a></li>
                         <li role="presentation" ><a href="${pageContext.request.contextPath}/configServlet">系统配置</a></li>
                     </ul>
                     <!--向右对齐-->

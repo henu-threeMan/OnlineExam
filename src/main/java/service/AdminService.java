@@ -31,9 +31,13 @@ public interface AdminService {
     // 教师表 分页查询
     PageBean<Teacher> findTeacherByPage(String _currentPage, String _rows);
 
-    // 考试清理
+    // 考试表 分页查询
+    PageBean<Exam> findExamByPage(String currentPage, String rows);
 
-    void delExam(int id);
+    // 考试清理
+    void cleanExam(String id);
+    // 删除考试
+    void deleteExam(String id);
 
     // 系统配置
 

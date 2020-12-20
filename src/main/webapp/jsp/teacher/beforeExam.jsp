@@ -14,17 +14,6 @@
 
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <script>
-        function deleteExam(id) {
-            if (confirm("是否确定删除？")) {
-                location.href = "${pageContext.request.contextPath}/teacherDeleteExamServlet?id=" + id;
-            }
-        }
-    </script>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
@@ -79,33 +68,38 @@
                 <td>${exam.startTime}</td>
                 <td>${sessionScope.teacher.teacherName}</td>
                 <td>
-                    <c:if test="${exam.isPageExist == 1}">是</c:if>
-                    <c:if test="${exam.isPageExist == 0}">否</c:if>
+                    <c:if test="${exam.isPageExist == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isAutoStart == 1}">是</c:if>
-                    <c:if test="${exam.isAutoStart == 0}">否</c:if>
+                    <c:if test="${exam.isAutoStart == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isStarting == 1}">是</c:if>
-                    <c:if test="${exam.isStarting == 0}">否</c:if>
+                    <c:if test="${exam.isStarting == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isFinished == 1}">是</c:if>
-                    <c:if test="${exam.isFinished == 0}">否</c:if>
+                    <c:if test="${exam.isFinished == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isFiled == 1}">是</c:if>
-                    <c:if test="${exam.isFiled == 0}">否</c:if>
+                    <c:if test="${exam.isFiled == 1}">
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
                 </td>
                 <td>
-                    <c:if test="${exam.isCleaned == 1}">是</c:if>
-                    <c:if test="${exam.isCleaned == 0}">否</c:if>
-                </td>
-                <td>
-                    <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherGetExamServlet?id=${exam.id}">编辑</a>
                     <c:if test="${exam.isCleaned == 1}">
-                        <a class="btn btn-default btn-sm" href="javascript:deleteExam(${exam.id})">删除</a>
+                        <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
+                    </c:if>
+                </td>
+                <td>
+                    <c:if test="${exam.isStarting == 0}">
+                        <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherGetExamServlet?id=${exam.id}">编辑</a>
                     </c:if>
                 </td>
             </tr>

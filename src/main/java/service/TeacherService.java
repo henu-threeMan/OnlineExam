@@ -30,6 +30,8 @@ public interface TeacherService {
     // 考试表分页查询
     PageBean<Exam> findExamByPage(String _currentPage, String _rows, String owner);
     // 考试清理和删除
+    void cleanExam(String id);
+
     void delExam(String id);
 
     // 学生信息管理

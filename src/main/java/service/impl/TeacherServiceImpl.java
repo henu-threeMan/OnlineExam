@@ -53,6 +53,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public void cleanExam(String id) {
+        examDao.setExamCleaned(Integer.parseInt(id));
+    }
+
+    @Override
     public Exam findExamById(String id) {
         return examDao.findById(Integer.parseInt(id));
     }
@@ -69,7 +74,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public void startExam(String id) {
-        examDao.setExamStarting(id);
+        examDao.setExamStarting(Integer.parseInt(id));
     }
 
     @Override
@@ -93,8 +98,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public int getStudentNum(int exmaId) {
-        return studentDao.findTotalCountByExamId(exmaId);
+    public int getStudentNum(int examId) {
+        return studentDao.findTotalCountByExamId(examId);
     }
 
     @Override
@@ -148,6 +153,7 @@ public class TeacherServiceImpl implements TeacherService {
         return studentDao.findCommitCountByExamId(Integer.parseInt(examId));
     }
 
+    @Override
     public Student unlockStudent(String sno) {
         Student student = studentDao.findStudentBySno(sno);
         student.setIp(null);
