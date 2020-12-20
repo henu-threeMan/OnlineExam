@@ -11,6 +11,8 @@ public interface ExamDao {
 
     void updateExam(Exam exam);
 
+    List<Exam> findAll();
+
     List<Exam> findByPage(int start, int rows, String owner);
 
     Exam findById(int id);

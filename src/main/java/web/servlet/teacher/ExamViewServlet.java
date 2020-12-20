@@ -17,8 +17,7 @@ import java.io.IOException;
 public class ExamViewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext servletContext = this.getServletContext();
-//        String examId = (String) servletContext.getAttribute("startingExam");
-        String examId = "1";
+        String examId = (String) servletContext.getAttribute("startingExam");
         TeacherService teacherService = new TeacherServiceImpl();
         Exam exam = teacherService.findExamById(examId);
         int totalStudents = teacherService.findTotalStudentsByExam(examId);

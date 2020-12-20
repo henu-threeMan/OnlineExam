@@ -16,7 +16,6 @@ public class TeacherCleanExamServlet extends HttpServlet {
         String id = request.getParameter("id");
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.cleanExam(id);
-        request.getSession().removeAttribute("startingExam");
         response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1&rows=5");
     }
 

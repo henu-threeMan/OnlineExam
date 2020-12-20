@@ -29,9 +29,9 @@ public interface TeacherService {
     void stopExam(String id);
     // 考试表分页查询
     PageBean<Exam> findExamByPage(String _currentPage, String _rows, String owner);
-    // 考试清理和删除
+    // 清理考试
     void cleanExam(String id);
-
+    // 删除考试
     void delExam(String id);
 
     // 学生信息管理

@@ -19,6 +19,7 @@ public class StopExamServlet extends HttpServlet {
 
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.stopExam(id);
+        this.getServletContext().removeAttribute("startingExam");
 
         response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1&rows=5");
     }

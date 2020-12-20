@@ -36,6 +36,17 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
+    public List<Exam> findAll() {
+        String sql = "select * from exam";
+        try {
+            List<Exam> exams = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Exam>(Exam.class));
+            return exams;
+        } catch (DataAccessException e) {
+            return null;
+        }
+    }
+
+    @Override
     public List<Exam> findByPage(int start, int rows, String owner) {
         String sql = null;
         List<Exam> exams = new ArrayList<Exam>();
