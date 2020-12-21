@@ -2,6 +2,7 @@ package web.listener;
 
 import dao.ExamDao;
 import dao.impl.ExamDaoImpl;
+import domain.Exam;
 import service.ListenerService;
 import service.impl.ListenerServiceImpl;
 
@@ -20,7 +21,6 @@ public class ExamStartListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         // 创建定时器
         Timer timer = new Timer();
-
         // 给定时器添加任务
         timer.schedule(new TimerTask() {
             @Override
@@ -28,11 +28,11 @@ public class ExamStartListener implements ServletContextListener {
                 // 若考试时间已到 开启考试
                 ListenerService listenerService = new ListenerServiceImpl();
                 ServletContext servletContext = sce.getServletContext();
-                String examId = null;
-                // 若已有开启的考试则跳过
-                if (servletContext.getAttribute("startingExam") == null) {
-                    examId = listenerService.getStartingExam();
-                    servletContext.setAttribute("startingExam", examId);
+                Exam exam = listenerService.getStartingExam();
+                // 若教师已有开启的考试则跳过
+                if (exam != null && servletContext.getAttribute(exam.getOwner()) == null) {
+                    servletContext.setAttribute(exam.getOwner(), Integer.toString(exam.getId()));
+                    listenerService.startExam(exam.getId());
                 }
             }
 

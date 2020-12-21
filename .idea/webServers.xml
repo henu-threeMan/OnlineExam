@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="eec97388-d7e4-428c-bec5-ca5f2f1a49c8" name="fishingblog" url="http://fishingblog.cn">
+        <fileTransfer accessType="SFTP" host="fishingblog.cn" port="22" sshConfigId="d7c63bce-f2a6-4c17-910a-72ef51734b0e" sshConfig="kun@fishingblog.cn:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

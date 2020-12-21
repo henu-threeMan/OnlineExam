@@ -17,16 +17,20 @@ public class ListenerServiceImpl implements ListenerService {
     }
 
     @Override
-    public String getStartingExam() {
+    public Exam getStartingExam() {
         List<Exam> exams = examDao.findAll();
         long time = 0;
         for (Exam exam : exams) {
             time = exam.getStartTime().getTime() - (new Date()).getTime();
             if (exam.getIsFinished() == 0 && time <= 0) {
-                examDao.setExamStarting(exam.getId());
-                return Integer.toString(exam.getId());
+                return exam;
             }
         }
         return null;
+    }
+
+    @Override
+    public void startExam(int examId) {
+        examDao.setExamStarting(examId);
     }
 }

@@ -15,18 +15,14 @@ public class ExamFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
         ServletContext servletContext = req.getServletContext();
-        String startingExamId = (String) servletContext.getAttribute("startingExam");
+//        String startingExamId = (String) servletContext.getAttribute("startingExam");
+        ExamDao examDao = new ExamDaoImpl();
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+        String startingExamId = (String) servletContext.getAttribute(teacher.getUsername());
         if (startingExamId == null) {
             request.getRequestDispatcher("/jsp/teacher/noExam.jsp").forward(request, resp);
         } else {
-            ExamDao examDao = new ExamDaoImpl();
-            Exam exam = examDao.findById(Integer.parseInt(startingExamId));
-            Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-            if (!teacher.getUsername().equals(exam.getOwner())){
-                request.getRequestDispatcher("/jsp/teacher/noExam.jsp").forward(request, resp);
-            } else {
-                chain.doFilter(req, resp);
-            }
+            chain.doFilter(req, resp);
         }
     }
 

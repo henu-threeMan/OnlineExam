@@ -16,8 +16,9 @@ import java.io.IOException;
 @WebServlet("/examViewServlet")
 public class ExamViewServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         ServletContext servletContext = this.getServletContext();
-        String examId = (String) servletContext.getAttribute("startingExam");
+        String examId = (String) servletContext.getAttribute(teacher.getUsername());
         TeacherService teacherService = new TeacherServiceImpl();
         Exam exam = teacherService.findExamById(examId);
         int totalStudents = teacherService.findTotalStudentsByExam(examId);
