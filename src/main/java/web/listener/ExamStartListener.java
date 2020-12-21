@@ -1,7 +1,5 @@
 package web.listener;
 
-import dao.ExamDao;
-import dao.impl.ExamDaoImpl;
 import domain.Exam;
 import service.ListenerService;
 import service.impl.ListenerServiceImpl;
@@ -10,8 +8,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
