@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig authType="PASSWORD" host="fishingblog.cn" id="d7c63bce-f2a6-4c17-910a-72ef51734b0e" port="22" nameFormat="DESCRIPTIVE" username="kun" />
-    </configs>
-  </component>
-</project>

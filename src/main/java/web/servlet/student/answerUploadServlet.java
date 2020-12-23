@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,8 +33,12 @@ public class answerUploadServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
         String path = request.getRealPath("/incoming/student/"+"exam"+examId+"/"+sno);//得到上传文件的存放目录
-        System.out.println(path);
+        request.setAttribute("dirPath",path);
         File file = new File(path);
+        File parent = new File(file.getParent());
+        if(!parent.exists()){
+            parent.mkdir();
+        }
         if(!file.exists()){
             file.mkdir();
         }
@@ -60,7 +66,13 @@ public class answerUploadServlet extends HttpServlet {
                     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
                     String houzhui = fileName.substring(fileName.lastIndexOf("."));
                     request.getSession().setAttribute("AnswerUpload_filename", fileName);
-                    fileItem.write(new File(path, fileName));
+
+                    //设置上传时间
+                    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date date = new Date(System.currentTimeMillis());
+                    File newFile = new File(path, fileName);
+                    newFile.setLastModified(date.getTime());
+                    fileItem.write(newFile);
                     request.getSession().setAttribute("AnswerUpload_msg", "提交成功！");
                 }
             }
@@ -68,7 +80,7 @@ public class answerUploadServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        response.sendRedirect(request.getContextPath()+"/jsp/student/home.jsp");
+        request.getRequestDispatcher("/answerListServlet").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

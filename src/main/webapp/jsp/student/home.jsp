@@ -1,4 +1,7 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>student_home</title>
@@ -8,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/student/home.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.jpg"/>
@@ -26,12 +30,10 @@
                     <!--向左对齐-->
                     <ul class="nav navbar-nav navbar-left">
                         <li role="presentation" ><a href="#"><span class="glyphicon glyphicon-home">首页</span></a></li>
-                        <li role="presentation" ><a href="#"><span class="glyphicon glyphicon-eye-open">查看提交</span></a></li>
-
                     </ul>
                     <!--向右对齐-->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>欢迎,${username}</a></li>
+                        <li><a>欢迎,${student.studentName}</a></li>
                         <li><a href="${pageContext.request.contextPath}/logoutServlet">退出</a></li>
                     </ul>
                 </div>
@@ -72,31 +74,19 @@
         <div class="col-sm-6">
             <div>
                 <table class="table table-bordered" style="color: white">
-                    <caption style="color: white">已上传文件列表</caption>
-                    <thead>
                     <tr>
                         <th>文件名</th>
                         <th>文件大小</th>
                         <th>上传时间</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>答案1</td>
-                        <td>600Byte</td>
-                        <td>2020-11-25 15:00:20</td>
-                    </tr>
-                    <tr>
-                        <td>答案2</td>
-                        <td>4MB</td>
-                        <td>202011-25 15:00:10</td>
-                    </tr>
-                    <tr>
-                        <td>答案2</td>
-                        <td>4MB</td>
-                        <td>202011-25 15:00:10</td>
-                    </tr>
-                    </tbody>
+                    <p class="submitList">提交列表</p>
+                    <c:forEach items="${sessionScope.answerList}" var="answer" varStatus="s">
+                        <tr>
+                            <td>${answer.name}</td>
+                            <td>${answer.length()}b</td>
+                            <td><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(((File)pageContext.getAttribute("answer")).lastModified())%></td>
+                        </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>
