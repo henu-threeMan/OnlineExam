@@ -1,5 +1,6 @@
 package web.servlet.teacher;
 
+import domain.Configuration;
 import domain.Exam;
 import domain.PageBean;
 import domain.Teacher;
@@ -18,7 +19,8 @@ import java.io.IOException;
 @WebServlet("/teacherBeforeExamManagerServlet")
 public class TeacherBeforeExamManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String rows = request.getParameter("rows");
+        Configuration config = (Configuration) this.getServletContext().getAttribute("config");
+        String rows = Integer.toString(config.getRows());
         String currentPage = request.getParameter("currentPage");
 
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");

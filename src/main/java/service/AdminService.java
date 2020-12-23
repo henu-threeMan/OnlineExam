@@ -1,9 +1,6 @@
 package service;
 
-import domain.Admin;
-import domain.Exam;
-import domain.PageBean;
-import domain.Teacher;
+import domain.*;
 
 import java.util.List;
 
@@ -38,7 +35,4 @@ public interface AdminService {
     void cleanExam(String id);
     // 删除考试
     void deleteExam(String id);
-
-    // 系统配置
-
 }

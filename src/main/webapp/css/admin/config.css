@@ -1,8 +1,16 @@
-#display{
-    /*background-color: rgba(112,128,144,0.5);*/
+。display{
+    background-color: rgba(112,128,144,0.5);
     width: 1000px;
     margin-top: 30px;
     margin-left: 18%;
     text-align: center;
     color: white;
+}
+
+.form-control{
+    width: 85%;
+}
+
+.msg {
+    color: #3c3c3c;
 }

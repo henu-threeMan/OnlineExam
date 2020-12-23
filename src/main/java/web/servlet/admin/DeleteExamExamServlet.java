@@ -16,7 +16,7 @@ public class DeleteExamExamServlet extends HttpServlet {
         String id = request.getParameter("id");
         AdminService adminService = new AdminServiceImpl();
         adminService.deleteExam(id);
-        response.sendRedirect(request.getContextPath() + "/examManagerServlet?currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/examManagerServlet?currentPage=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

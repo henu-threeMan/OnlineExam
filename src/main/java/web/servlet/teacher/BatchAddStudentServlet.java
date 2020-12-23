@@ -53,7 +53,7 @@ public class BatchAddStudentServlet extends HttpServlet {
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-        response.sendRedirect(request.getContextPath()+"/studentManagerServlet?exam=2&currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath()+"/studentManagerServlet?exam=2&currentPage=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

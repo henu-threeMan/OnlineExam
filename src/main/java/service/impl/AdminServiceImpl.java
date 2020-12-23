@@ -3,13 +3,8 @@ package service.impl;
 import dao.AdminDao;
 import dao.ExamDao;
 import dao.TeacherDao;
-import dao.impl.AdminDaoImpl;
-import dao.impl.ExamDaoImpl;
-import dao.impl.TeacherDaoImpl;
-import domain.Admin;
-import domain.Exam;
-import domain.PageBean;
-import domain.Teacher;
+import dao.impl.*;
+import domain.*;
 import service.AdminService;
 
 import java.util.List;
@@ -129,4 +124,5 @@ public class AdminServiceImpl implements AdminService {
     public void updateAdmin(Admin admin) {
         adminDao.updateAdmin(admin);
     }
+
 }

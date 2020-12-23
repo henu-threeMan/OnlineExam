@@ -22,7 +22,7 @@ public class DeleteStudentServlet extends HttpServlet {
         String sno = request.getParameter("sno");
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.delStudent(sno);
-        response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1");
     }
 
     @Override

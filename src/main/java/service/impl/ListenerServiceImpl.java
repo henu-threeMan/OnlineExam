@@ -12,17 +12,12 @@ public class ListenerServiceImpl implements ListenerService {
     ExamDao examDao = new ExamDaoImpl();
 
     @Override
-    public int getPeriod() {
-        return 2000;
-    }
-
-    @Override
     public Exam getStartingExam() {
         List<Exam> exams = examDao.findAll();
         long time = 0;
         for (Exam exam : exams) {
             time = exam.getStartTime().getTime() - (new Date()).getTime();
-            if (exam.getIsFinished() == 0 && time <= 0) {
+            if ((exam.getIsAutoStart() == 1 && exam.getIsFinished() == 0) && time <= 0) {
                 return exam;
             }
         }

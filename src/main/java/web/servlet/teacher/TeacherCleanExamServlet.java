@@ -16,7 +16,7 @@ public class TeacherCleanExamServlet extends HttpServlet {
         String id = request.getParameter("id");
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.cleanExam(id);
-        response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

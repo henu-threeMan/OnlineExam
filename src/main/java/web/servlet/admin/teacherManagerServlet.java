@@ -1,5 +1,6 @@
 package web.servlet.admin;
 
+import domain.Configuration;
 import domain.PageBean;
 import domain.Teacher;
 import service.AdminService;
@@ -17,7 +18,8 @@ import java.util.List;
 public class teacherManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String currentPage = request.getParameter("currentPage");
-        String rows = request.getParameter("rows");
+        Configuration config = (Configuration) this.getServletContext().getAttribute("config");
+        String rows = Integer.toString(config.getRows());
 
         AdminService adminService = new AdminServiceImpl();
         PageBean<Teacher> pb = adminService.findTeacherByPage(currentPage, rows);

@@ -1,6 +1,6 @@
 package web.servlet.admin;
 
-import domain.Teacher;
+import domain.Configuration;
 import org.apache.commons.beanutils.BeanUtils;
 import service.AdminService;
 import service.impl.AdminServiceImpl;
@@ -14,26 +14,25 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-@WebServlet("/addTeacherServlet")
-public class AddTeacherServlet extends HttpServlet {
+@WebServlet("/updateConfigServlet")
+public class UpdateConfigServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-
-        Teacher teacher = new Teacher();
-        Map<String, String[]> maps = request.getParameterMap();
-
+        Map<String, String[]> map = request.getParameterMap();
+        Configuration configuration = new Configuration();
         try {
-            BeanUtils.populate(teacher, maps);
+            BeanUtils.populate(configuration, map);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
-        AdminService adminService = new AdminServiceImpl();
-        adminService.addTeacher(teacher);
-
-        response.sendRedirect(request.getContextPath() + "/teacherManagerServlet?currentPage=1");
+        if ("on".equals(request.getParameter("teacherAuthority"))) {
+            configuration.setTeacherAuthority(1);
+        } else {
+            configuration.setTeacherAuthority(0);
+        }
+        this.getServletContext().setAttribute("config", configuration);
+        request.getRequestDispatcher("jsp/admin/config.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,5 +1,6 @@
 package web.listener;
 
+import domain.Configuration;
 import domain.Exam;
 import service.ListenerService;
 import service.impl.ListenerServiceImpl;
@@ -29,6 +30,16 @@ public class ExamStartListener implements ServletContextListener {
                 if (exam != null && servletContext.getAttribute(exam.getOwner()) == null) {
                     servletContext.setAttribute(exam.getOwner(), Integer.toString(exam.getId()));
                     listenerService.startExam(exam.getId());
+                }
+                if (servletContext.getAttribute("config") == null) {
+                    Configuration configuration = new Configuration();
+                    configuration.setPeriod(30);
+                    configuration.setRows(5);
+                    configuration.setInterval(15);
+                    configuration.setLowerLimit("512");
+                    configuration.setUpperLimit("131072");
+                    configuration.setTeacherAuthority(1);
+                    servletContext.setAttribute("config", configuration);
                 }
             }
 

@@ -31,7 +31,7 @@ public class UpdateTeacherServlet extends HttpServlet {
         AdminService adminService = new AdminServiceImpl();
         adminService.updateTeacher(teacher);
 
-        response.sendRedirect(request.getContextPath() + "/teacherManagerServlet?currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherManagerServlet?currentPage=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

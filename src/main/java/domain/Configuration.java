@@ -7,6 +7,7 @@ public class Configuration {
     private int interval;
     private String lowerLimit;
     private String upperLimit;
+    private int teacherAuthority;
 
     public int getId() {
         return id;
@@ -54,5 +55,26 @@ public class Configuration {
 
     public void setUpperLimit(String upperLimit) {
         this.upperLimit = upperLimit;
+    }
+
+    public int getTeacherAuthority() {
+        return teacherAuthority;
+    }
+
+    public void setTeacherAuthority(int teacherAuthority) {
+        this.teacherAuthority = teacherAuthority;
+    }
+
+    @Override
+    public String toString() {
+        return "Configuration{" +
+                "id=" + id +
+                ", period=" + period +
+                ", rows=" + rows +
+                ", interval=" + interval +
+                ", lowerLimit='" + lowerLimit + '\'' +
+                ", upperLimit='" + upperLimit + '\'' +
+                ", teacherAuthority=" + teacherAuthority +
+                '}';
     }
 }

@@ -33,7 +33,11 @@ public class TeacherAddExamServlet extends HttpServlet {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
+        if ("on".equals(request.getParameter("isAutoStart"))) {
+            exam.setIsAutoStart(1);
+        } else {
+            exam.setIsAutoStart(0);
+        }
         String examStartTime = request.getParameter("examStartTime");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         try {
@@ -48,7 +52,7 @@ public class TeacherAddExamServlet extends HttpServlet {
         exam.setOwner(teacher.getUsername());
         teacherService.addExam(exam);
 
-        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1&rows=5");
+        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

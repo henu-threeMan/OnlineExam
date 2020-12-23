@@ -1,5 +1,6 @@
 package web.servlet.admin;
 
+import domain.Configuration;
 import domain.Exam;
 import domain.PageBean;
 import service.AdminService;
@@ -16,7 +17,8 @@ import java.io.IOException;
 public class examManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String currentPage = request.getParameter("currentPage");
-        String rows = request.getParameter("rows");
+        Configuration config = (Configuration) this.getServletContext().getAttribute("config");
+        String rows = Integer.toString(config.getRows());
         AdminService adminService = new AdminServiceImpl();
         PageBean<Exam> pb = adminService.findExamByPage(currentPage, rows);
         request.setAttribute("pb", pb);
