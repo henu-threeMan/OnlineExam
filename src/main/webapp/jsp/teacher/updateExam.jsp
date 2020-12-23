@@ -27,7 +27,7 @@
 <div class="container2">
     <div class="display">
         <div class="updateExam">
-            <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherUpdateExamServlet" method="post">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherGetExamServlet" method="post">
                 <div class="firstLine"><h3>编辑考试信息</h3></div>
                 <input type="hidden" name="id" value="${exam.id}">
                 <div class="form-group">

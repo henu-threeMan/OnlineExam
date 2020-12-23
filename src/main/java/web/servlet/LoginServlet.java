@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.InetAddress;
 import java.util.Map;
 
 @WebServlet("/loginServlet")
@@ -75,7 +76,16 @@ public class LoginServlet extends HttpServlet {
             student.setPassword(maps.get("password")[0]);
             StudentService studentService = new StudentServiceImpl();
             Student studentLogin = studentService.studentLogin(student);
-            if (studentLogin != null) {
+
+            //获取本机ip
+            InetAddress inetAddress=InetAddress.getLocalHost();
+            String ip=inetAddress.getHostAddress().toString();
+
+            if(studentLogin != null && studentLogin.getIsExamStarting() == 0){
+                request.setAttribute("login_msg", "考试尚未开始，不允许登陆！");
+                response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");
+            }
+            else if (studentLogin != null) {
                 session.setAttribute("student", studentLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");
 //                request.getRequestDispatcher("/jsp/admin/home.jsp").forward(request, response);

@@ -22,6 +22,14 @@ public class TeacherlistUploadServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             DiskFileItemFactory sf= new DiskFileItemFactory();//实例化磁盘被文件列表工厂
             String path = request.getRealPath("/incoming/admin");//得到上传文件的存放目录
+            File file = new File(path);
+            File[] fileList = file.listFiles();
+            if(fileList.length != 0){
+                for (File f : fileList) {
+                    System.out.println(f.getName());
+                    f.delete();
+                }
+            }
             sf.setRepository(new File(path));//设置文件存放目录
             sf.setSizeThreshold(1024*1024);//设置文件上传小于1M放在内存中
             String rename = "";//文件新生成的文件名
@@ -44,10 +52,8 @@ public class TeacherlistUploadServlet extends HttpServlet {
                             request.getSession().setAttribute("batch_msg","请选择文件！");
                         }
                         fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
-                        String houzhui = fileName.substring(fileName.lastIndexOf("."));
-                        rename = UUID.randomUUID()+houzhui;
-                        request.getSession().setAttribute("batch_filename",rename);
-                        fileItem.write(new File(path, rename));
+                        request.getSession().setAttribute("batch_filename",fileName);
+                        fileItem.write(new File(path, fileName));
                     }
                 }
             } catch (Exception e) {

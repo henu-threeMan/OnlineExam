@@ -123,13 +123,9 @@ public class TeacherServiceImpl implements TeacherService {
 
         int totalCount = studentDao.findTotalCountByExamId(examId);
         pb.setTotalCount(totalCount);
-        System.out.println("teacherServiceImpl------totalcount-------------"+totalCount);
 
         int start = (currentPage - 1) * rows;
-        System.out.println("teacherServiceImpl------start-------------"+start);
         List<Student> students = studentDao.findByPage_and_ExamId(start, rows,examId);
-        System.out.println("teacherServiceImpl------studentList-------------");
-        System.out.println(students);
         pb.setList(students);
 
         int totalPage = (totalCount % rows) == 0 ? (totalCount / rows) : (totalCount / rows) + 1;
