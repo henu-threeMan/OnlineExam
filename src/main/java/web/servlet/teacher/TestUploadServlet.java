@@ -27,6 +27,10 @@ public class TestUploadServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
         String path = request.getRealPath("/incoming/teacher/testPaper/"+"exam"+examId);//得到上传文件的存放目录
+        File file  = new File(path);
+        if(!file.exists()){
+            file.mkdir();
+        }
         System.out.println(path);
         sf.setRepository(new File(path));//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中

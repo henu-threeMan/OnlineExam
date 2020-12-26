@@ -99,9 +99,7 @@
                 </td>
                 <td>
                     <c:if test="${exam.isStarting == 0}">
-                        <c:if test="${exam.isFinished == 0}">
-                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherGetExamServlet?exam=${exam.id}">编辑</a>
-                        </c:if>
+                        <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherGetExamServlet?id=${exam.id}">编辑</a>
                     </c:if>
                 </td>
             </tr>

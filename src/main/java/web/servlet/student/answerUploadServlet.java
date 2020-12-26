@@ -33,9 +33,14 @@ public class answerUploadServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
         String path = request.getRealPath("/incoming/student/"+"exam"+examId+"/"+sno);//得到上传文件的存放目录
+        String studentPath = request.getRealPath("/incoming/student/");
         request.setAttribute("dirPath",path);
-        File file = new File(path);
+        File studentFile = new File(studentPath);
+        File file  = new File(path);
         File parent = new File(file.getParent());
+        if(!studentFile.exists()){
+            studentFile.mkdir();
+        }
         if(!parent.exists()){
             parent.mkdir();
         }

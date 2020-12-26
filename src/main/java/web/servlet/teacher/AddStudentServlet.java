@@ -1,13 +1,10 @@
 package web.servlet.teacher;
 
-import domain.Exam;
 import domain.Student;
-import domain.Teacher;
 import org.apache.commons.beanutils.BeanUtils;
 import service.TeacherService;
 import service.impl.TeacherServiceImpl;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,19 +34,12 @@ public class AddStudentServlet extends HttpServlet {
         }
         student.setPassword(student.getStudentName());
 
-        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         TeacherService teacherService = new TeacherServiceImpl();
+        teacherService.addStudent(student);
         String header = request.getHeader("referer");
         if (header.contains("studentManager.jsp")) {
-            String examId = (String) this.getServletContext().getAttribute(teacher.getUsername());
-            student.setExamId(Integer.parseInt(examId));
-            student.setIsExamStarting(1);
-            teacherService.addStudent(student);
             response.sendRedirect("jsp/teacher/studentManager.jsp");
         } else if (header.contains("studentManagerServlet")) {
-            int examId = ((Exam) request.getSession().getAttribute("exam")).getId();
-            student.setExamId(examId);
-            teacherService.addStudent(student);
             response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1");
         }
     }

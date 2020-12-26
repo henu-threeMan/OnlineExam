@@ -18,7 +18,7 @@ public class TeacherGetExamServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String msg = request.getParameter("startExam_msg");
-        String id = request.getParameter("exam");
+        String id = request.getParameter("id");
         TeacherService teacherService = new TeacherServiceImpl();
         Exam exam = teacherService.findExamById(id);
 

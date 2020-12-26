@@ -41,10 +41,10 @@ public class BatchAddStudentServlet extends HttpServlet {
                     student.setPassword((String)lt.get("password"));
                     student.setClassName((String)lt.get("className"));
                     student.setIp((String)lt.get("ip"));
-                    student.setExamId(Integer.parseInt((String)lt.get("examId")));
-                    student.setIsExamStarting(Integer.parseInt((String)lt.get("isExamStarting")));
-                    student.setIsLogin(Integer.parseInt((String)lt.get("isLogin")));
-                    student.setIsCommit(Integer.parseInt((String)lt.get("isCommit")));
+                    student.setExamId(examId);
+                    student.setIsExamStarting(0);
+                    student.setIsLogin(0);
+                    student.setIsCommit(0);
                     ts.addStudent(student);
                 }
                 session.setAttribute("batch_status", "导入成功！");

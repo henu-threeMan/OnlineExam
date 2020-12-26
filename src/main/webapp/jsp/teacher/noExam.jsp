@@ -16,8 +16,6 @@
 
 <jsp:include page="head.jsp" />
 
-<div style="width: 60%; height: 100px; margin-top: 200px; margin-left: 20%; text-align: center">
-    <h1 style="color: white">暂无正在进行考试！</h1>
-</div>
+<h1 style="color: white">无考试 爬</h1>
 </body>
 </html>

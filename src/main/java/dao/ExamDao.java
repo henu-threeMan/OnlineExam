@@ -23,5 +23,5 @@ public interface ExamDao {
 
     void setExamFinished(int id);
 
-    void cleanExam(int parseInt);
+    void setExamCleaned(int id);
 }
