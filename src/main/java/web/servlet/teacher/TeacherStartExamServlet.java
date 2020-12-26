@@ -27,20 +27,19 @@ public class TeacherStartExamServlet extends HttpServlet {
         ServletContext servletContext = this.getServletContext();
         HttpSession session = request.getSession();
 
-        String id = request.getParameter("id");
+        Exam exam = (Exam) request.getSession().getAttribute("exam");
+        String id = Integer.toString(exam.getId());
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
         String startingExamId = (String) servletContext.getAttribute(teacher.getUsername());
-        System.out.println("startingExamId: " + startingExamId);
         if (startingExamId != null) {
             session.setAttribute("startExam_msg", "当前已有考试正在进行！");
             response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?id=" + id);
         } else {
             TeacherService teacherService = new TeacherServiceImpl();
-            Exam exam = teacherService.findExamById(id);
             long time = exam.getStartTime().getTime() - (new Date()).getTime();
             Configuration config = (Configuration) servletContext.getAttribute("config");
             int interval = config.getInterval();
-            if (exam.getIsFinished() == 0 && time < interval * 60 * 1000) {
+            if (time < interval * 60 * 1000) {
                 teacherService.startExam(id);
                 this.getServletContext().setAttribute(teacher.getUsername(), id);
                 response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");

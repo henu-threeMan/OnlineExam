@@ -24,9 +24,7 @@ public class ExamDaoImpl implements ExamDao {
     @Override
     public void delExam(int id) {
         String sql = "delete from exam where id = ?";
-        String sql1 = "delete from students where examid = ?";
         jdbcTemplate.update(sql, id);
-        jdbcTemplate.update(sql1, id);
     }
 
     @Override
@@ -104,8 +102,10 @@ public class ExamDaoImpl implements ExamDao {
     }
 
     @Override
-    public void setExamCleaned(int id) {
+    public void cleanExam(int id) {
         String sql = "update exam set isCleaned = 1 where id = ?";
+        String sql1 = "delete from students where examid = ?";
         jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(sql1, id);
     }
 }

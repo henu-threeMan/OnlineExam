@@ -112,7 +112,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void cleanExam(String id) {
-        examDao.setExamCleaned(Integer.parseInt(id));
+        examDao.cleanExam(Integer.parseInt(id));
     }
 
     @Override
