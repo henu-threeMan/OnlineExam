@@ -26,21 +26,19 @@ public class StudentlistUploadServlet extends HttpServlet {
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
 
         int examId = ((Exam)request.getSession().getAttribute("exam")).getId();
-        String path = request.getRealPath("/incoming/teacher/studentList/exam"+examId);//得到上传文件的存放目录
+        String path = request.getRealPath("/incoming/exam/exam"+examId+"/studentList");//得到上传文件的存放目录
         File file = new File(path);
         if(!file.exists()){
-            file.mkdir();
+            file.mkdirs();
         }
         File[] fileList = file.listFiles();
         if(fileList.length != 0){
             for (File f : fileList) {
-                System.out.println(f.getName());
                 f.delete();
             }
         }
         sf.setRepository(file);//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中
-        String rename = "";//文件新生成的文件名
         String fileName = "";//文件原名称
         String name = "";//普通field字段
         //从工厂得到servletupload文件上传类

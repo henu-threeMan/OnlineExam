@@ -16,27 +16,20 @@ import java.io.IOException;
 public class TeacherCleanExamServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
+        System.out.println("teacherCleanExamServlet------examId----"+id);
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.cleanExam(id);
-        String studentListPath = request.getRealPath("/incoming/teacher/studentList/"+"exam"+id);
-        String testPaperPath = request.getRealPath("/incoming/teacher/testPaper/"+"exam"+id);
-        String studentAnswerPath = request.getRealPath("/incoming/student/"+"exam"+id);
-        File studentListFile = new File(studentListPath);
-        File teacherPaperFile = new File(testPaperPath);
-        File studentAnswerFile = new File(studentAnswerPath);
-        if(studentListFile.exists()){
-            System.out.println("studentListFile-----"+studentListFile.getName());
-            FileUtils.deleteDir(studentListFile);
+        String examPath = request.getRealPath("/incoming/exam/exam"+id);
+        String zipPath = request.getRealPath("/incoming/zip/exam"+id);
+        File examFile = new File(examPath);
+        File zipFile = new File(zipPath);
+        if(examFile.exists()){
+            System.out.println("examFile-----"+examFile.getName());
+            FileUtils.deleteDir(examFile);
         }
-
-        if(teacherPaperFile.exists()){
-            System.out.println("teacherPaperFile-----"+teacherPaperFile.getName());
-            FileUtils.deleteDir(teacherPaperFile);
-        }
-
-        if(studentAnswerFile.exists()){
-            System.out.println("studentAnswerFile-----"+studentAnswerFile.getName());
-            FileUtils.deleteDir(studentAnswerFile);
+        if(zipFile.exists()){
+            System.out.println("zipFile-----"+zipFile.getName());
+            FileUtils.deleteDir(zipFile);
         }
         response.sendRedirect(request.getContextPath() + "/teacherAfterExamManagerServlet?currentPage=1");
     }

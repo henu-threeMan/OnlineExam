@@ -26,7 +26,7 @@ public class BatchAddStudentServlet extends HttpServlet {
         int examId = ((Exam)session.getAttribute("exam")).getId();
         try {
             String filename = (String) request.getSession().getAttribute("StudentListUpload_filename");
-            String path = this.getServletContext().getRealPath("incoming/teacher/studentList/exam"+examId+"/"+filename);
+            String path = this.getServletContext().getRealPath("incoming/exam/exam"+examId+"/studentList/"+filename);
             File file = new File(path);
             InputStream is = new FileInputStream(file);
             List<Map<String, Object>> list = readExcel(file.getName(),is);

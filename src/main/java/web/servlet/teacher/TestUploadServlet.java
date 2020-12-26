@@ -26,12 +26,11 @@ public class TestUploadServlet extends HttpServlet {
         Integer examId = exam.getId();
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
-        String path = request.getRealPath("/incoming/teacher/testPaper/"+"exam"+examId);//得到上传文件的存放目录
+        String path = request.getRealPath("/incoming/exam/exam"+examId+"/testPaper");//得到上传文件的存放目录
         File file  = new File(path);
         if(!file.exists()){
-            file.mkdir();
+            file.mkdirs();
         }
-        System.out.println(path);
         sf.setRepository(new File(path));//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中
         String rename = "";//文件新生成的文件名
@@ -54,10 +53,8 @@ public class TestUploadServlet extends HttpServlet {
                         request.getSession().setAttribute("TestUpload_msg", "请选择文件！");
                     }
                     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
-                    String houzhui = fileName.substring(fileName.lastIndexOf("."));
-                    rename = UUID.randomUUID() + houzhui;
-                    request.getSession().setAttribute("TestUpload_filename", rename);
-                    fileItem.write(new File(path, rename));
+                    request.getSession().setAttribute("TestUpload_filename", fileName);
+                    fileItem.write(new File(path, fileName));
                     request.getSession().setAttribute("TestUpload_msg", "上传成功！");
                 }
             }

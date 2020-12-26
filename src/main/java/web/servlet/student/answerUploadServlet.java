@@ -32,20 +32,11 @@ public class answerUploadServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
-        String path = request.getRealPath("/incoming/student/"+"exam"+examId+"/"+sno);//得到上传文件的存放目录
-        String studentPath = request.getRealPath("/incoming/student/");
+        String path = request.getRealPath("/incoming/exam/exam"+examId+"/studentAnswer/"+sno);//得到上传文件的存放目录
         request.setAttribute("dirPath",path);
-        File studentFile = new File(studentPath);
         File file  = new File(path);
-        File parent = new File(file.getParent());
-        if(!studentFile.exists()){
-            studentFile.mkdir();
-        }
-        if(!parent.exists()){
-            parent.mkdir();
-        }
         if(!file.exists()){
-            file.mkdir();
+            file.mkdirs();
         }
         sf.setRepository(file);//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中
@@ -69,7 +60,6 @@ public class answerUploadServlet extends HttpServlet {
                         request.getSession().setAttribute("AnswerUpload_msg", "请选择文件！");
                     }
                     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
-                    String houzhui = fileName.substring(fileName.lastIndexOf("."));
                     request.getSession().setAttribute("AnswerUpload_filename", fileName);
 
                     //设置上传时间
