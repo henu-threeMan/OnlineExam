@@ -6,6 +6,7 @@ import domain.Teacher;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import util.DigestUtil;
 import util.JdbcUtils;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class TeacherDaoImpl implements TeacherDao {
     public void addTeacher(Teacher teacher) {
         String sql = "insert into teachers values(?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, null, teacher.getUsername(), teacher.getTeacherName(),
-                teacher.getPassword(), teacher.getIsAdmin());
+                DigestUtil.sha1(teacher.getPassword()), teacher.getIsAdmin());
     }
 
     @Override
@@ -29,7 +30,7 @@ public class TeacherDaoImpl implements TeacherDao {
     @Override
     public void updateTeacher(Teacher teacher) {
         String sql = "update teachers set username = ?, teacherName = ?, password = ?, isAdmin = ? where id = ?";
-        jdbcTemplate.update(sql, teacher.getUsername(), teacher.getTeacherName(), teacher.getPassword(),
+        jdbcTemplate.update(sql, teacher.getUsername(), teacher.getTeacherName(), DigestUtil.sha1(teacher.getPassword()),
                 teacher.getIsAdmin(), teacher.getId());
     }
 
@@ -38,7 +39,7 @@ public class TeacherDaoImpl implements TeacherDao {
         String sql = "select * from teachers where username = ? and password = ?";
         try {
             Teacher teacher = jdbcTemplate.queryForObject(sql,
-                    new BeanPropertyRowMapper<Teacher>(Teacher.class), username, password);
+                    new BeanPropertyRowMapper<Teacher>(Teacher.class), username, DigestUtil.sha1(password));
             return teacher;
         } catch (DataAccessException e) {
             return null;

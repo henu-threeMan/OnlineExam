@@ -16,9 +16,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacher/updateExam1.css">
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
 
@@ -27,7 +24,7 @@
 <div class="container2">
     <div class="display">
         <div class="updateExam">
-            <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherGetExamServlet" method="post">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherUpdateExamServlet" method="post">
                 <div class="firstLine"><h3>编辑考试信息</h3></div>
                 <input type="hidden" name="id" value="${exam.id}">
                 <div class="form-group">
@@ -38,13 +35,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="examStartTime" class="col-sm-2 control-label">考试时间:</label>
-                    <div class="input-group date form_datetime col-sm-10" data-link-field="examStartTime">
-                        <input class="form-control" size="50" id="startTime" type="text" value="${exam.startTime}" style="font-size: 16px" readonly>
+                    <label for="examStartTime" class="col-sm-2 control-label">&nbsp; 考试时间:</label>
+                    <div class="input-group date form_datetime col-sm-10" data-link-field="examStartTime" style="width: 820px">
+                        <input class="form-control" size="50" id="startTime" type="text" value="${exam.startTime}" style="font-size: 16px;" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
-                    <input type="hidden" id="examStartTime" name="examStartTime" value="" />
+                    <input type="hidden" id="examStartTime" name="examStartTime" value="${exam.startTime}" />
                 </div>
 
                 <div class="form-group">
@@ -68,7 +65,7 @@
         <hr>
 
         <div class="uploadPage">
-            <div class="firstLine" ><h3>上传试卷</h3></div>
+            <div class="firstLine" >上传试卷</div>
             <form action="${pageContext.request.contextPath}/TestUploadServlet" enctype="multipart/form-data" method="post">
                 <div class="btn-group">
                     <input id="uploadBtn" class="btn btn-default" name="button1"  type="button" value="选择文件">

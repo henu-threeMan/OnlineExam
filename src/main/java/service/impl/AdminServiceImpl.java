@@ -21,18 +21,20 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void addTeacher(Teacher teacher) {
-        if(teacherDao.findTeacherByUsername(teacher.getUsername()) == null){
+        if(teacherDao.findTeacherByUsername(teacher.getUsername()) == null) {
             teacherDao.addTeacher(teacher);
-        }else{
-            return;
-        }
-        if (teacher.getIsAdmin() == 1 && adminDao.findAdminByUsername(teacher.getUsername()) != null) {
-            adminDao.addAdmin(teacher.getUsername(), teacher.getPassword());
+            if (teacher.getIsAdmin() == 1) {
+                adminDao.addAdmin(teacher.getUsername(), teacher.getPassword());
+            }
         }
     }
 
     @Override
     public void delTeacher(String id) {
+        Teacher teacher = teacherDao.findTeacherById(id);
+        if (teacher.getIsAdmin() == 1) {
+            adminDao.delAdmin(teacher.getUsername());
+        }
         teacherDao.delTeacher(id);
     }
 
@@ -47,7 +49,16 @@ public class AdminServiceImpl implements AdminService {
     public void updateTeacher(Teacher teacher) {
         teacherDao.updateTeacher(teacher);
         if (teacher.getIsAdmin() == 1) {
-            adminDao.addAdmin(teacher.getUsername(), teacher.getPassword());
+            Admin admin = adminDao.findAdminByUsername(teacher.getUsername());
+            if (admin == null) {
+                adminDao.addAdmin(teacher.getUsername(), teacher.getPassword());
+            } else {
+                admin.setUsername(teacher.getUsername());
+                admin.setPassword(teacher.getPassword());
+                adminDao.updateAdmin(admin);
+            }
+        } else {
+            adminDao.delAdmin(teacher.getUsername());
         }
     }
 

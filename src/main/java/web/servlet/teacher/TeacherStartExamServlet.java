@@ -33,7 +33,7 @@ public class TeacherStartExamServlet extends HttpServlet {
         System.out.println("startingExamId: " + startingExamId);
         if (startingExamId != null) {
             session.setAttribute("startExam_msg", "当前已有考试正在进行！");
-            response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?id=" + id);
+            response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?exam=" + id);
         } else {
             TeacherService teacherService = new TeacherServiceImpl();
             Exam exam = teacherService.findExamById(id);
@@ -45,8 +45,8 @@ public class TeacherStartExamServlet extends HttpServlet {
                 this.getServletContext().setAttribute(teacher.getUsername(), id);
                 response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");
             } else {
-                session.setAttribute("startExam_msg", "考试前15分钟才能开启考试！");
-                response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?id=" + id);
+                session.setAttribute("startExam_msg", "考试前" + interval + "分钟才能开启考试！");
+                response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?exam=" + id);
             }
         }
     }
