@@ -16,9 +16,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacher/updateExam1.css">
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
 
@@ -27,7 +24,7 @@
 <div class="container2">
     <div class="display">
         <div class="updateExam">
-            <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherGetExamServlet" method="post">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherUpdateExamServlet" method="post">
                 <div class="firstLine"><h3>编辑考试信息</h3></div>
                 <input type="hidden" name="id" value="${exam.id}">
                 <div class="form-group">
@@ -44,7 +41,7 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
-                    <input type="hidden" id="examStartTime" name="examStartTime" value="" />
+                    <input type="hidden" id="examStartTime" name="examStartTime" value="${exam.startTime}" />
                 </div>
 
                 <div class="form-group">

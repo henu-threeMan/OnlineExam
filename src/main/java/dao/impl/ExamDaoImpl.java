@@ -29,8 +29,8 @@ public class ExamDaoImpl implements ExamDao {
 
     @Override
     public void updateExam(Exam exam) {
-        String sql = "update exam set examName=?, startTime=? where id = ?";
-        jdbcTemplate.update(sql, exam.getExamName(), exam.getStartTime(), exam.getId());
+        String sql = "update exam set examName=?, startTime=?, isAutoStart=? where id = ?";
+        jdbcTemplate.update(sql, exam.getExamName(), exam.getStartTime(), exam.getIsAutoStart(), exam.getId());
     }
 
     @Override

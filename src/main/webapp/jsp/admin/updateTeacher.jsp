@@ -43,7 +43,7 @@
                 <input type="radio" name="isAdmin" value="否" />否
             </c:if>
             <c:if test="${teacher.isAdmin == 0}">
-                <input type="radio" name="isAdmin" value="男" />是
+                <input type="radio" name="isAdmin" value="是" />是
                 <input type="radio" name="isAdmin" value="否" checked />否
             </c:if>
         </div>

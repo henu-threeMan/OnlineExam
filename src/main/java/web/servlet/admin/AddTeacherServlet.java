@@ -29,6 +29,11 @@ public class AddTeacherServlet extends HttpServlet {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+        if ("是".equals(request.getParameter("isAdmin"))) {
+            teacher.setIsAdmin(1);
+        } else {
+            teacher.setIsAdmin(0);
+        }
 
         AdminService adminService = new AdminServiceImpl();
         adminService.addTeacher(teacher);

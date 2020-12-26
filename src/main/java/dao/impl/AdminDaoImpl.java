@@ -5,6 +5,7 @@ import domain.Admin;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import util.DigestUtil;
 import util.JdbcUtils;
 
 import java.util.List;
@@ -14,8 +15,8 @@ public class AdminDaoImpl implements AdminDao {
 
     @Override
     public void addAdmin(String username, String password) {
-        String sql = "insert into admins values(?,?,?)";
-        jdbcTemplate.update(sql, null, username, password);
+        String sql = "insert into admins values(?, ?, ?)";
+        jdbcTemplate.update(sql, null, username, DigestUtil.md5(password));
     }
 
     @Override
@@ -27,7 +28,7 @@ public class AdminDaoImpl implements AdminDao {
     @Override
     public void updateAdmin(Admin admin) {
         String sql = "update admins set username = ?, password = ? where id = ?";
-        jdbcTemplate.update(sql, admin.getUsername(), admin.getPassword(), admin.getId());
+        jdbcTemplate.update(sql, admin.getUsername(), DigestUtil.md5(admin.getPassword()), admin.getId());
     }
 
     @Override
@@ -35,7 +36,7 @@ public class AdminDaoImpl implements AdminDao {
         String sql = "select * from admins where username = ? and password = ?";
         try {
             Admin admin = jdbcTemplate.queryForObject(sql,
-                    new BeanPropertyRowMapper<Admin>(Admin.class), username, password);
+                    new BeanPropertyRowMapper<Admin>(Admin.class), username, DigestUtil.md5(password));
             return admin;
         } catch (DataAccessException e) {
             return null;
@@ -54,7 +55,7 @@ public class AdminDaoImpl implements AdminDao {
         }
     }
     public Admin findAdminByUsername(String username) {
-        String sql = "select * from admin where username = ?";
+        String sql = "select * from admins where username = ?";
         try {
             Admin admin = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Admin>(Admin.class), username);
             return admin;

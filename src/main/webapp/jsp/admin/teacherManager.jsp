@@ -73,7 +73,6 @@
                 <td><input type="checkbox" id="firstCheckbox"></td>
                 <td>编号</td>
                 <td>用户名</td>
-                <td>密码</td>
                 <td>真实名字</td>
                 <td>是否为管理员</td>
                 <td>操作</td>
@@ -84,15 +83,16 @@
                     <td><input type="checkbox" name="tid" value="${teacher.id}"></td>
                     <td>${s.count}</td>
                     <td>${teacher.username}</td>
-                    <td>${teacher.password}</td>
                     <td>${teacher.teacherName}</td>
                     <td>
                         <c:if test="${teacher.isAdmin == 1}">
                             <img src="${pageContext.request.contextPath}/img/yes.png" style="width: 25px; height: 25px;">
                         </c:if>
                     </td>
-                    <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/getTeacherServlet?id=${teacher.id}">修改</a>&nbsp;
-                        <a class="btn btn-danger btn-sm" href="javascript:deleteTeacher(${teacher.id})">删除</a></td>
+                    <td>
+                        <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/getTeacherServlet?id=${teacher.id}">修改</a>&nbsp;
+                        <a class="btn btn-danger btn-sm" href="javascript:deleteTeacher(${teacher.id})">删除</a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

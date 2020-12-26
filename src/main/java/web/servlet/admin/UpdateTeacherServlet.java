@@ -17,6 +17,7 @@ import java.util.Map;
 @WebServlet("/updateTeacherServlet")
 public class UpdateTeacherServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         Map<String, String[]> maps = request.getParameterMap();
         Teacher teacher = new Teacher();
 
@@ -26,6 +27,11 @@ public class UpdateTeacherServlet extends HttpServlet {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
+        }
+        if ("是".equals(request.getParameter("isAdmin"))) {
+            teacher.setIsAdmin(1);
+        } else {
+            teacher.setIsAdmin(0);
         }
 
         AdminService adminService = new AdminServiceImpl();
