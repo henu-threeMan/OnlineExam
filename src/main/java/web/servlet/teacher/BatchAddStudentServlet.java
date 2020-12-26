@@ -1,5 +1,6 @@
 package web.servlet.teacher;
 
+import domain.Exam;
 import domain.Student;
 import org.apache.poi.ss.usermodel.Cell;
 import service.TeacherService;
@@ -22,9 +23,10 @@ public class BatchAddStudentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TeacherService ts = new TeacherServiceImpl();
         HttpSession session = request.getSession();
+        int examId = ((Exam)session.getAttribute("exam")).getId();
         try {
             String filename = (String) request.getSession().getAttribute("StudentListUpload_filename");
-            String path = this.getServletContext().getRealPath("incoming/teacher/studentList/"+filename);
+            String path = this.getServletContext().getRealPath("incoming/teacher/studentList/exam"+examId+"/"+filename);
             File file = new File(path);
             InputStream is = new FileInputStream(file);
             List<Map<String, Object>> list = readExcel(file.getName(),is);

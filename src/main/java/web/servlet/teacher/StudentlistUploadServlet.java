@@ -24,8 +24,21 @@ public class StudentlistUploadServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         DiskFileItemFactory sf = new DiskFileItemFactory();//实例化磁盘被文件列表工厂
-        String path = request.getRealPath("/incoming/teacher/studentList");//得到上传文件的存放目录
-        sf.setRepository(new File(path));//设置文件存放目录
+
+        int examId = ((Exam)request.getSession().getAttribute("exam")).getId();
+        String path = request.getRealPath("/incoming/teacher/studentList/exam"+examId);//得到上传文件的存放目录
+        File file = new File(path);
+        if(!file.exists()){
+            file.mkdir();
+        }
+        File[] fileList = file.listFiles();
+        if(fileList.length != 0){
+            for (File f : fileList) {
+                System.out.println(f.getName());
+                f.delete();
+            }
+        }
+        sf.setRepository(file);//设置文件存放目录
         sf.setSizeThreshold(1024 * 1024);//设置文件上传小于1M放在内存中
         String rename = "";//文件新生成的文件名
         String fileName = "";//文件原名称
@@ -47,10 +60,8 @@ public class StudentlistUploadServlet extends HttpServlet {
                         request.getSession().setAttribute("StudentListUpload_msg", "请选择文件！");
                     }
                     fileName = fileName.substring(fileName.lastIndexOf("\\") + 1);
-                    String houzhui = fileName.substring(fileName.lastIndexOf("."));
-                    rename = UUID.randomUUID() + houzhui;
-                    request.getSession().setAttribute("StudentListUpload_filename", rename);
-                    fileItem.write(new File(path, rename));
+                    request.getSession().setAttribute("StudentListUpload_filename", fileName);
+                    fileItem.write(new File(path, fileName));
                     request.getSession().setAttribute("StudentListUpload_msg", "导入成功！");
                 }
             }
@@ -59,9 +70,7 @@ public class StudentlistUploadServlet extends HttpServlet {
             e.printStackTrace();
         }
         Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-        Exam exam = (Exam) request.getSession().getAttribute("exam");
         String teacherUsername = teacher.getUsername();
-        Integer examId = exam.getId();
         request.getRequestDispatcher("/BatchAddStudentServlet").forward(request,response);
     }
 
