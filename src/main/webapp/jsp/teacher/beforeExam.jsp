@@ -18,8 +18,10 @@
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
 <jsp:include page="head.jsp" />
+<div class="panel panel-default"  style="margin:60px 78px 50px 85px;background: border-box;"> <%-- 修改面板背景颜色--%>
+    <div class="panel-body" style="margin-bottom: 30px;">
 
-<div class="container2">
+<div class="container2" style="margin-top: 60px;">
     <form class="form-inline" action="${pageContext.request.contextPath}/teacherAddExamServlet" method="post">
         <input type="hidden" name="username" value="${sessionScope.teacher.username}">
         <div class="form-group">
@@ -160,6 +162,7 @@
         startDate: new Date()
     });
 </script>
-
+    </div>
+</div>
 </body>
 </html>

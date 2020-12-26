@@ -18,7 +18,10 @@
 
 <jsp:include page="head.jsp" />
 
-<div class="container2">
+<div class="panel panel-default"  style="margin:60px 78px 50px 85px;background: border-box;"> <%-- 修改面板背景颜色--%>
+    <div class="panel-body" style="margin-bottom: 30px;">
+
+<div class="container2" style="margin-top: 60px;">
     <table class="table table-bordered table-hover" style="color: white">
         <tr class="tableHead">
             <td>考试名称</td>
@@ -126,6 +129,7 @@
         </nav>
     </div>
 </div>
-
+    </div>
+</div>
 </body>
 </html>
