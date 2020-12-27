@@ -110,7 +110,7 @@
                     <input id="fileSelection" name="choseFile1"  type="file">
                 </div>
                 <input class="btn btn-default" type="submit" value="导入">
-                <a class="btn btn-default back" type="button"  href="${pageContext.request.contextPath}/teacherGetExamServlet?exam=${sessionScope.exam.id}">返回</a>
+                <a class="btn btn-default back" type="button"  href="${pageContext.request.contextPath}/teacherGetExamServlet?id=${sessionScope.exam.id}">返回</a>
                 <p id="upload_msg1">${StudentListUpload_msg}<%session.removeAttribute("StudentListUpload_msg");%></p>
             </form>
         </div>
