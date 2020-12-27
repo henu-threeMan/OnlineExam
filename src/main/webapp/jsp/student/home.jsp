@@ -25,14 +25,14 @@
 
 <jsp:include page="head.jsp" />
 
-<div style="margin-left: 90px; margin-right: 100px; color: white">
+<div style="margin-left: 6%; margin-right: 6%; color: white;">
 
 <div class="row">
     <h2><img src="${pageContext.request.contextPath}/img/examing1.png" class="img-circle">&nbsp;&nbsp;考试编号 上机考试进行中...</h2>
 </div>
     <div class="panel panel-default"  style="margin-top: 20px;background: border-box;"> <%-- 修改面板背景颜色--%>
-        <div class="panel-body" style="margin-bottom: 30px;">
-            <div class="container" style="color: white; margin-left: 40px;">
+        <div class="panel-body" style="margin-bottom: 2%;">
+            <div class="container" style="color: white; margin-left: 5%;">
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>试卷下载</h3><br>
@@ -40,7 +40,7 @@
                             <a class="btn btn-default" type="button" href="${pageContext.request.contextPath}/downloadTestServlet">下载试卷</a>
                         </div>
 
-                        <div style="margin-top: 80px;">
+                        <div style="margin-top: 16%;">
                             <form  class="form-inline" action="${pageContext.request.contextPath}/answerUploadServlet" enctype="multipart/form-data" method="post">
                                 <h3>答案上传</h3><br>
                                 <p >请按照考试要求将答案打包，再次进行上传。同名文件多次上传将会覆盖。</p>
