@@ -116,6 +116,10 @@
         </div>
     </div>
 </div>
-
+<script>
+    var box = document.querySelector('#fileSelection');
+    box.style.opacity=0;
+    box.style.filter = 'alpha(opacity=0)';
+</script>
 </body>
 </html>

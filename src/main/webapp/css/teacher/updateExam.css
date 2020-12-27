@@ -55,6 +55,7 @@ div {
 #fileSelection{
     z-index:999;
     opacity: 0%;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=10);
     position: absolute;
     width:90%;
     left: 10%;

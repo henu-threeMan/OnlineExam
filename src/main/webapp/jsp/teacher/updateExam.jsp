@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${pageContext.request.contextPath}/css/teacher/head.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/teacher/updateExam1.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/teacher/updateExam.css" rel="stylesheet">
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacher/updateExam1.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacher/updateExam.css">
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
@@ -120,6 +120,10 @@
         ${startExam_msg = null}
         window.location.href = "${pageContext.request.contextPath}/teacherBeforeExamManagerServlet?currentPage=1";
     });
+
+    var box = document.querySelector('#fileSelection');
+    box.style.opacity=0;
+    box.style.filter = 'alpha(opacity=0)';
 </script>
 
 </body>

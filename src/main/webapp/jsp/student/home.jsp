@@ -45,9 +45,9 @@
                                 <h3>答案上传</h3><br>
                                 <p >请按照考试要求将答案打包，再次进行上传。同名文件多次上传将会覆盖。</p>
                                 <div class="form-group">
-                                    <input name="chosefile" type="file" id="inputfile">
+                                    <input name="chosefile" type="file" id="inputfile" value="选择文件">
                                 </div>
-                                <input name="submit" type="submit" class="btn btn-default">
+                                <input name="submit" type="submit" class="btn btn-default" value="提交">
                             </form>
                         </div>
                     </div>

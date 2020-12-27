@@ -76,6 +76,7 @@ public class LoginServlet extends HttpServlet {
             student.setPassword(maps.get("password")[0]);
             StudentService studentService = new StudentServiceImpl();
             Student studentLogin = studentService.studentLogin(student);
+            System.out.println("LoginServlet------"+studentLogin);
 
             //获取本机ip
             InetAddress inetAddress=InetAddress.getLocalHost();
