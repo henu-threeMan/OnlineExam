@@ -31,7 +31,7 @@
     </script>
 
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
 
 <div class="panel panel-default"  style="margin:8% 25%;width: 52%;">
     <div class="panel-body" >

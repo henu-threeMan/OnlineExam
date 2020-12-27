@@ -47,7 +47,7 @@
         }
     </script>
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 
 <jsp:include page="head.jsp" />
 <div class="panel panel-default"  style="margin:3% 6% 4% 6%;background: border-box;"> <%-- 修改面板背景颜色--%>

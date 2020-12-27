@@ -22,7 +22,7 @@
         }
     </script>
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 <jsp:include page="head.jsp" />
 <div id="div2" class="panel panel-default">
     <div class="panel-body">

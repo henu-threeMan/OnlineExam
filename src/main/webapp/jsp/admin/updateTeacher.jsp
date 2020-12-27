@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 <div class="alert_container">
     <h3 style="text-align: center;">修改教师信息</h3>
     <form action="${pageContext.request.contextPath}/updateTeacherServlet" method="post">
