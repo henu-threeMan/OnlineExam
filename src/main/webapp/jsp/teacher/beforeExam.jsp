@@ -15,7 +15,7 @@
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 
 <jsp:include page="head.jsp" />
 <div class="panel panel-default"  style="margin:60px 78px 50px 85px;background: border-box;"> <%-- 修改面板背景颜色--%>
@@ -28,8 +28,10 @@
             <label for="examName">考试名称:</label>
             <input type="text" class="form-control" id="examName" name="examName" placeholder="请输入考试名称">
         </div>
-        &ensp;
+        <br>
+        <br>
         <div class="form-group">
+
             <label for="examStartTime" >考试时间:</label>
             <div class="input-group date form_datetime col-md-5" data-link-field="examStartTime">
                 <input class="form-control" size="50" type="text" value="" style="font-size: 16px" readonly>

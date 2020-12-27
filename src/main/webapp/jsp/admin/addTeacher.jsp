@@ -31,11 +31,11 @@
     </script>
 
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
 
-<div class="panel panel-default"  style="margin:100px 350px;width: 800px;">
+<div class="panel panel-default"  style="margin:8% 25%;width: 52%;">
     <div class="panel-body" >
-        <div class="alert_container" style="width:450px;color: black;margin-left: 21%">
+        <div class="alert_container" style="width:58%;color: black;margin-left: 21%">
             <h3 style="text-align: center;">添加教师信息</h3>
             <form action="${pageContext.request.contextPath}/addTeacherServlet" method="post">
 

@@ -47,13 +47,13 @@
         }
     </script>
 </head>
-<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
+<body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 
 <jsp:include page="head.jsp" />
-<div class="panel panel-default"  style="margin:20px 80px 50px 80px;background: border-box;"> <%-- 修改面板背景颜色--%>
-    <div class="panel-body" style="margin-bottom: 30px;">
+<div class="panel panel-default"  style="margin:3% 6% 4% 6%;background: border-box;"> <%-- 修改面板背景颜色--%>
+    <div class="panel-body" style="margin-bottom: 3%;">
 
-        <div class="container2" style="margin-top: 60px">
+        <div class="container2" style="margin-top: 4%">
             <%--添加联系人、删除选中--%>
                 <div style="float:left; margin-bottom: 10px;">
                     <form action="${pageContext.request.contextPath}/TeacherlistUploadServlet" enctype="multipart/form-data" method="post">
