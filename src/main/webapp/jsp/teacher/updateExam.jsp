@@ -36,7 +36,7 @@
 
                 <div class="form-group">
                     <label for="examStartTime" class="col-sm-2 control-label">&nbsp; 考试时间:</label>
-                    <div class="input-group date form_datetime col-sm-10" data-link-field="examStartTime" style="width: 820px">
+                    <div class="input-group date form_datetime col-sm-10" data-link-field="examStartTime" style="width: 81%">
                         <input class="form-control" size="50" id="startTime" type="text" value="${exam.startTime}" style="font-size: 16px;" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>

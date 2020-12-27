@@ -28,8 +28,10 @@
             <label for="examName">考试名称:</label>
             <input type="text" class="form-control" id="examName" name="examName" placeholder="请输入考试名称">
         </div>
-        &ensp;
+        <br>
+        <br>
         <div class="form-group">
+
             <label for="examStartTime" >考试时间:</label>
             <div class="input-group date form_datetime col-md-5" data-link-field="examStartTime">
                 <input class="form-control" size="50" type="text" value="" style="font-size: 16px" readonly>

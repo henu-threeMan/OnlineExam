@@ -15,7 +15,7 @@
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100%;">
 
 <jsp:include page="head.jsp" />
-
-<h1 style="color: white">无考试 爬</h1>
+<div style="margin-left: 45%"><h1 style="color: white;">无考试</h1>
+</div>
 </body>
 </html>

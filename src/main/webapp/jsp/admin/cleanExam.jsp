@@ -18,7 +18,7 @@
 
 <jsp:include page="head.jsp" />
 
-<div class="panel panel-default"  style="margin:60px 80px 50px 80px;background: border-box"> <%-- 修改面板背景颜色--%>
+<div class="panel panel-default"  style="margin:3% 5% 5% 6%;background: border-box"> <%-- 修改面板背景颜色--%>
     <div class="panel-body" style="margin-bottom: 30px;">
 <div class="container2" style="margin-top: 50px;">
     <table class="table table-bordered table-hover" style="color: white">

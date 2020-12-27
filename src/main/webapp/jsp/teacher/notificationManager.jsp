@@ -28,7 +28,7 @@
     <div class="panel-body">
         <h3>新增通知消息</h3>
         <form role="form" action="${pageContext.request.contextPath}/addNotificationServlet" method="post">
-            <div class="form-group" style="padding-left:15%;width: 850px;">
+            <div class="form-group" style="padding-left:15%;width: 85%;">
                 <textarea class="form-control" name="newNotification" rows="1"></textarea>
             </div>
             <button type="submit" class="btn btn-default">添加</button>
@@ -36,8 +36,8 @@
     </div>
 </div>
 <div id="div3" class="panel panel-default">
-    <h3 style="margin-left: 15px">已有通知</h3>
-    <table class="table table-bordered" style="color: white; width:970px; margin-left:15px; margin-right:10px; border:1px solid white; margin-bottom: 20px;">
+    <h3 style="margin-left: 30px">已有通知</h3>
+    <table class="table table-bordered" style="color: white; width:90%; margin-left:30px; margin-right:10px; border:1px solid white; margin-bottom: 20px;">
         <thead>
         <tr>
             <th>通知内容</th>

@@ -22,8 +22,8 @@
 <jsp:include page="head.jsp" />
 
 <div class="container2">
-    <div class="display_addStudent">
-        <div class="div_addStudent">
+    <div class="display_addStudent" >
+        <div class="div_addStudent" style="width: 100%;margin-left: 16%;">
             <label>添加单个学生</label>
             <form class="form-inline" action="${pageContext.request.contextPath}/addStudentServlet" method="post">
                 <div class="form-group">
@@ -43,8 +43,8 @@
         </div>
     </div>
 
-    <div class="display_studentList">
-        <div class="div_studentList">
+    <div class="display_studentList" style="height: 50%">
+        <div class="div_studentList" style="width:70%;margin-left: 16%;margin-top: 4%;">
             <table class="table table-bordered table-hover" style="color: white">
                 <tr class="tableHead">
                     <td>学号</td>
@@ -101,8 +101,8 @@
         </div>
     </div>
 
-    <div class="display_uploadStudent">
-        <div class="div_uploadStudent">
+    <div class="display_uploadStudent" style="margin-bottom: 5%;">
+        <div class="div_uploadStudent" style="margin-left: 30%">
             <label>批量导入学生名单</label>
             <form action="${pageContext.request.contextPath}/StudentlistUploadServlet" enctype="multipart/form-data" method="post">
                 <div class="btn-group">
