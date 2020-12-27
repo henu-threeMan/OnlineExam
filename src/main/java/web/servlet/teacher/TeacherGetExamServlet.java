@@ -27,12 +27,7 @@ public class TeacherGetExamServlet extends HttpServlet {
         request.setAttribute("startExam_msg", msg);
         request.getSession().setAttribute("exam", exam);
 
-        //在编辑考试前创建名为exam+examId的文件夹
-        String path = this.getServletContext().getRealPath("incoming/teacher/testPaper/"+"exam"+((Exam)request.getSession().getAttribute("exam")).getId());
-        File file = new File(path);
-        if(file != null){
-            file.mkdirs();
-        }
+
         request.getRequestDispatcher("jsp/teacher/updateExam.jsp").forward(request, response);
     }
 

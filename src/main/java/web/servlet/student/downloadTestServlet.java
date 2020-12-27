@@ -19,7 +19,7 @@ public class downloadTestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int examId = ((Student)req.getSession().getAttribute("student")).getExamId();
-        String path = this.getServletContext().getRealPath("incoming/teacher/testPaper/exam")+examId+"/";
+        String path = this.getServletContext().getRealPath("incoming/exam/exam"+examId+"/testPaper/");
         File dir = new File(path);
         File[] file = dir.listFiles();
         String filename = path+file[0].getName();

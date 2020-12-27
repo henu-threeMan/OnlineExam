@@ -79,7 +79,7 @@
                     </c:if>
                     <c:if test="${exam.isFinished == 1}">
                         <c:if test="${exam.isCleaned == 0}">
-                            <a class="btn btn-default btn-sm" href="#">导出</a>
+                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/ExportFileServlet?id=${exam.id}">导出</a>
                             <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherCleanExamServlet?id=${exam.id}">清除</a>
                         </c:if>
                         <c:if test="${exam.isCleaned == 1}">

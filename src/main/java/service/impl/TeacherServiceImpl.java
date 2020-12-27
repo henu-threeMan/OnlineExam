@@ -6,10 +6,7 @@ import dao.TeacherDao;
 import dao.impl.ExamDaoImpl;
 import dao.impl.StudentDaoImpl;
 import dao.impl.TeacherDaoImpl;
-import domain.Exam;
-import domain.PageBean;
-import domain.Student;
-import domain.Teacher;
+import domain.*;
 import service.TeacherService;
 
 import java.util.List;
@@ -24,6 +21,12 @@ public class TeacherServiceImpl implements TeacherService {
     public Teacher teacherLogin(Teacher teacher) {
         return teacherDao.findTeacher(teacher.getUsername(), teacher.getPassword());
     }
+
+    @Override
+    public void updateTeacher(Teacher teacher) {
+        teacherDao.updateTeacher(teacher);
+    }
+
 
     @Override
     public Teacher findTeacherByUsername(String username) {

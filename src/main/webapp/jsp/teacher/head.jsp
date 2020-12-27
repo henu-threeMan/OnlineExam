@@ -50,7 +50,7 @@
                     <h4 class="modal-title">修改口令</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="exam-form" action="${pageContext.request.contextPath}/updateMessageServlet" method="post">
+                    <form class="exam-form" action="${pageContext.request.contextPath}/teacher_updateMessageServlet" method="post">
                         <p>
                             <input type="password" name="oldpass" placeholder="原口令" style="width:100%"/>
                             <br/>
