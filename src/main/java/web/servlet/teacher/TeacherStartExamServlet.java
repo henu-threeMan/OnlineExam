@@ -46,7 +46,7 @@ public class TeacherStartExamServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");
             } else {
                 session.setAttribute("startExam_msg", "考试前" + interval + "分钟才能开启考试！");
-                response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?exam=" + id);
+                response.sendRedirect(request.getContextPath() + "/teacherGetExamServlet?id=" + id);
             }
         }
     }
