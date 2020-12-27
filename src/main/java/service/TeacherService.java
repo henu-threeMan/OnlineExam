@@ -1,9 +1,6 @@
 package service;
 
-import domain.Exam;
-import domain.PageBean;
-import domain.Student;
-import domain.Teacher;
+import domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +9,8 @@ public interface TeacherService {
     // 教师登录
     Teacher teacherLogin(Teacher teacher);
 
+    //教师修改密码
+    void updateTeacher(Teacher teacher);
     // 获取教师信息
     Teacher findTeacherByUsername(String username);
 
