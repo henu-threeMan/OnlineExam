@@ -13,16 +13,13 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
 
 <jsp:include page="head.jsp" />
 
 <div class="container2">
-    <div class="display_addStudent" >
+    <div class="display_addStudent" style="border: 1px solid white;">
         <div class="div_addStudent" style="width: 100%;margin-left: 16%;">
             <label>添加单个学生</label>
             <form class="form-inline" action="${pageContext.request.contextPath}/addStudentServlet" method="post">
@@ -43,7 +40,7 @@
         </div>
     </div>
 
-    <div class="display_studentList" style="height: 50%">
+    <div class="display_studentList" style="border: 1px solid white;height: 50%">
         <div class="div_studentList" style="width:70%;margin-left: 16%;margin-top: 4%;">
             <table class="table table-bordered table-hover" style="color: white">
                 <tr class="tableHead">
@@ -101,7 +98,7 @@
         </div>
     </div>
 
-    <div class="display_uploadStudent" style="margin-bottom: 5%;">
+    <div class="display_uploadStudent" style="border: 1px solid white;margin-bottom: 5%;">
         <div class="div_uploadStudent" style="margin-left: 30%">
             <label>批量导入学生名单</label>
             <form action="${pageContext.request.contextPath}/StudentlistUploadServlet" enctype="multipart/form-data" method="post">

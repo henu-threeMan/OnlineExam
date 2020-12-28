@@ -18,7 +18,7 @@
 
 <jsp:include page="head.jsp" />
 
-<div class="panel panel-default"  style="margin:5% 6% 5% 6%;background: border-box;"> <%-- 修改面板背景颜色--%>
+<div class="panel panel-default"  style="margin:5% 6% 5% 6%;background-color: rgba(112,128,144,0.5);"> <%-- 修改面板背景颜色--%>
     <div class="panel-body" style="margin-bottom: 15%;">
 
 <div class="container2" style="margin-top: 60px;">

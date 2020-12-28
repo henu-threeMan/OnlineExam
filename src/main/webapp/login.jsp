@@ -105,13 +105,13 @@
                 <div class="form-group">
 <%--                    <label for="studentUsername" class="col-sm-2 control-label">用户名:</label>--%>
                     <div class="col-sm-10">
-                        <input name="sno" type="text" class="form-control" id="studentUsername" placeholder="请输入用户名">
+                        <input name="sno" type="text" class="form-control" id="studentUsername" placeholder="请输入学号">
                     </div>
                 </div>
                 <div class="form-group">
 <%--                    <label for="studentPassword" class="col-sm-2 control-label">密码:</label>--%>
                     <div class="col-sm-10">
-                        <input name="password" type="password" class="form-control" id="studentPassword" placeholder="请输入密码">
+                        <input name="password" type="password" class="form-control" id="studentPassword" placeholder="请输入姓名">
                     </div>
                 </div>
                 <div class="form-group">

@@ -28,9 +28,9 @@
 <div style="margin-left: 6%; margin-right: 6%; color: white;">
 
 <div class="row">
-    <h2><img src="${pageContext.request.contextPath}/img/examing1.png" class="img-circle">&nbsp;&nbsp;考试编号 上机考试进行中...</h2>
+    <h2><img src="${pageContext.request.contextPath}/img/examing1.png" class="img-circle">&nbsp;&nbsp;上机考试进行中...</h2>
 </div>
-    <div class="panel panel-default"  style="margin-top: 20px;background: border-box;"> <%-- 修改面板背景颜色--%>
+    <div class="panel panel-default"  style="margin-top: 20px;background-color: rgba(112,128,144,0.5);"> <%-- 修改面板背景颜色--%>
         <div class="panel-body" style="margin-bottom: 2%;">
             <div class="container" style="color: white; margin-left: 5%;">
                 <div class="row">

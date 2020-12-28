@@ -50,7 +50,7 @@
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 
 <jsp:include page="head.jsp" />
-<div class="panel panel-default"  style="margin:3% 6% 4% 6%;background: border-box;"> <%-- 修改面板背景颜色--%>
+<div class="panel panel-default"  style="margin:3% 6% 4% 6%;background-color: rgba(112,128,144,0.5);"> <%-- 修改面板背景颜色--%>
     <div class="panel-body" style="margin-bottom: 3%;">
 
         <div class="container2" style="margin-top: 4%">

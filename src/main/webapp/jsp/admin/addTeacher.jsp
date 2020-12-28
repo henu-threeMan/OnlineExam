@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/teacherManage.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin/head.css">
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -32,8 +33,9 @@
 
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size: 100% 100%;">
+<jsp:include page="head.jsp" />
 
-<div class="panel panel-default"  style="margin:8% 25%;width: 52%;">
+<div class="panel panel-default"  style="margin:8% 25%;width: 52%;background-color: rgba(112,128,144,0.5);">
     <div class="panel-body" >
         <div class="alert_container" style="width:58%;color: black;margin-left: 21%">
             <h3 style="text-align: center;">添加教师信息</h3>

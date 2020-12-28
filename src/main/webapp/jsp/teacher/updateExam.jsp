@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${pageContext.request.contextPath}/css/teacher/head.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/teacher/updateExam.css" rel="stylesheet">
-
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/teacher/updateExam.css">
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
@@ -21,7 +19,7 @@
 
 <jsp:include page="head.jsp" />
 
-<div class="container2">
+<div class="container2" style="border: 1px solid white;">
     <div class="display">
         <div class="updateExam">
             <form class="form-horizontal" action="${pageContext.request.contextPath}/teacherUpdateExamServlet" method="post">
@@ -92,6 +90,7 @@
             </div>
         </div>
 
+        <br>
         <c:if test="${startExam_msg != null}">
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

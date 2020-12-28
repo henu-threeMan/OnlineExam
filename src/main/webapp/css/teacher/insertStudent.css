@@ -55,6 +55,7 @@
 .other {
     font-size: 100%;
 }
+
 #fileSelection{
     z-index:999;
     opacity: 0%;

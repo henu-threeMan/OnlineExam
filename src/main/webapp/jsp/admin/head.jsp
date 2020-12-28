@@ -47,11 +47,11 @@
                     <form class="exam-form" action="${pageContext.request.contextPath}/admin_updateMessageServlet" method="post">
                         <p>
                             <input type="password" name="oldpass" placeholder="原口令" style="width:100%"/>
-                            <br/>
+                            <br><br>
                             <input type="password" name="newpass1" placeholder="新口令" style="width:100%"/>
-                            <br/>
+                            <br><br>
                             <input type="password" name="newpass2" placeholder="重输新口令" style="width:100%"/>
-                            <br/>
+                            <br><br>
                             <input type="submit" class="btn btn-primary" value="修改" style="width:100%"/>
                         </p>
                     </form>

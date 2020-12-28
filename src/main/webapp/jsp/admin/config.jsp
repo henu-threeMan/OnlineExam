@@ -18,7 +18,7 @@
 
 <jsp:include page="head.jsp" />
 
-<div class="display panel panel-default" style="background-color: rgba(112,128,144,0.5); width: 70%; margin-left: 15%;">
+<div class="panel panel-default"  style="margin:3% 6% 4% 6%;background-color: rgba(112,128,144,0.5);"> <%-- 修改面板背景颜色--%>
     <div class="panel-body" style="width: 84%; margin-left: 8%; color: white">
         <h3 style="text-align: center">修改系统配置</h3><br>
         <form class="form-horizontal" action="${pageContext.request.contextPath}/updateConfigServlet" method="post">

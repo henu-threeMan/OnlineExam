@@ -13,16 +13,13 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
     <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-
-    <link rel="icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
-    <link rel="apple-touch-icon"  sizes="32x32" href="${pageContext.request.contextPath}/img/systemIcon.png"/>
 </head>
 <body style="background:url('${pageContext.request.contextPath}/img/background.jpg') no-repeat;background-size:100% 100%;">
 
 <jsp:include page="head.jsp" />
 
 <div class="container2">
-    <div class="display_addStudent">
+    <div class="display_addStudent" style="border: 1px solid white;">
         <div class="div_addStudent">
             <label>添加单个学生</label>
             <form class="form-inline" action="${pageContext.request.contextPath}/addStudentServlet" method="post">
@@ -43,7 +40,7 @@
         </div>
     </div>
 
-    <div class="display_findStudent">
+    <div class="display_findStudent" style="border: 1px solid white;">
         <div class="div_findStudent">
             <label>查找学生信息</label>
             <form class="form-inline" action="${pageContext.request.contextPath}/findStudentServlet" method="post">
@@ -65,7 +62,7 @@
     </div>
 
     <c:if test="${foundStudent != null}">
-        <div class="display_foundStudent">
+        <div class="display_foundStudent" style="border: 1px solid white;">
             <div class="div_foundStudent">
                 <table class="table table-bordered table-hover" style="color: white">
                     <tr class="tableHead">
