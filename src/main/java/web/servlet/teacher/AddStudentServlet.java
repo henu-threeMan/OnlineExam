@@ -36,20 +36,30 @@ public class AddStudentServlet extends HttpServlet {
         }
         student.setPassword(student.getStudentName());
 
-
+        String sno = student.getSno().trim();
+        String studentStudentName = student.getStudentName();
+        student.setPassword(studentStudentName);
         TeacherService teacherService = new TeacherServiceImpl();
         String header = request.getHeader("referer");
         if (header.contains("studentManager.jsp")) {
-            Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-            String startingExamId = (String) this.getServletContext().getAttribute(teacher.getUsername());
-            student.setExamId(Integer.parseInt(startingExamId));
-            teacherService.addStudent(student);
-            response.sendRedirect("jsp/teacher/studentManager.jsp");
+            if (sno.equals("") || studentStudentName.equals("")) {
+                response.sendRedirect("jsp/teacher/studentManager.jsp");
+            } else {
+                Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+                String startingExamId = (String) this.getServletContext().getAttribute(teacher.getUsername());
+                student.setExamId(Integer.parseInt(startingExamId));
+                teacherService.addStudent(student);
+                response.sendRedirect("jsp/teacher/studentManager.jsp");
+            }
         } else if (header.contains("studentManagerServlet")) {
-            Exam exam = (Exam) request.getSession().getAttribute("exam");
-            student.setExamId(exam.getId());
-            teacherService.addStudent(student);
-            response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1");
+            if (sno.equals("") || studentStudentName.equals("")) {
+                response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1");
+            } else {
+                Exam exam = (Exam) request.getSession().getAttribute("exam");
+                student.setExamId(exam.getId());
+                teacherService.addStudent(student);
+                response.sendRedirect(request.getContextPath() + "/studentManagerServlet?currentPage=1");
+            }
         }
     }
 

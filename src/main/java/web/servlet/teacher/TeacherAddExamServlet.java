@@ -39,20 +39,25 @@ public class TeacherAddExamServlet extends HttpServlet {
             exam.setIsAutoStart(0);
         }
         String examStartTime = request.getParameter("examStartTime");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-        try {
-            Date startTime = sdf.parse(examStartTime);
-            exam.setStartTime(startTime);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        String examName = exam.getExamName().trim();
+        if (examName.equals("")) {
+            response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            try {
+                Date startTime = sdf.parse(examStartTime);
+                exam.setStartTime(startTime);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            TeacherService teacherService = new TeacherServiceImpl();
+            Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
+            exam.setOwner(teacher.getUsername());
+            teacherService.addExam(exam);
+
+            response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");
         }
-
-        TeacherService teacherService = new TeacherServiceImpl();
-        Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
-        exam.setOwner(teacher.getUsername());
-        teacherService.addExam(exam);
-
-        response.sendRedirect(request.getContextPath() + "/teacherBeforeExamManagerServlet?currentPage=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
