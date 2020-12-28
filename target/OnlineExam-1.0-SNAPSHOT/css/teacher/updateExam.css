@@ -1,0 +1,72 @@
+div {
+    border:0px black solid;
+}
+
+.container2 {
+    background-color: rgba(112,128,144,0.5);
+    border-radius: 10px;
+    width: 80%;
+    height: 700px;
+    margin-top: 5%;
+    margin-left: 10%;
+    overflow: hidden;
+    color:white;
+    font-size: 170%;
+}
+
+.display {
+    border-radius: 10px;
+    width: 80%;
+    height: 570px;
+    margin-top: 60px;
+    margin-left: 10%;
+    color:white;
+    font-size: 170%;
+}
+
+.display > div {
+    text-align: center;
+    font-size: 70%;
+}
+
+.updateExam div {
+    font-size: 70%;
+}
+
+.checkboxDiv {
+    text-align: left;
+    margin-left: 19%;
+    font-size: 90%;
+}
+
+.buttonDiv {
+    margin-left: auto;
+}
+
+.textLabel1 {
+    width: 10%;
+    font-size: 55%;
+}
+
+.textLabel2 {
+    width: 40%;
+    font-size: 55%;
+}
+#fileSelection{
+    z-index:999;
+    opacity: 0%;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=10);
+    position: absolute;
+    width:90%;
+    left: 10%;
+}
+#uploadBtn{
+    margin-left: 9%;
+}
+#upload_msg{
+    color:green;
+    font-size: 50%;
+}
+#uploadBtn{
+    margin-right: 5px;
+}
