@@ -12,4 +12,5 @@ public class StudentServiceImpl implements StudentService {
     public Student studentLogin(Student student) {
         return studentDao.findStudent(student.getSno(), student.getPassword());
     }
+
 }

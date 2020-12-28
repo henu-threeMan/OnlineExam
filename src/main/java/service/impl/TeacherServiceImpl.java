@@ -159,4 +159,10 @@ public class TeacherServiceImpl implements TeacherService {
         studentDao.updateStudent(student);
         return student;
     }
+
+    @Override
+    public void updateStudentIp(Student stu) {
+        studentDao.updateIp(stu);
+    }
+
 }

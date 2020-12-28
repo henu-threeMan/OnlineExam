@@ -26,7 +26,6 @@ public class updateMessageServlet extends HttpServlet {
         Integer id = admin.getId();
 
         if(!password.equals(DigestUtil.md5(oldpass))) {
-            System.out.println("密码错误----");
             session.setAttribute("update_msg", "原密码错误！");
             response.sendRedirect(request.getContextPath()+"/jsp/admin/home.jsp");
         }else if(!newpass1.equals(newpass2)){

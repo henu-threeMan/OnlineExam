@@ -152,4 +152,10 @@ public class StudentDaoImpl implements StudentDao {
         int count = jdbcTemplate.queryForObject(sql , Integer.class , id);
         return count;
     }
+
+    @Override
+    public void updateIp(Student student) {
+        String sql = "update students set ip = ? where sno = ?";
+        jdbcTemplate.update(sql, student.getIp(), student.getSno());
+    }
 }

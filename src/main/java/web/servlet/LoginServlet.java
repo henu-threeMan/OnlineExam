@@ -75,6 +75,7 @@ public class LoginServlet extends HttpServlet {
             student.setSno(maps.get("sno")[0]);
             student.setPassword(maps.get("password")[0]);
             StudentService studentService = new StudentServiceImpl();
+            TeacherService teacherService = new TeacherServiceImpl();
             Student studentLogin = studentService.studentLogin(student);
             System.out.println("LoginServlet------"+studentLogin);
 
@@ -85,13 +86,18 @@ public class LoginServlet extends HttpServlet {
             if(studentLogin != null && studentLogin.getIsExamStarting() == 0){
                 request.setAttribute("login_msg", "考试尚未开始，不允许登陆！");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
-            }else if (studentLogin != null && studentLogin.getIp() == null) {
+            }else if (studentLogin != null && studentLogin.getIp() == null && teacherService.findStudentByIp(ip) == null) {
+                studentLogin.setIp(ip);
+                teacherService.updateStudentIp(studentLogin);
                 session.setAttribute("student", studentLogin);
                 response.sendRedirect(request.getContextPath() + "/jsp/student/home.jsp");
-            }else if(studentLogin != null && !studentLogin.getIp().equals(ip)){
-                request.setAttribute("login_msg", "请到规定的电脑进行考试");
+            }else if(studentLogin != null && studentLogin.getIp() == null && teacherService.findStudentByIp(ip) != null){
+                request.setAttribute("login_msg", "请到规定的电脑进行考试！");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
-            } else {
+            } else if(studentLogin != null && studentLogin.getIp() != null){
+                request.setAttribute("login_msg", "请勿重复登录！");
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }else {
                 request.setAttribute("login_msg", "用户名或密码错误！");
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
