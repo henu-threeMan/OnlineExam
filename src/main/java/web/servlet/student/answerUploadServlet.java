@@ -6,6 +6,8 @@ import domain.Teacher;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import service.StudentService;
+import service.impl.StudentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +28,8 @@ public class answerUploadServlet extends HttpServlet {
 
         response.setContentType("text/html");
         Student student = (Student) request.getSession().getAttribute("student");
+        StudentService studentService = new StudentServiceImpl();
+        studentService.setStudentCommit(student.getSno());
         Integer examId = student.getExamId();
         String sno = student.getSno();
         System.out.println("examId---------"+examId);

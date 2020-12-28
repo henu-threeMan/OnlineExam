@@ -166,4 +166,16 @@ public class StudentDaoImpl implements StudentDao {
         String sql = "update students set ip = ? where sno = ?";
         jdbcTemplate.update(sql, student.getIp(), student.getSno());
     }
+
+    @Override
+    public void setLogin(String sno) {
+        String sql = "update students set isLogin = 1 where sno = ?";
+        jdbcTemplate.update(sql, sno);
+    }
+
+    @Override
+    public void setCommit(String sno) {
+        String sql = "update students set isCommit = 1 where sno = ?";
+        jdbcTemplate.update(sql, sno);
+    }
 }

@@ -48,6 +48,7 @@ public class AddStudentServlet extends HttpServlet {
                 Teacher teacher = (Teacher) request.getSession().getAttribute("teacher");
                 String startingExamId = (String) this.getServletContext().getAttribute(teacher.getUsername());
                 student.setExamId(Integer.parseInt(startingExamId));
+                student.setIsExamStarting(1);
                 teacherService.addStudent(student);
                 response.sendRedirect("jsp/teacher/studentManager.jsp");
             }

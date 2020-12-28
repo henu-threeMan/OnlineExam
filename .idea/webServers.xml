@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="8f5bee3e-b48c-4098-8478-a27f0fe13789" name="fishingblog" url="http://fishingblog.cn">
+        <fileTransfer accessType="SFTP" host="fishingblog.cn" port="22" sshConfigId="a3c0ab20-e310-4abd-890f-7562f9f9f668" sshConfig="kun@fishingblog.cn:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

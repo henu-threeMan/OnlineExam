@@ -13,4 +13,14 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.findStudent(student.getSno(), student.getPassword());
     }
 
+    @Override
+    public void setStudentLogin(String sno) {
+        studentDao.setLogin(sno);
+    }
+
+    @Override
+    public void setStudentCommit(String sno) {
+        studentDao.setCommit(sno);
+    }
+
 }

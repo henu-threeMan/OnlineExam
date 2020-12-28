@@ -36,4 +36,8 @@ public interface StudentDao {
     int findCommitCountByExamId(int id);
 
     void updateIp(Student student);
+
+    void setLogin(String sno);
+
+    void setCommit(String sno);
 }
