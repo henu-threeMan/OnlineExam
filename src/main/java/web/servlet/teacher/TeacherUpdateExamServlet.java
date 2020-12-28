@@ -41,6 +41,11 @@ public class TeacherUpdateExamServlet extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        if ("on".equals(request.getParameter("isAutoStart"))) {
+            exam.setIsAutoStart(1);
+        } else {
+            exam.setIsAutoStart(0);
+        }
 
         TeacherService teacherService = new TeacherServiceImpl();
         teacherService.updateExam(exam);
