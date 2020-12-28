@@ -34,4 +34,6 @@ public interface StudentDao {
     int findLoginCountByExamId(int id);
 
     int findCommitCountByExamId(int id);
+
+    void updateIp(Student student);
 }

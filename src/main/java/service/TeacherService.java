@@ -55,6 +55,8 @@ public interface TeacherService {
     // 解除学生登录锁定
     Student unlockStudent(String sno);
 
+    void updateStudentIp(Student stu);
+
     // 答卷下载
 
     // 导出提交信息
