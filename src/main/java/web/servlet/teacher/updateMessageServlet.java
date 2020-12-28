@@ -6,6 +6,7 @@ import service.AdminService;
 import service.TeacherService;
 import service.impl.AdminServiceImpl;
 import service.impl.TeacherServiceImpl;
+import util.DigestUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +26,10 @@ public class updateMessageServlet extends HttpServlet {
         Teacher teacher = (Teacher)request.getSession().getAttribute("teacher");
         String username = teacher.getUsername();
         String password = teacher.getPassword();
+        System.out.println("updateMessageServler---password----"+password);
         Integer id = teacher.getId();
 
-        if(!password.equals(oldpass)) {
+        if(!password.equals(DigestUtil.sha1(oldpass))) {
             session.setAttribute("update_msg", "原密码错误！");
             System.out.println("密码错误---------------");
             response.sendRedirect(request.getContextPath()+"/jsp/teacher/home.jsp");
@@ -46,7 +48,7 @@ public class updateMessageServlet extends HttpServlet {
 
             TeacherService ts = new TeacherServiceImpl();
             ts.updateTeacher(newTeacher);
-            response.sendRedirect(request.getContextPath()+"/jsp/login.jsp");
+            response.sendRedirect(request.getContextPath()+"/login.jsp");
         }
     }
 
