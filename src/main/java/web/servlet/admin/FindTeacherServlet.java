@@ -18,24 +18,24 @@ import java.util.Map;
 public class FindTeacherServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
-        String username = request.getParameter("username");
-
-        AdminService adminService = new AdminServiceImpl();
-        Teacher teacher = adminService.findTeacherByUsername(username);
-
         Map<String, Object> map = new HashMap<String, Object>();
-
-        if (teacher != null) {
+        String username = request.getParameter("username").trim();
+        if (username.equals("")) {
             map.put("teacherExist", true);
-            map.put("msg", "该用户名已存在！");
+            map.put("msg", "用户名不可为空！");
         } else {
-            map.put("teacherExist", false);
-            map.put("msg", "用户名可用");
+            AdminService adminService = new AdminServiceImpl();
+            Teacher teacher = adminService.findTeacherByUsername(username);
+            if (teacher != null) {
+                map.put("teacherExist", true);
+                map.put("msg", "该用户名已存在！");
+            } else {
+                map.put("teacherExist", false);
+                map.put("msg", "用户名可用");
+            }
         }
-
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(response.getWriter(), map);
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

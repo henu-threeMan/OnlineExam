@@ -35,10 +35,15 @@ public class AddTeacherServlet extends HttpServlet {
             teacher.setIsAdmin(0);
         }
 
-        AdminService adminService = new AdminServiceImpl();
-        adminService.addTeacher(teacher);
-
-        response.sendRedirect(request.getContextPath() + "/teacherManagerServlet?currentPage=1");
+        String username = teacher.getUsername().trim();
+        String password = teacher.getPassword().trim();
+        if (username.equals("") || password.equals("")) {
+            response.sendRedirect("jsp/admin/addTeacher.jsp");
+        } else {
+            AdminService adminService = new AdminServiceImpl();
+            adminService.addTeacher(teacher);
+            response.sendRedirect(request.getContextPath() + "/teacherManagerServlet?currentPage=1");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

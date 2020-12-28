@@ -17,10 +17,14 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void addStudent(Student student) {
-        String sql = "insert into students values(?, ?, ?, ?, ? ,? ,? ,? ,?)";
-        jdbcTemplate.update(sql, student.getSno(), student.getStudentName(), student.getPassword(),
-                student.getClassName(), null ,student.getExamId() ,
-                student.getIsExamStarting() ,student.getIsLogin() ,student.getIsCommit());
+        try {
+            String sql = "insert into students values(?, ?, ?, ?, ? ,? ,? ,? ,?)";
+            jdbcTemplate.update(sql, student.getSno(), student.getStudentName(), student.getPassword(),
+                    student.getClassName(), null ,student.getExamId() ,
+                    student.getIsExamStarting() ,student.getIsLogin() ,student.getIsCommit());
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
@@ -31,9 +35,13 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void updateStudent(Student student) {
-        String sql = "update students set studentName = ?, password = ?, className = ?, ip = ? where sno = ?";
-        jdbcTemplate.update(sql, student.getStudentName(), student.getPassword(), student.getClassName(),
-                student.getIp(), student.getSno());
+        try {
+            String sql = "update students set studentName = ?, password = ?, className = ?, ip = ? where sno = ?";
+            jdbcTemplate.update(sql, student.getStudentName(), student.getPassword(), student.getClassName(),
+                    student.getIp(), student.getSno());
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
