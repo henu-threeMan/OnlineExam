@@ -40,7 +40,7 @@ public class BatchAddStudentServlet extends HttpServlet {
                     student.setStudentName( (String)lt.get("studentName"));
                     student.setPassword((String)lt.get("password"));
                     student.setClassName((String)lt.get("className"));
-                    student.setIp((String)lt.get("ip"));
+                    student.setIp(null);
                     student.setExamId(examId);
                     student.setIsExamStarting(0);
                     student.setIsLogin(0);

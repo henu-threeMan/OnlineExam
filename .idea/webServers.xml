@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ced4fd27-0e62-419e-8ccd-582ef6296146" name="onlineExam" url="http://lanjanha.cn">
+        <fileTransfer accessType="SFTP" host="lanjanha.cn" port="22" sshConfigId="8fb6b2b7-cb3a-48ec-b7de-3230abae39b8" sshConfig="lanjanha@lanjanha.cn:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -3,6 +3,7 @@ package web.servlet.admin;
 import domain.Admin;
 import service.AdminService;
 import service.impl.AdminServiceImpl;
+import util.DigestUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,8 @@ public class updateMessageServlet extends HttpServlet {
         String password = admin.getPassword();
         Integer id = admin.getId();
 
-        if(!password.equals(oldpass)) {
+        if(!password.equals(DigestUtil.md5(oldpass))) {
+            System.out.println("密码错误----");
             session.setAttribute("update_msg", "原密码错误！");
             response.sendRedirect(request.getContextPath()+"/jsp/admin/home.jsp");
         }else if(!newpass1.equals(newpass2)){
@@ -38,7 +40,7 @@ public class updateMessageServlet extends HttpServlet {
 
             AdminService as = new AdminServiceImpl();
             as.updateAdmin(newAdmin);
-            response.sendRedirect(request.getContextPath()+"/jsp/login.jsp");
+            response.sendRedirect(request.getContextPath()+"/login.jsp");
 
         }
     }
