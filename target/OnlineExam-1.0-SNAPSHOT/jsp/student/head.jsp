@@ -17,7 +17,7 @@
                         <li role="presentation"><a href="${pageContext.request.contextPath}/jsp/student/home.jsp">首页</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>欢迎,${student.username}</a></li>
+                        <li><a>欢迎,${sessionScope.student.studentName}</a></li>
                         <li><a href="${pageContext.request.contextPath}/logoutServlet">退出</a></li>
                     </ul>
                 </div>
