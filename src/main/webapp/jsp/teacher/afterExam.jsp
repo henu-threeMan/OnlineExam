@@ -77,13 +77,15 @@
                             <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/stopExamServlet?&id=${exam.id}">结束考试</a>
                         </c:if>
                     </c:if>
-                    <c:if test="${exam.isFinished == 1}">
-                        <c:if test="${exam.isCleaned == 0}">
-                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/ExportFileServlet?id=${exam.id}">导出</a>
-                            <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherCleanExamServlet?id=${exam.id}">清除</a>
-                        </c:if>
-                        <c:if test="${exam.isCleaned == 1}">
-                            <a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/teacherDeleteExamServlet?id=${exam.id}">删除</a>
+                    <c:if test="${applicationScope.config.teacherAuthority == 1}">
+                        <c:if test="${exam.isFinished == 1}">
+                            <c:if test="${exam.isCleaned == 0}">
+                                <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/ExportFileServlet?id=${exam.id}">导出</a>
+                                <a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/teacherCleanExamServlet?id=${exam.id}">清除</a>
+                            </c:if>
+                            <c:if test="${exam.isCleaned == 1}">
+                                <a class="btn btn-danger btn-sm" href="${pageContext.request.contextPath}/teacherDeleteExamServlet?id=${exam.id}">删除</a>
+                            </c:if>
                         </c:if>
                     </c:if>
                 </td>
